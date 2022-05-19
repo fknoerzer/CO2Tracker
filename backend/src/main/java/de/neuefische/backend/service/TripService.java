@@ -1,6 +1,5 @@
 package de.neuefische.backend.service;
 
-import de.neuefische.backend.dto.TripDto;
 import de.neuefische.backend.model.Trip;
 import de.neuefische.backend.repository.TripRepo;
 import lombok.Builder;
