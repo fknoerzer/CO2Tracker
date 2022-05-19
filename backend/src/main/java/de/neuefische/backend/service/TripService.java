@@ -1,5 +1,6 @@
 package de.neuefische.backend.service;
 
+import de.neuefische.backend.dto.TripDto;
 import de.neuefische.backend.model.Trip;
 import de.neuefische.backend.repository.TripRepo;
 import lombok.Builder;
@@ -19,11 +20,11 @@ public class TripService {
         this.tripRepo = tripRepo;
     }
 
-    public List<Trip> getTrips() {
+    public List<Trip> getAllTrips() {
         return tripRepo.findAll();
     }
 
-    public Trip addNewTrip(Trip trip) {
-       return tripRepo.insert(trip);
+    public Trip addNewTrip(Trip newTrip) {
+        return tripRepo.insert(newTrip);
     }
 }

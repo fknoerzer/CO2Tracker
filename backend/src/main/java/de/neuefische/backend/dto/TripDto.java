@@ -11,7 +11,7 @@ import java.time.Instant;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CreateTripDto {
+public class TripDto {
     private String title;
     private int distance;
     private String destinationCountry;
