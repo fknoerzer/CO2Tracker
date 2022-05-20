@@ -17,7 +17,7 @@ class TripServiceTest {
 
     @Test
     void getAllTrips() {
-        //Then
+        //Given
         Trip trip1 = Trip.builder()
                 .id("1")
                 .title("Rom 2022")
@@ -48,7 +48,7 @@ class TripServiceTest {
                 .title("Rom 2022")
                 .build();
 
-when(tripRepo.insert(trip1)).thenReturn(Trip.builder()
+        when(tripRepo.insert(trip1)).thenReturn(Trip.builder()
         .id("1")
         .title("Rom 2022")
         .build());
