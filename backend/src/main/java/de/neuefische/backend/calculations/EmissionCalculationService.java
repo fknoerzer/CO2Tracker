@@ -1,7 +1,6 @@
 package de.neuefische.backend.calculations;
 
 import de.neuefische.backend.dto.TripDto;
-
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 

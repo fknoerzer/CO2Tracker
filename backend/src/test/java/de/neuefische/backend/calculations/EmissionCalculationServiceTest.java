@@ -2,9 +2,7 @@ package de.neuefische.backend.calculations;
 
 import de.neuefische.backend.dto.TripDto;
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDate;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EmissionCalculationServiceTest {

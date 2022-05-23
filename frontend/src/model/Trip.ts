@@ -16,7 +16,6 @@ export type Trip = {
     amountOfGolfRounds: number;
     amountOfSkiingDays: number;
     amountOfBeautyDays: number;
-
     transportationEmissions: number;
     accommodationEmissions: number;
     foodEmissions: number;

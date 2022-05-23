@@ -5,10 +5,8 @@ import de.neuefische.backend.dto.TripDto;
 import de.neuefische.backend.model.Trip;
 import de.neuefische.backend.repository.TripRepo;
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDate;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
