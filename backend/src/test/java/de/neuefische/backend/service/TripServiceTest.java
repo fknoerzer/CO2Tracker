@@ -16,8 +16,8 @@ import static org.mockito.Mockito.*;
 class TripServiceTest {
 
     private final TripRepo tripRepo = mock(TripRepo.class);
-    private final EmissionCalculationService emissionCalculationService = new EmissionCalculationService();
-    private final TripService tripService = new TripService(emissionCalculationService, tripRepo);
+
+    private final TripService tripService = new TripService(tripRepo);
 
     @Test
     void getAllTrips() {
@@ -77,6 +77,7 @@ class TripServiceTest {
             .dateOfDeparture(LocalDate.of(2022, 1, 13))
             .dateOfReturning(LocalDate.of(2022, 1, 20))
             .numberOfNights(7)
+            .year(2022)
             .personalBudget(2500)
             .typeOfTransport("Train")
             .typeOfAccommodation("Hotel")
@@ -103,6 +104,7 @@ class TripServiceTest {
             .dateOfDeparture(LocalDate.of(2022, 2, 13))
             .dateOfReturning(LocalDate.of(2022, 2, 20))
             .numberOfNights(7)
+            .year(2022)
             .personalBudget(2500)
             .typeOfTransport("Train")
             .typeOfAccommodation("Hotel")

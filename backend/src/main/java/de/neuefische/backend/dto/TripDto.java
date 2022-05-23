@@ -26,7 +26,11 @@ public class TripDto {
     private double numberOfClothingItems;
     private double numberOfElectronicItems;
     private double numberOfSouvenirItems;
+    private String customShoppingItem;
+    private double customShoppingItemEmission;
     private double amountOfGolfRounds;
     private double amountOfSkiingDays;
     private double amountOfBeautyDays;
+    private String customActivity;
+    private double customActivityEmission;
 }

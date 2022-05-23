@@ -1,19 +1,27 @@
 package de.neuefische.backend.calculations;
 
 import de.neuefische.backend.dto.TripDto;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-@Service
- public class EmissionCalculationService {
 
-   public static long getNumberOfNights(TripDto tripDto) {
+public class EmissionCalculationService {
+
+    private EmissionCalculationService() {
+    }
+
+    public static long getNumberOfNights(TripDto tripDto) {
         LocalDate departureDate = tripDto.getDateOfDeparture();
         LocalDate returningDate = tripDto.getDateOfReturning();
 
-        return (ChronoUnit.DAYS.between(departureDate, returningDate));}
+        return ChronoUnit.DAYS.between(departureDate, returningDate);
+    }
+
+    public static long getYearOfTrip(TripDto tripDto) {
+        LocalDate departureDate = tripDto.getDateOfDeparture();
+        return departureDate.getYear();
+    }
 
 
     public static double getTransportationEmissions(TripDto tripDto) {
@@ -45,7 +53,7 @@ import java.time.temporal.ChronoUnit;
 
         return switch (tripDto.getTypeOfAccommodation()) {
             case "MuchMeat" -> (getNumberOfNights(tripDto) * 9.04);
-            case "SomeMeat" -> (getNumberOfNights(tripDto)* 6.85);
+            case "SomeMeat" -> (getNumberOfNights(tripDto) * 6.85);
             case "RarelyMeat" -> (getNumberOfNights(tripDto) * 5.21);
             case "Vegetarian" -> (getNumberOfNights(tripDto) * 4.66);
             default -> (getNumberOfNights(tripDto) * 4.11);
@@ -53,16 +61,16 @@ import java.time.temporal.ChronoUnit;
     }
 
     public static double getShoppingEmissions(TripDto tripDto) {
-        return (tripDto.getNumberOfClothingItems() * 3 +tripDto.getNumberOfElectronicItems()*50 + tripDto.getNumberOfSouvenirItems()*5);
+        return (tripDto.getNumberOfClothingItems() * 3 + tripDto.getNumberOfElectronicItems() * 50 + tripDto.getNumberOfSouvenirItems() * 5 + tripDto.getCustomShoppingItemEmission());
     }
 
     public static double getActivitiesEmissions(TripDto tripDto) {
 
-        return (tripDto.getAmountOfBeautyDays() * 16.16 + tripDto.getAmountOfSkiingDays() * 20.0 + tripDto.getAmountOfGolfRounds() * 10.0);
+        return (tripDto.getAmountOfBeautyDays() * 16.16 + tripDto.getAmountOfSkiingDays() * 20.0 + tripDto.getAmountOfGolfRounds() * 10.0 + tripDto.getCustomActivityEmission());
     }
 
-   public static double getAllEmissions(TripDto tripDto) {
-       return (getTransportationEmissions(tripDto) + getAccommodationEmissions(tripDto) + getFoodEmissions(tripDto) + getShoppingEmissions(tripDto) +  getActivitiesEmissions(tripDto));
-   }
+    public static double getAllEmissions(TripDto tripDto) {
+        return (getTransportationEmissions(tripDto) + getAccommodationEmissions(tripDto) + getFoodEmissions(tripDto) + getShoppingEmissions(tripDto) + getActivitiesEmissions(tripDto));
+    }
 }
 

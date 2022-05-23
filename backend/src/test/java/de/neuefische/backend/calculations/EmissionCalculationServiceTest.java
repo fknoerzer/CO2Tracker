@@ -21,6 +21,16 @@ class EmissionCalculationServiceTest {
     }
 
     @Test
+    void getYearOfTrip() {
+        //when
+        long actual = EmissionCalculationService.getYearOfTrip(tripDto);
+
+        //Then
+        long expected = 2022;
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void getTransportationEmissions() {
         //when
         double actual = EmissionCalculationService.getTransportationEmissions(tripDto);

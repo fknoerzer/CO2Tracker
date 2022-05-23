@@ -19,6 +19,7 @@ public class Trip {
     @Id
     private String id;
     private String title;
+    private long year;
     private double distance;
     private String destinationCountry;
     private double travellerAmount;
@@ -32,9 +33,13 @@ public class Trip {
     private double numberOfClothingItems;
     private double numberOfElectronicItems;
     private double numberOfSouvenirItems;
+    private String customShoppingItem;
+    private double customShoppingItemEmission;
     private double amountOfGolfRounds;
     private double amountOfSkiingDays;
     private double amountOfBeautyDays;
+    private String customActivity;
+    private double customActivityEmission;
 
     private double transportationEmissions;
     private double accommodationEmissions;

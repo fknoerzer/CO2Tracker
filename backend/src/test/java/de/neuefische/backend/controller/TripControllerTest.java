@@ -71,31 +71,7 @@ class TripControllerTest {
         //Then
         assertNotNull(actual);
         assertNotNull(actual.getId());
-        Trip expected = Trip.builder()
-                .title("Rom 2022")
-                .distance(1)
-                .destinationCountry("Italy")
-                .travellerAmount(1)
-                .dateOfDeparture(LocalDate.of(2022, 1, 13))
-                .dateOfReturning(LocalDate.of(2022, 1, 20))
-                .numberOfNights(7)
-                .personalBudget(2500)
-                .typeOfTransport("Train")
-                .typeOfAccommodation("Hotel")
-                .typeOfDiet("MuchMeat")
-                .numberOfClothingItems(0)
-                .numberOfElectronicItems(0)
-                .numberOfSouvenirItems(0)
-                .amountOfBeautyDays(0)
-                .amountOfSkiingDays(0)
-                .amountOfGolfRounds(0)
-                .transportationEmissions(0.14)
-                .accommodationEmissions(798)
-                .foodEmissions(28.770000000000003)
-                .activitiesEmissions(0)
-                .shoppingEmissions(0)
-                .totalEmissions(826.91)
-                .build();
+        Trip expected = trip1;
         expected.setId(actual.getId());
         assertEquals(24, actual.getId().length());
         assertEquals(expected, actual);
@@ -129,6 +105,7 @@ class TripControllerTest {
             .dateOfDeparture(LocalDate.of(2022, 1, 13))
             .dateOfReturning(LocalDate.of(2022, 1, 20))
             .numberOfNights(7)
+            .year(2022)
             .personalBudget(2500)
             .typeOfTransport("Train")
             .typeOfAccommodation("Hotel")
@@ -154,6 +131,7 @@ class TripControllerTest {
             .travellerAmount(1)
             .dateOfDeparture(LocalDate.of(2022, 2, 13))
             .dateOfReturning(LocalDate.of(2022, 2, 20))
+            .year(2022)
             .numberOfNights(7)
             .personalBudget(2500)
             .typeOfTransport("Train")
