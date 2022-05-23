@@ -4,24 +4,32 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.Instant;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 public class TripDto {
+
     private String title;
-    private int distance;
+    private double distance;
     private String destinationCountry;
-    private int travellerAmount;
-    private Instant dateOfReturning;
-    private Instant dateOfDeparting;
-    private int personalBudget;
-    private int transportation;
-    private int accommodation;
-    private int food;
-    private int activities;
-    private int shopping;
+    private double travellerAmount;
+    private LocalDate dateOfDeparture;
+    private LocalDate dateOfReturning;
+    private double personalBudget;
+    private String typeOfTransport;
+    private String typeOfAccommodation;
+    private String typeOfDiet;
+    private double numberOfClothingItems;
+    private double numberOfElectronicItems;
+    private double numberOfSouvenirItems;
+    private String customShoppingItem;
+    private double customShoppingItemEmission;
+    private double amountOfGolfRounds;
+    private double amountOfSkiingDays;
+    private double amountOfBeautyDays;
+    private String customActivity;
+    private double customActivityEmission;
 }
