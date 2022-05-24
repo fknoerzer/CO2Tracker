@@ -1,5 +1,5 @@
 import useTrips from "../hooks/UseTrips";
-import TripDetails from "../components/TripDetails";
+import TripDetails from "./TripDetails";
 
 export default function TripsOverview() {
     const {trips} = useTrips();

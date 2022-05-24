@@ -5,6 +5,7 @@ import de.neuefische.backend.model.Trip;
 import de.neuefische.backend.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -23,8 +24,13 @@ public class TripController {
         return tripService.getAllTrips();
     }
 
+    @GetMapping("{id}")
+    public Trip getTripListById(@PathVariable String id) {
+        return tripService.getTripById(id);
+    }
+
     @PostMapping
-    public Trip addNewTrip (@RequestBody TripDto newTrip) {
+    public Trip addNewTrip(@RequestBody TripDto newTrip) {
         return tripService.addNewTrip(newTrip);
     }
 }
