@@ -1,6 +1,7 @@
 package de.neuefische.backend.calculations;
 
 import de.neuefische.backend.dto.TripDto;
+import de.neuefische.backend.model.*;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -54,7 +55,7 @@ class EmissionCalculationServiceTest {
         double actual = EmissionCalculationService.getFoodEmissions(tripDto);
 
         //Then
-        double expected = 28.770000000000003;
+        double expected = 63;
         assertEquals(expected, actual);
     }
 
@@ -64,7 +65,7 @@ class EmissionCalculationServiceTest {
         double actual = EmissionCalculationService.getShoppingEmissions(tripDto);
 
         //Then
-        double expected = 58;
+        double expected = 0;
         assertEquals(expected, actual);
     }
 
@@ -74,7 +75,7 @@ class EmissionCalculationServiceTest {
         double actual = EmissionCalculationService.getActivitiesEmissions(tripDto);
 
         //Then
-        double expected = 20;
+        double expected = 0;
         assertEquals(expected, actual);
     }
 
@@ -84,26 +85,36 @@ class EmissionCalculationServiceTest {
         double actual = EmissionCalculationService.getAllEmissions(tripDto);
 
         //Then
-        double expected = 904.91;
+        double expected = 861.14;
         assertEquals(expected,actual);
     }
 
     TripDto tripDto = TripDto.builder()
             .title("Rom 2022")
-            .distance(1.0)
+            .transportation(Transportation.builder()
+                    .typeOfTransport("Train")
+                    .distance(1)
+                    .build())
             .destinationCountry("Italy")
             .travellerAmount(1)
             .personalBudget(2500)
             .dateOfDeparture(LocalDate.of(2022, 1, 13))
             .dateOfReturning(LocalDate.of(2022, 1, 20))
-            .typeOfTransport("Train")
-            .typeOfAccommodation("Hotel")
-            .typeOfDiet("MuchMeat")
-            .numberOfClothingItems(1)
-            .numberOfElectronicItems(1)
-            .numberOfSouvenirItems(1)
-            .amountOfBeautyDays(0)
-            .amountOfSkiingDays(1)
-            .amountOfGolfRounds(0)
+            .accommodation(Accommodation.builder()
+                    .typeOfAccommodation("Hotel")
+                    .build())
+            .food(Food.builder().
+                    typeOfDiet("MuchMeat")
+                    .build())
+            .shopping(Shopping.builder()
+                    .numberOfClothingItems(0)
+                    .numberOfElectronicItems(0)
+                    .numberOfSouvenirItems(0)
+                    .build())
+            .activity(Activity.builder()
+                    .amountOfBeautyDays(0)
+                    .amountOfSkiingDays(0)
+                    .amountOfGolfRounds(0)
+                    .build())
             .build();
 }

@@ -25,20 +25,20 @@ public class EmissionCalculationService {
 
     public static double getTransportationEmissions(TripDto tripDto) {
 
-        return switch (tripDto.getTypeOfTransport()) {
-            case "Airplane" -> tripDto.getDistance() * 0.4;
-            case "Car" -> (tripDto.getDistance() * 0.12);
-            case "Camper" -> (tripDto.getDistance() * 0.2);
-            case "Train" -> (tripDto.getDistance() * 0.14);
-            case "Bus" -> (tripDto.getDistance() * 0.08);
-            case "Motorbike" -> (tripDto.getDistance() * 0.1);
+        return switch (tripDto.getTransportation().getTypeOfTransport()) {
+            case "Airplane" -> tripDto.getTransportation().getDistance() * 0.4;
+            case "Car" -> (tripDto.getTransportation().getDistance() * 0.12);
+            case "Camper" -> (tripDto.getTransportation().getDistance() * 0.2);
+            case "Train" -> (tripDto.getTransportation().getDistance() * 0.14);
+            case "Bus" -> (tripDto.getTransportation().getDistance() * 0.08);
+            case "Motorbike" -> (tripDto.getTransportation().getDistance() * 0.1);
             default -> 0;
         };
     }
 
     public static double getAccommodationEmissions(TripDto tripDto) {
 
-        return switch (tripDto.getTypeOfAccommodation()) {
+        return switch (tripDto.getAccommodation().getTypeOfAccommodation()) {
             case "Hotel" -> (getNumberOfNights(tripDto) * 114.0);
             case "House" -> (getNumberOfNights(tripDto) * 150.0);
             case "Appartment" -> (getNumberOfNights(tripDto) * 120.0);
@@ -50,22 +50,22 @@ public class EmissionCalculationService {
 
     public static double getFoodEmissions(TripDto tripDto) {
 
-        return switch (tripDto.getTypeOfAccommodation()) {
-            case "MuchMeat" -> (getNumberOfNights(tripDto) * 9.04);
-            case "SomeMeat" -> (getNumberOfNights(tripDto) * 6.85);
-            case "RarelyMeat" -> (getNumberOfNights(tripDto) * 5.21);
-            case "Vegetarian" -> (getNumberOfNights(tripDto) * 4.66);
-            default -> (getNumberOfNights(tripDto) * 4.11);
+        return switch (tripDto.getFood().getTypeOfDiet()) {
+            case "MuchMeat" -> (getNumberOfNights(tripDto) * 9.0);
+            case "SomeMeat" -> (getNumberOfNights(tripDto) * 6.0);
+            case "RarelyMeat" -> (getNumberOfNights(tripDto) * 5.0);
+            case "Vegetarian" -> (getNumberOfNights(tripDto) * 4.0);
+            default -> (getNumberOfNights(tripDto) * 3.0);
         };
     }
 
     public static double getShoppingEmissions(TripDto tripDto) {
-        return (tripDto.getNumberOfClothingItems() * 3 + tripDto.getNumberOfElectronicItems() * 50 + tripDto.getNumberOfSouvenirItems() * 5 + tripDto.getCustomShoppingItemEmission());
+        return (tripDto.getShopping().getNumberOfClothingItems() * 3 + tripDto.getShopping().getNumberOfElectronicItems() * 50 + tripDto.getShopping().getNumberOfSouvenirItems() * 5 + tripDto.getShopping().getCustomShoppingItemEmission());
     }
 
     public static double getActivitiesEmissions(TripDto tripDto) {
 
-        return (tripDto.getAmountOfBeautyDays() * 16.16 + tripDto.getAmountOfSkiingDays() * 20.0 + tripDto.getAmountOfGolfRounds() * 10.0 + tripDto.getCustomActivityEmission());
+        return (tripDto.getActivity().getAmountOfBeautyDays() * 16 + tripDto.getActivity().getAmountOfSkiingDays() * 20.0 + tripDto.getActivity().getAmountOfGolfRounds() * 10.0 + tripDto.getActivity().getCustomActivityEmission());
     }
 
     public static double getAllEmissions(TripDto tripDto) {

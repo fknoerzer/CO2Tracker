@@ -1,5 +1,6 @@
 package de.neuefische.backend.dto;
 
+import de.neuefische.backend.model.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,23 +14,15 @@ import java.time.LocalDate;
 public class TripDto {
 
     private String title;
-    private double distance;
     private String destinationCountry;
     private double travellerAmount;
     private LocalDate dateOfDeparture;
     private LocalDate dateOfReturning;
     private double personalBudget;
-    private String typeOfTransport;
-    private String typeOfAccommodation;
-    private String typeOfDiet;
-    private double numberOfClothingItems;
-    private double numberOfElectronicItems;
-    private double numberOfSouvenirItems;
-    private String customShoppingItem;
-    private double customShoppingItemEmission;
-    private double amountOfGolfRounds;
-    private double amountOfSkiingDays;
-    private double amountOfBeautyDays;
-    private String customActivity;
-    private double customActivityEmission;
+
+    private Transportation transportation;
+    private Accommodation accommodation;
+    private Food food;
+    private Shopping shopping;
+    private Activity activity;
 }

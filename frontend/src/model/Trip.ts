@@ -1,25 +1,61 @@
 export type Trip = {
+
+    id: string;
     title: string;
-    distance: number;
-    year : number;
+    year: number;
     destiniationCountry: string;
     travellerAmount: number;
     dateOfDeparture: string;
     dateOfReturning: string;
     personalBudget: number;
-    typeOfTransports: string;
+    transportation: Transportation;
+    accommodation: Accommodation;
+    food: Food;
+    shopping: Shopping;
+    activities: Activities
+    calculatedEmissions: CalculatedEmissions
+
+}
+
+export type Transportation = {
+    distance: number;
+    typeOfTransport: string;
+
+}
+
+export type Accommodation = {
     typeOfAccommodation: string;
+
+}
+
+export type Food = {
     typeOfDiet: string;
-    numberOfClothingItems: number;
-    numberOfElectronicItems: number;
-    numberOfSouvenirItems: number;
+}
+
+export type Shopping = {
+    amountOfClothingItems: number;
+    amountOfElectronicItems: number;
+    amountOfSouvenirItems: number;
+    customShoppingItem: string;
+    customShoppingItemEmission: number;
+    amountOfCustomShoppingItem: number;
+}
+
+export type Activities = {
     amountOfGolfRounds: number;
     amountOfSkiingDays: number;
     amountOfBeautyDays: number;
-    transportationEmissions: number;
-    accommodationEmissions: number;
-    foodEmissions: number;
+    customActivityItem: string;
+    customActivityItemEmission: number;
+    amountOfCustomActivityItem: number;
+}
+
+export type CalculatedEmissions = {
     activitiesEmissions: number;
     shoppingEmissions: number;
+    foodEmissions: number;
+    accommodationEmissions: number;
+    transportationEmissions: number;
     totalEmissions: number;
 }
+

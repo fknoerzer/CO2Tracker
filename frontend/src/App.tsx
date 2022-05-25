@@ -1,21 +1,18 @@
 import React from 'react';
 import './App.css';
-import {HashRouter, Route, Routes} from "react-router-dom";
-import TripsOverview from "./pages/TripsOverview";
-import {AppTitle} from "./components/AppTitle";
 
-function App() {
+
+import {AppTitle} from "./components/AppTitle";
+import AddTripPage from "./pages/AddTripPage";
+import useTrips from "./hooks/UseTrips";
+
+export default function App() {
+    const{addNewTrip} = useTrips()
     return (
-        <HashRouter>
             <div className="App">
                 <AppTitle/>
-                <Routes>
-                    <Route path="/" element={<TripsOverview/>}/>
-                </Routes>
-
+                <AddTripPage addNewTrip={addNewTrip}/>
             </div>
-        </HashRouter>
     )
 }
 
-export default App;
