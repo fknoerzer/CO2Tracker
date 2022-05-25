@@ -7,6 +7,7 @@ export const getAllTrips: () => Promise<Trip[]> = () => {
         .then(response => response.data);
 }
 
+
 export const postTrip: (newTrip: TripDto) => Promise<Trip> = (newTrip) => {
     return axios.post("/api/trips", newTrip)
         .then(response => response.data);
