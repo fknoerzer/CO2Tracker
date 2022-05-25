@@ -13,6 +13,6 @@ export default function App() {
                 <AppTitle/>
                 <AddTripPage addNewTrip={addNewTrip}/>
             </div>
-    );
+    )
 }
 
