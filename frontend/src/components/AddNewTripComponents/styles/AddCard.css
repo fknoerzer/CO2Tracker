@@ -3,10 +3,9 @@ body{
     flex-direction: column;
     align-content: space-between;
     align-items: stretch;
-    margin: 3px;
-    padding: 5px;
     background: #2B4162;
-    border-radius: 3px;
     color: white;
     justify-content: center;
+    height: 50%;
+    width: 50%
 }

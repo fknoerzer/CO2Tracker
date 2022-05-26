@@ -4,10 +4,7 @@ form{
     flex-direction: column;
     align-content: space-between;
     align-items: center;
-    margin: 3px;
-    padding: 5px;
     background: #2B4162;
-    border-radius: 3px;
     color: white;
     justify-content: center;
 }
@@ -17,4 +14,5 @@ input {
    justify-content: center;
     margin: 3px;
     padding: 5px;
+    width: auto;
 }

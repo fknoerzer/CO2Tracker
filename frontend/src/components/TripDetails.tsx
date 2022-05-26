@@ -7,7 +7,7 @@ type tripDetailsProps = {
 export default function tripDetails({trip} : tripDetailsProps) {
     return (
         <div className="trip-detail-card">
-            <p>{trip.title}{trip.year}</p>
+            <p>{trip.title} {trip.year}</p>
             <p>Total Emissions: {trip.calculatedEmissions.totalEmissions} kg CO2e</p>
             <p>Total Emissions: {trip.personalBudget} kg CO2e</p>
             <p>Transportation Emissions: {trip.calculatedEmissions.transportationEmissions} kg CO2e</p>

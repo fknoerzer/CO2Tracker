@@ -109,10 +109,10 @@ class TripServiceTest {
             .calculatedEmissions(CalculatedEmissions.builder()
                     .transportationEmissions(0.14)
                     .accommodationEmissions(798)
-                    .foodEmissions(63)
+                    .foodEmissions(21)
                     .activitiesEmissions(0)
                     .shoppingEmissions(0)
-                    .totalEmissions(861.14)
+                    .totalEmissions(819.14)
                     .build())
             .build();
 

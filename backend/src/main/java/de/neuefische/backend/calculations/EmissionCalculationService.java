@@ -32,6 +32,7 @@ public class EmissionCalculationService {
             case "Train" -> (tripDto.getTransportation().getDistance() * 0.14);
             case "Bus" -> (tripDto.getTransportation().getDistance() * 0.08);
             case "Motorbike" -> (tripDto.getTransportation().getDistance() * 0.1);
+            case "Ferry" -> (tripDto.getTransportation().getDistance() * 0.35);
             default -> 0;
         };
     }
