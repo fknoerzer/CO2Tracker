@@ -7,9 +7,9 @@ import {getTripById} from "../service/api-service";
 export default function useDetailedTrip() {
     const [detailedTrip, setDetailedTrip] = useState<Trip>()
 
-    const getDetailedTripById = (id : string) => {
-       getTripById(id)
-            .then(data=> setDetailedTrip(data))
+    const getDetailedTripById = (id: string) => {
+        getTripById(id)
+            .then(data => setDetailedTrip(data))
             .catch((error) => toast.error(error))
     }
 

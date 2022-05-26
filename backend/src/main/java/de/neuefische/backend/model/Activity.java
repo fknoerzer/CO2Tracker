@@ -14,6 +14,6 @@ public class Activity {
     private double amountOfSkiingDays;
     private double amountOfBeautyDays;
     private String customActivityItem;
-    private double customActivityEmission;
-    private double amountOfCustomActivity;
+    private double customActivityItemEmission;
+    private double amountOfCustomActivityItem;
 }
