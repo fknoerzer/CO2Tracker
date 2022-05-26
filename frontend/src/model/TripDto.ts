@@ -1,4 +1,4 @@
-import {Accommodation, Activities, Food, Shopping, Transportation} from "./Trip";
+import {Accommodation, Activity, Food, Shopping, Transportation} from "./Trip";
 
 export type TripDto = {
 
@@ -12,5 +12,5 @@ export type TripDto = {
     accommodation: Accommodation;
     food: Food;
     shopping: Shopping;
-    activities: Activities
+    activity: Activity
 }
