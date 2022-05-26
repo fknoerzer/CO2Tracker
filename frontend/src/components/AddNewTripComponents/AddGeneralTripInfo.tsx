@@ -15,7 +15,7 @@ type TripGeneralInfoProps = {
     setPersonalBudget: (value: number) => void
 }
 
-export default function AddTripGeneralInfo({
+export default function AddGeneralTripInfo({
                                                title,
                                                setTitle,
                                                distance,

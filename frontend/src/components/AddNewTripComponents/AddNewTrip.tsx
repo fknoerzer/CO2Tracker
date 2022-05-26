@@ -1,7 +1,7 @@
 import {FormEvent, useState} from "react";
 import {TripDto} from "../../model/TripDto";
 import "./styles/AddNewTrip.css"
-import AddTripGeneralInfo from "./AddGeneralTripInfo";
+import AddGeneralTripInfo from "./AddGeneralTripInfo";
 import AddTransportInfo from "./AddTransportInfo";
 import AddAccommodationInfo from "./AddAccommodationInfo";
 import AddFoodInfo from "./AddFoodInfo";
@@ -117,7 +117,7 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
             case 0: {
                 return (
                     <form>
-                        <AddTripGeneralInfo title={title}
+                        <AddGeneralTripInfo title={title}
                                             setTitle={setTitle} distance={distance}
                                             setDistance={setDistance}
                                             destiniationCountry={destiniationCountry}

@@ -9,7 +9,7 @@ import LandingPage from "./pages/LandingPage";
 import {AppTitle} from "./components/AppTitle";
 
 export default function App() {
-    const {addNewTrip, trips} = useTrips()
+    const {addNewTrip} = useTrips()
     return (
 
         <BrowserRouter>
