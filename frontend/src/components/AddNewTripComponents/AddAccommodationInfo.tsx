@@ -1,11 +1,11 @@
 import 'bootstrap'
 
-type TransportInfoProps = {
+type AccommodationInfoProps = {
     typeOfAccommodation: string
     setTypeOfAccommodation: (value: string) => void
 }
 
-export default function AddAccommodationInfo({typeOfAccommodation, setTypeOfAccommodation}: TransportInfoProps) {
+export default function AddAccommodationInfo({typeOfAccommodation, setTypeOfAccommodation}: AccommodationInfoProps) {
 
 
     return (
