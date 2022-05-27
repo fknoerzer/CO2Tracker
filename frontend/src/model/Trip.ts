@@ -12,7 +12,7 @@ export type Trip = {
     accommodation: Accommodation;
     food: Food;
     shopping: Shopping;
-    activities: Activities
+    activity: Activity
     calculatedEmissions: CalculatedEmissions
 
 }
@@ -41,7 +41,7 @@ export type Shopping = {
     amountOfCustomShoppingItem: number;
 }
 
-export type Activities = {
+export type Activity = {
     amountOfGolfRounds: number;
     amountOfSkiingDays: number;
     amountOfBeautyDays: number;

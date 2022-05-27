@@ -7,8 +7,12 @@ export const getAllTrips: () => Promise<Trip[]> = () => {
         .then(response => response.data);
 }
 
-
 export const postTrip: (newTrip: TripDto) => Promise<Trip> = (newTrip) => {
     return axios.post("/api/trips", newTrip)
         .then(response => response.data);
+}
+
+export function getTripById (id: string) {
+    return axios.get<Trip>("api/trips/${id}")
+        .then(response => response.data)
 }

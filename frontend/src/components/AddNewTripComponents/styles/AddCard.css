@@ -1,0 +1,11 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    align-items: stretch;
+    background: #2B4162;
+    color: white;
+    justify-content: center;
+    height: 50%;
+    width: 50%
+}

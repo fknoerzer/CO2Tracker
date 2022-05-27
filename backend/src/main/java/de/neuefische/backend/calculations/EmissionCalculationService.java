@@ -32,6 +32,7 @@ public class EmissionCalculationService {
             case "Train" -> (tripDto.getTransportation().getDistance() * 0.14);
             case "Bus" -> (tripDto.getTransportation().getDistance() * 0.08);
             case "Motorbike" -> (tripDto.getTransportation().getDistance() * 0.1);
+            case "Ferry" -> (tripDto.getTransportation().getDistance() * 0.35);
             default -> 0;
         };
     }
@@ -41,7 +42,7 @@ public class EmissionCalculationService {
         return switch (tripDto.getAccommodation().getTypeOfAccommodation()) {
             case "Hotel" -> (getNumberOfNights(tripDto) * 114.0);
             case "House" -> (getNumberOfNights(tripDto) * 150.0);
-            case "Appartment" -> (getNumberOfNights(tripDto) * 120.0);
+            case "Apartment" -> (getNumberOfNights(tripDto) * 120.0);
             case "Youth Hostel" -> (getNumberOfNights(tripDto) * 80.0);
             case "Camping Site" -> (getNumberOfNights(tripDto) * 20.0);
             default -> (getNumberOfNights(tripDto) * 490.0);
@@ -51,21 +52,21 @@ public class EmissionCalculationService {
     public static double getFoodEmissions(TripDto tripDto) {
 
         return switch (tripDto.getFood().getTypeOfDiet()) {
-            case "MuchMeat" -> (getNumberOfNights(tripDto) * 9.0);
-            case "SomeMeat" -> (getNumberOfNights(tripDto) * 6.0);
-            case "RarelyMeat" -> (getNumberOfNights(tripDto) * 5.0);
+            case "Much Meat" -> (getNumberOfNights(tripDto) * 9.0);
+            case "Some Meat" -> (getNumberOfNights(tripDto) * 6.0);
+            case "Rarely Meat" -> (getNumberOfNights(tripDto) * 5.0);
             case "Vegetarian" -> (getNumberOfNights(tripDto) * 4.0);
             default -> (getNumberOfNights(tripDto) * 3.0);
         };
     }
 
     public static double getShoppingEmissions(TripDto tripDto) {
-        return (tripDto.getShopping().getNumberOfClothingItems() * 3 + tripDto.getShopping().getNumberOfElectronicItems() * 50 + tripDto.getShopping().getNumberOfSouvenirItems() * 5 + tripDto.getShopping().getCustomShoppingItemEmission());
+        return (tripDto.getShopping().getNumberOfClothingItems() * 3 + tripDto.getShopping().getNumberOfElectronicItems() * 50 + tripDto.getShopping().getNumberOfSouvenirItems() * 5 + tripDto.getShopping().getCustomShoppingItemEmission()*tripDto.getShopping().getAmountOfCustomShoppingItem());
     }
 
     public static double getActivitiesEmissions(TripDto tripDto) {
 
-        return (tripDto.getActivity().getAmountOfBeautyDays() * 16 + tripDto.getActivity().getAmountOfSkiingDays() * 20.0 + tripDto.getActivity().getAmountOfGolfRounds() * 10.0 + tripDto.getActivity().getCustomActivityEmission());
+        return (tripDto.getActivity().getAmountOfBeautyDays() * 16 + tripDto.getActivity().getAmountOfSkiingDays() * 20.0 + tripDto.getActivity().getAmountOfGolfRounds() * 10.0 + tripDto.getActivity().getCustomActivityItemEmission()*tripDto.getActivity().getAmountOfCustomActivityItem());
     }
 
     public static double getAllEmissions(TripDto tripDto) {

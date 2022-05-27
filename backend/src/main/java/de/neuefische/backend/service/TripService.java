@@ -49,7 +49,7 @@ public class TripService {
         activity.setAmountOfSkiingDays(tripDto.getActivity().getAmountOfSkiingDays());
         activity.setAmountOfBeautyDays(tripDto.getActivity().getAmountOfBeautyDays());
         activity.setCustomActivityItem(tripDto.getActivity().getCustomActivityItem());
-        activity.setCustomActivityEmission(tripDto.getActivity().getCustomActivityEmission());
+        activity.setCustomActivityItemEmission(tripDto.getActivity().getCustomActivityItemEmission());
 
         CalculatedEmissions calculatedEmissions = new CalculatedEmissions();
         calculatedEmissions.setTransportationEmissions(EmissionCalculationService.getTransportationEmissions(tripDto));

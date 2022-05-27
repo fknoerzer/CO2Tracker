@@ -55,7 +55,7 @@ class EmissionCalculationServiceTest {
         double actual = EmissionCalculationService.getFoodEmissions(tripDto);
 
         //Then
-        double expected = 63;
+        double expected = 21;
         assertEquals(expected, actual);
     }
 
@@ -85,7 +85,7 @@ class EmissionCalculationServiceTest {
         double actual = EmissionCalculationService.getAllEmissions(tripDto);
 
         //Then
-        double expected = 861.14;
+        double expected = 819.14;
         assertEquals(expected,actual);
     }
 
