@@ -1,12 +1,11 @@
-
 import TripDetails from "./TripDetails";
 import {Trip} from "../model/Trip";
 
-type TripsOverviewProps ={
-    trips : Trip[]
+type TripsOverviewProps = {
+    trips: Trip[]
 }
 
-export default function TripsOverview({trips}:TripsOverviewProps) {
+export default function TripsOverview({trips}: TripsOverviewProps) {
 
     return (
         <div className={"trip-overview"}>
