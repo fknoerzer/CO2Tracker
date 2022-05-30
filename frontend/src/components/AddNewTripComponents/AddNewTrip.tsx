@@ -205,7 +205,7 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                 )
 
             default: {
-                return (<div>"Fehler"</div>)
+                return (<div>"Error"</div>)
             }
         }
     }

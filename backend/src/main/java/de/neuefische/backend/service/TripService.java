@@ -1,13 +1,17 @@
 package de.neuefische.backend.service;
 
+import de.neuefische.backend.calculations.EditEmissionsCalculationService;
 import de.neuefische.backend.calculations.EmissionCalculationService;
-import de.neuefische.backend.dto.TripDto;
+import de.neuefische.backend.calculations.UpdateEmissionCalculationService;
+import de.neuefische.backend.dto.*;
 import de.neuefische.backend.model.*;
 import de.neuefische.backend.repository.TripRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.NoSuchElementException;
+
 
 @Service
 public class TripService {
@@ -24,64 +28,67 @@ public class TripService {
     }
 
     public Trip addNewTrip(TripDto tripDto) {
-
-        Transportation transportation = new Transportation();
-        transportation.setDistance(tripDto.getTransportation().getDistance());
-        transportation.setTypeOfTransport(tripDto.getTransportation().getTypeOfTransport());
-
-        Accommodation accommodation = new Accommodation();
-        accommodation.setTypeOfAccommodation(tripDto.getAccommodation().getTypeOfAccommodation());
-
-        Food food = new Food();
-        food.setTypeOfDiet(tripDto.getFood().getTypeOfDiet());
-
-        Shopping shopping = new Shopping();
-        shopping.setNumberOfClothingItems(tripDto.getShopping().getNumberOfClothingItems());
-        shopping.setNumberOfElectronicItems(tripDto.getShopping().getNumberOfElectronicItems());
-        shopping.setNumberOfSouvenirItems(tripDto.getShopping().getNumberOfSouvenirItems());
-        shopping.setCustomShoppingItem(tripDto.getShopping().getCustomShoppingItem());
-        shopping.setCustomShoppingItemEmission(tripDto.getShopping().getCustomShoppingItemEmission());
-        shopping.setCustomShoppingItemEmission(tripDto.getShopping().getCustomShoppingItemEmission());
-        shopping.setAmountOfCustomShoppingItem(tripDto.getShopping().getAmountOfCustomShoppingItem());
-
-        Activity activity = new Activity();
-        activity.setAmountOfGolfRounds(tripDto.getActivity().getAmountOfGolfRounds());
-        activity.setAmountOfSkiingDays(tripDto.getActivity().getAmountOfSkiingDays());
-        activity.setAmountOfBeautyDays(tripDto.getActivity().getAmountOfBeautyDays());
-        activity.setCustomActivityItem(tripDto.getActivity().getCustomActivityItem());
-        activity.setCustomActivityItemEmission(tripDto.getActivity().getCustomActivityItemEmission());
-
-        CalculatedEmissions calculatedEmissions = new CalculatedEmissions();
-        calculatedEmissions.setTransportationEmissions(EmissionCalculationService.getTransportationEmissions(tripDto));
-        calculatedEmissions.setAccommodationEmissions(EmissionCalculationService.getAccommodationEmissions(tripDto));
-        calculatedEmissions.setFoodEmissions(EmissionCalculationService.getFoodEmissions(tripDto));
-        calculatedEmissions.setShoppingEmissions(EmissionCalculationService.getShoppingEmissions(tripDto));
-        calculatedEmissions.setActivitiesEmissions(EmissionCalculationService.getActivitiesEmissions(tripDto));
-        calculatedEmissions.setTotalEmissions(EmissionCalculationService.getAllEmissions(tripDto));
-
-        Trip trip = new Trip();
-        trip.setTitle(tripDto.getTitle());
-        trip.setYear(EmissionCalculationService.getYearOfTrip(tripDto));
-        trip.setDestinationCountry(tripDto.getDestinationCountry());
-        trip.setTravellerAmount(tripDto.getTravellerAmount());
-        trip.setDateOfDeparture(tripDto.getDateOfDeparture());
-        trip.setDateOfReturning(tripDto.getDateOfReturning());
-        trip.setNumberOfNights(EmissionCalculationService.getNumberOfNights(tripDto));
-        trip.setPersonalBudget(tripDto.getPersonalBudget());
-
-        trip.setTransportation(transportation);
-        trip.setAccommodation(accommodation);
-        trip.setFood(food);
-        trip.setShopping(shopping);
-        trip.setActivity(activity);
-        trip.setCalculatedEmissions(calculatedEmissions);
-
-
-        return tripRepo.insert(trip);
+        Trip editedTrip = EmissionCalculationService.transferDto(tripDto);
+        return tripRepo.insert(editedTrip);
     }
 
     public Trip getTripById(String id) {
         return tripRepo.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Trip with id: " + id + " was not found!"));
+    }
+
+    public void deleteTrip(String id) {
+        tripRepo.deleteById(id);
+    }
+
+    public Trip editTrip(Trip editedTrip) {
+        if (tripRepo.existsById(editedTrip.getId())) {
+            Trip newGeneratedTrip = EditEmissionsCalculationService.transferEditedTrip(editedTrip);
+            return tripRepo.save(newGeneratedTrip);
+        } else {
+            throw new NoSuchElementException("Could not update trip element! Element with id does not exist: " + editedTrip.getId());
+        }
+    }
+
+    public Trip updateTransportEmissions(String id, TripUpdateTransportEmissionsDto tripUpdateTransportEmissionsDto) {
+        if (tripRepo.existsById(id)) {
+            return tripRepo.save(UpdateEmissionCalculationService.updateTransportEmissions(getTripById(id), tripUpdateTransportEmissionsDto));
+
+        } else {
+            throw new NoSuchElementException("Could not update trip element! Element with id does not exist: " + id);
+        }
+    }
+
+    public Trip updateAccommodationEmissions(String id, TripUpdateAccommodationEmissionsDto tripUpdateAccommodationEmissionsDto) {
+        if (tripRepo.existsById(id)) {
+            return tripRepo.save(UpdateEmissionCalculationService.updateAccommodationEmissions(getTripById(id), tripUpdateAccommodationEmissionsDto));
+
+        } else {
+            throw new NoSuchElementException("Could not update trip element! Element with id does not exist: " + id);
+        }
+    }
+
+    public Trip updateFoodEmissions(String id, TripUpdateFoodEmissionsDto tripUpdateFoodEmissionsDto) {
+        if (tripRepo.existsById(id)) {
+            return tripRepo.save(UpdateEmissionCalculationService.updateFoodEmissions(getTripById(id), tripUpdateFoodEmissionsDto));
+        } else {
+            throw new NoSuchElementException("Could not update trip element! Element with id does not exist: " + id);
+        }
+    }
+
+    public Trip updateActivityEmissions(String id, TripUpdateActivityEmissionsDto tripUpdateActivityEmissionsDto) {
+        if (tripRepo.existsById(id)) {
+            return tripRepo.save(UpdateEmissionCalculationService.updateActivityEmissions(getTripById(id), tripUpdateActivityEmissionsDto));
+        } else {
+            throw new NoSuchElementException("Could not update trip element! Element with id does not exist: " + id);
+        }
+    }
+
+    public Trip updateShoppingEmissions(String id, TripUpdateShoppingEmissionsDto tripUpdateShoppingEmissionsDto) {
+        if (tripRepo.existsById(id)) {
+            return tripRepo.save(UpdateEmissionCalculationService.updateShoppingEmissions(getTripById(id), tripUpdateShoppingEmissionsDto));
+        } else {
+            throw new NoSuchElementException("Could not update trip element! Element with id does not exist: " + id);
+        }
     }
 }

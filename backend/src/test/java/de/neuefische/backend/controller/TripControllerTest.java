@@ -1,5 +1,6 @@
 package de.neuefische.backend.controller;
 
+
 import de.neuefische.backend.dto.TripDto;
 import de.neuefische.backend.model.*;
 import de.neuefische.backend.repository.TripRepo;
@@ -13,6 +14,9 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import java.time.LocalDate;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -23,6 +27,7 @@ class TripControllerTest {
 
     @Autowired
     private WebTestClient webTestClient;
+
 
     @Autowired
     private TripRepo tripRepo;
@@ -78,6 +83,43 @@ class TripControllerTest {
 
     }
 
+    @Test
+    void deleteTrip() {
+        //Given
+        tripRepo.insert(trip1);
+        tripRepo.insert(trip2);
+
+        //When
+        webTestClient.delete()
+                .uri("http://localhost:" + port + "/api/trips/" + 1)
+                .exchange()
+
+                //Then
+                .expectStatus().is2xxSuccessful();
+    }
+
+    @Test
+    void editTrip() {
+        //Given
+        tripRepo.insert(trip1);
+
+        //When
+        List<Trip> trips = tripRepo.findAll();
+
+
+        Trip actual = webTestClient.put()
+                .uri("http://localhost:" + port + "/api/trips/1")
+                .bodyValue(editedTrip)
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(Trip.class)
+                .returnResult()
+                .getResponseBody();
+
+        //Then
+       assertEquals(editedTrip, actual);
+    }
+
     TripDto tripDto = TripDto.builder()
             .title("Rom 2022")
             .transportation(Transportation.builder()
@@ -93,7 +135,7 @@ class TripControllerTest {
                     .typeOfAccommodation("Hotel")
                     .build())
             .food(Food.builder().
-                    typeOfDiet("MuchMeat")
+                    typeOfDiet("Much Meat")
                     .build())
             .shopping(Shopping.builder()
                     .numberOfClothingItems(0)
@@ -108,78 +150,123 @@ class TripControllerTest {
             .build();
 
     Trip trip1 = Trip.builder()
+            .id("1")
             .title("Rom 2022")
             .year(2022)
             .transportation(Transportation.builder()
-                    .typeOfTransport("Train")
-                    .distance(1)
-                    .build())
+            .typeOfTransport("Train")
+            .distance(1)
+            .build())
             .destinationCountry("Italy")
             .travellerAmount(1)
             .personalBudget(2500)
             .dateOfDeparture(LocalDate.of(2022, 1, 13))
             .dateOfReturning(LocalDate.of(2022, 1, 20))
             .accommodation(Accommodation.builder()
-                    .typeOfAccommodation("Hotel")
-                    .build())
+            .typeOfAccommodation("Hotel")
+            .build())
             .numberOfNights(7)
             .food(Food.builder().
-                    typeOfDiet("MuchMeat")
-                    .build())
+            typeOfDiet("Much Meat")
+            .build())
             .shopping(Shopping.builder()
-                    .numberOfClothingItems(0)
-                    .numberOfElectronicItems(0)
-                    .numberOfSouvenirItems(0)
-                    .build())
+            .numberOfClothingItems(0)
+            .numberOfElectronicItems(0)
+            .numberOfSouvenirItems(0)
+            .build())
             .activity(Activity.builder()
-                    .amountOfBeautyDays(0)
-                    .amountOfSkiingDays(0)
-                    .amountOfGolfRounds(0)
-                    .build())
+            .amountOfBeautyDays(0)
+            .amountOfSkiingDays(0)
+            .amountOfGolfRounds(0)
+            .build())
             .calculatedEmissions(CalculatedEmissions.builder()
-                    .transportationEmissions(0.14)
-                    .accommodationEmissions(798)
-                    .foodEmissions(21)
-                    .activitiesEmissions(0)
-                    .shoppingEmissions(0)
-                    .totalEmissions(819.14)
-                    .build())
+            .transportationEmissions(0.14)
+            .accommodationEmissions(798)
+            .foodEmissions(63)
+            .activityEmissions(0)
+            .shoppingEmissions(0)
+            .totalEmissions(861.14)
+            .build())
             .build();
 
-    Trip trip2 = Trip.builder()
+            Trip trip2 = Trip.builder()
+            .id("2")
             .title("Paris 2022")
             .transportation(Transportation.builder()
-                    .typeOfTransport("Train")
-                    .distance(1)
-                    .build())
+            .typeOfTransport("Train")
+            .distance(1)
+            .build())
             .destinationCountry("Italy")
             .travellerAmount(1)
             .personalBudget(2500)
             .dateOfDeparture(LocalDate.of(2022, 2, 13))
             .dateOfReturning(LocalDate.of(2022, 2, 20))
             .accommodation(Accommodation.builder()
-                    .typeOfAccommodation("Hotel")
-                    .build())
+            .typeOfAccommodation("Hotel")
+            .build())
             .food(Food.builder().
-                    typeOfDiet("MuchMeat")
-                    .build())
+            typeOfDiet("Much Meat")
+            .build())
             .shopping(Shopping.builder()
-                    .numberOfClothingItems(0)
-                    .numberOfElectronicItems(0)
-                    .numberOfSouvenirItems(0)
-                    .build())
+            .numberOfClothingItems(0)
+            .numberOfElectronicItems(0)
+            .numberOfSouvenirItems(0)
+            .build())
             .activity(Activity.builder()
-                    .amountOfBeautyDays(0)
-                    .amountOfSkiingDays(0)
-                    .amountOfGolfRounds(0)
-                    .build())
+            .amountOfBeautyDays(0)
+            .amountOfSkiingDays(0)
+            .amountOfGolfRounds(0)
+            .build())
             .calculatedEmissions(CalculatedEmissions.builder()
-                    .transportationEmissions(0.14)
-                    .accommodationEmissions(798)
-                    .foodEmissions(28.770000000000003)
-                    .activitiesEmissions(0)
-                    .shoppingEmissions(0)
-                    .totalEmissions(861.14)
-                    .build())
+            .transportationEmissions(0.14)
+            .accommodationEmissions(798)
+            .foodEmissions(28.770000000000003)
+            .activityEmissions(0)
+            .shoppingEmissions(0)
+            .totalEmissions(861.14)
+            .build())
             .build();
-}
+
+            Trip editedTrip  = Trip.builder()
+            .id("1")
+            .title("Rom 2022")
+            .year(2022)
+            .transportation(Transportation.builder()
+            .typeOfTransport("Train")
+            .distance(1)
+            .build())
+            .destinationCountry("Italy")
+            .travellerAmount(1)
+            .personalBudget(2500)
+            .dateOfDeparture(LocalDate.of(2022, 1, 13))
+            .dateOfReturning(LocalDate.of(2022, 1, 20))
+            .numberOfNights(7)
+            .accommodation(Accommodation.builder()
+            .typeOfAccommodation("Hotel")
+            .build())
+            .food(Food.builder().
+            typeOfDiet("Much Meat")
+            .build())
+            .shopping(Shopping.builder()
+            .numberOfClothingItems(1)
+            .numberOfElectronicItems(2)
+            .numberOfSouvenirItems(1)
+            .build())
+            .activity(Activity.builder()
+            .amountOfBeautyDays(0)
+            .amountOfSkiingDays(0)
+            .amountOfGolfRounds(0)
+            .build())
+            .calculatedEmissions(CalculatedEmissions.builder()
+            .transportationEmissions(0.14)
+            .accommodationEmissions(798)
+            .foodEmissions(63)
+            .activityEmissions(0)
+            .shoppingEmissions(108)
+            .totalEmissions(969.14)
+            .build())
+            .build();
+            }
+
+
+

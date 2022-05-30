@@ -16,6 +16,7 @@ export default function tripDetails({trip} : tripDetailsProps) {
             <p>Shopping Emissions: {trip.calculatedEmissions.shoppingEmissions} kg CO2e</p>
             <p>Activities Emissions: {trip.calculatedEmissions.activitiesEmissions} kg CO2e</p>
             <br/>
+
         </div>
     )
 }

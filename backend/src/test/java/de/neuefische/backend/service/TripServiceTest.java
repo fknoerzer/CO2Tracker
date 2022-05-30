@@ -1,12 +1,14 @@
 package de.neuefische.backend.service;
 
-import de.neuefische.backend.calculations.EmissionCalculationService;
 import de.neuefische.backend.dto.TripDto;
 import de.neuefische.backend.model.*;
 import de.neuefische.backend.repository.TripRepo;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.time.LocalDate;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -14,15 +16,15 @@ import static org.mockito.Mockito.*;
 class TripServiceTest {
 
     private final TripRepo tripRepo = mock(TripRepo.class);
-
     private final TripService tripService = new TripService(tripRepo);
+
 
     @Test
     void getAllTrips() {
         //Given
 
         when(tripRepo.findAll())
-                .thenReturn(List.of(trip1,trip2));
+                .thenReturn(List.of(trip1, trip2));
 
         //When
         List<Trip> actual = tripService.getAllTrips();
@@ -48,6 +50,27 @@ class TripServiceTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void deleteTrip() {
+        //When
+        tripService.deleteTrip("1");
+        //Then
+        verify(tripRepo).deleteById("1");
+    }
+
+    @Test
+    void editTrip() {
+        //Given
+        when(tripRepo.existsById(trip1.getId())).thenReturn(true);
+        when(tripRepo.save(trip1)).thenReturn(trip1);
+        //When
+        Trip actual = tripService.editTrip(trip1);
+
+        //Then
+
+        assertEquals(trip1, actual);
+
+    }
     TripDto tripDto = TripDto.builder()
             .title("Rom 2022")
             .transportation(Transportation.builder()
@@ -110,7 +133,7 @@ class TripServiceTest {
                     .transportationEmissions(0.14)
                     .accommodationEmissions(798)
                     .foodEmissions(21)
-                    .activitiesEmissions(0)
+                    .activityEmissions(0)
                     .shoppingEmissions(0)
                     .totalEmissions(819.14)
                     .build())
@@ -147,7 +170,7 @@ class TripServiceTest {
                     .transportationEmissions(0.14)
                     .accommodationEmissions(798)
                     .foodEmissions(28.770000000000003)
-                    .activitiesEmissions(0)
+                    .activityEmissions(0)
                     .shoppingEmissions(0)
                     .totalEmissions(826.91)
                     .build())

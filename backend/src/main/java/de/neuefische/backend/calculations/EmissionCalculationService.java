@@ -1,6 +1,8 @@
 package de.neuefische.backend.calculations;
 
 import de.neuefische.backend.dto.TripDto;
+import de.neuefische.backend.model.*;
+
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -21,7 +23,6 @@ public class EmissionCalculationService {
         LocalDate departureDate = tripDto.getDateOfDeparture();
         return departureDate.getYear();
     }
-
 
     public static double getTransportationEmissions(TripDto tripDto) {
 
@@ -61,16 +62,71 @@ public class EmissionCalculationService {
     }
 
     public static double getShoppingEmissions(TripDto tripDto) {
-        return (tripDto.getShopping().getNumberOfClothingItems() * 3 + tripDto.getShopping().getNumberOfElectronicItems() * 50 + tripDto.getShopping().getNumberOfSouvenirItems() * 5 + tripDto.getShopping().getCustomShoppingItemEmission()*tripDto.getShopping().getAmountOfCustomShoppingItem());
+        return (tripDto.getShopping().getNumberOfClothingItems() * 3 + tripDto.getShopping().getNumberOfElectronicItems() * 50 + tripDto.getShopping().getNumberOfSouvenirItems() * 5 + tripDto.getShopping().getCustomShoppingItemEmission() * tripDto.getShopping().getAmountOfCustomShoppingItem());
     }
 
     public static double getActivitiesEmissions(TripDto tripDto) {
 
-        return (tripDto.getActivity().getAmountOfBeautyDays() * 16 + tripDto.getActivity().getAmountOfSkiingDays() * 20.0 + tripDto.getActivity().getAmountOfGolfRounds() * 10.0 + tripDto.getActivity().getCustomActivityItemEmission()*tripDto.getActivity().getAmountOfCustomActivityItem());
+        return (tripDto.getActivity().getAmountOfBeautyDays() * 16 + tripDto.getActivity().getAmountOfSkiingDays() * 20.0 + tripDto.getActivity().getAmountOfGolfRounds() * 10.0 + tripDto.getActivity().getCustomActivityItemEmission() * tripDto.getActivity().getAmountOfCustomActivityItem());
     }
 
     public static double getAllEmissions(TripDto tripDto) {
         return (getTransportationEmissions(tripDto) + getAccommodationEmissions(tripDto) + getFoodEmissions(tripDto) + getShoppingEmissions(tripDto) + getActivitiesEmissions(tripDto));
+    }
+
+    public static Trip transferDto(TripDto tripDto) {
+
+        Transportation transportation = new Transportation();
+        transportation.setDistance(tripDto.getTransportation().getDistance());
+        transportation.setTypeOfTransport(tripDto.getTransportation().getTypeOfTransport());
+
+        Accommodation accommodation = new Accommodation();
+        accommodation.setTypeOfAccommodation(tripDto.getAccommodation().getTypeOfAccommodation());
+
+        Food food = new Food();
+        food.setTypeOfDiet(tripDto.getFood().getTypeOfDiet());
+
+        Shopping shopping = new Shopping();
+        shopping.setNumberOfClothingItems(tripDto.getShopping().getNumberOfClothingItems());
+        shopping.setNumberOfElectronicItems(tripDto.getShopping().getNumberOfElectronicItems());
+        shopping.setNumberOfSouvenirItems(tripDto.getShopping().getNumberOfSouvenirItems());
+        shopping.setCustomShoppingItem(tripDto.getShopping().getCustomShoppingItem());
+        shopping.setCustomShoppingItemEmission(tripDto.getShopping().getCustomShoppingItemEmission());
+        shopping.setCustomShoppingItemEmission(tripDto.getShopping().getCustomShoppingItemEmission());
+        shopping.setAmountOfCustomShoppingItem(tripDto.getShopping().getAmountOfCustomShoppingItem());
+
+        Activity activity = new Activity();
+        activity.setAmountOfGolfRounds(tripDto.getActivity().getAmountOfGolfRounds());
+        activity.setAmountOfSkiingDays(tripDto.getActivity().getAmountOfSkiingDays());
+        activity.setAmountOfBeautyDays(tripDto.getActivity().getAmountOfBeautyDays());
+        activity.setCustomActivityItem(tripDto.getActivity().getCustomActivityItem());
+        activity.setCustomActivityItemEmission(tripDto.getActivity().getCustomActivityItemEmission());
+
+        CalculatedEmissions calculatedEmissions = new CalculatedEmissions();
+        calculatedEmissions.setTransportationEmissions(getTransportationEmissions(tripDto));
+        calculatedEmissions.setAccommodationEmissions(getAccommodationEmissions(tripDto));
+        calculatedEmissions.setFoodEmissions(getFoodEmissions(tripDto));
+        calculatedEmissions.setShoppingEmissions(getShoppingEmissions(tripDto));
+        calculatedEmissions.setActivityEmissions(getActivitiesEmissions(tripDto));
+        calculatedEmissions.setTotalEmissions(getAllEmissions(tripDto));
+
+        Trip trip = new Trip();
+        trip.setTitle(tripDto.getTitle());
+        trip.setYear(getYearOfTrip(tripDto));
+        trip.setDestinationCountry(tripDto.getDestinationCountry());
+        trip.setTravellerAmount(tripDto.getTravellerAmount());
+        trip.setDateOfDeparture(tripDto.getDateOfDeparture());
+        trip.setDateOfReturning(tripDto.getDateOfReturning());
+        trip.setNumberOfNights(getNumberOfNights(tripDto));
+        trip.setPersonalBudget(tripDto.getPersonalBudget());
+
+        trip.setTransportation(transportation);
+        trip.setAccommodation(accommodation);
+        trip.setFood(food);
+        trip.setShopping(shopping);
+        trip.setActivity(activity);
+        trip.setCalculatedEmissions(calculatedEmissions);
+        return trip;
     }
 }
 

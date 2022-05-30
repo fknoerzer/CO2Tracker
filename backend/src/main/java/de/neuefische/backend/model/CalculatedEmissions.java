@@ -13,7 +13,7 @@ public class CalculatedEmissions {
     private double transportationEmissions;
     private double accommodationEmissions;
     private double foodEmissions;
-    private double activitiesEmissions;
+    private double activityEmissions;
     private double shoppingEmissions;
     private double totalEmissions;
 }
