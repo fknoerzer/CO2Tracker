@@ -91,6 +91,3 @@ public class UpdateEmissionCalculationService {
                         trip.getCalculatedEmissions().getShoppingEmissions());
     }
 }
-
-
-

@@ -14,5 +14,3 @@ public class TripUpdateAccommodationEmissionsDto {
         private String typeOfAccommodation;
         private double additionalNights;
     }
-
-

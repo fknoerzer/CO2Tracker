@@ -1,7 +1,6 @@
 package de.neuefische.backend.calculations;
 
 import de.neuefische.backend.model.*;
-
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -140,4 +139,3 @@ public class EditEmissionsCalculationService {
         return newGeneratedTrip;
     }
 }
-

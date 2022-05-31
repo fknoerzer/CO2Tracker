@@ -14,5 +14,4 @@ public class TripUpdateTransportEmissionsDto {
 
     private double distance;
     private String typeOfTransport;
-
 }

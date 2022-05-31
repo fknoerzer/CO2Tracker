@@ -17,18 +17,18 @@ export const postTrip: (newTrip: TripDto) => Promise<Trip> = (newTrip) => {
         .then(response => response.data);
 }
 
-export function getTripById (id: string) {
-    return axios.get(`api/trips/${id}`)
+export const getTripBy: (id: string) => Promise<Trip> = (id) => {
+    return axios.get(`/api/trips/${id}`)
         .then(response => response.data)
 }
 
 export function deleteTripById (id:string) {
-    return axios.delete(`api/trips/${id}`)
+    return axios.delete(`/api/trips/${id}`)
 
 }
 
-export function editTrip(editedTrip: Trip) {
-    return axios.put(`/api/trips/${id}`,editedTrip)
+export const putTrip: (editedTrip: Trip) => Promise<Trip> = (editedTrip)=> {
+    return axios.put(`/api/trips/` + editedTrip.id, editedTrip)
         .then(response => response.data)
 }
 

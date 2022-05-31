@@ -1,4 +1,3 @@
-import 'bootstrap'
 
 type AccommodationInfoProps = {
     typeOfAccommodation: string

@@ -2,8 +2,8 @@ body{
     display: flex;
     flex-direction: column;
     align-content: space-between;
-    align-items: stretch;
-    background: #2B4162;
+
+    background: #7EA0AA;
     color: white;
     justify-content: center;
     height: 50%;

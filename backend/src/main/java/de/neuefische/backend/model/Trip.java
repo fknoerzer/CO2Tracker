@@ -34,5 +34,4 @@ public class Trip {
     private Shopping shopping;
     private Activity activity;
     private CalculatedEmissions calculatedEmissions;
-
 }
