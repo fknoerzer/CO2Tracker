@@ -31,7 +31,6 @@ export default function tripDetails({trip}: tripDetailsProps) {
                 <p>Activity Emissions: {trip.calculatedEmissions.activityEmissions} kg CO<sub>2</sub>e</p>
             </div>
             <br/>
-
         </div>
     )
 }

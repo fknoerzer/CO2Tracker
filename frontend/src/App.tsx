@@ -1,7 +1,5 @@
 import React from 'react';
 import './App.css';
-
-
 import AddTripPage from "./pages/AddTripPage";
 import DetailsPage from "./pages/DetailsPage";
 import useTrips from "./hooks/UseTrips";

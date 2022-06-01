@@ -40,7 +40,6 @@ export default function EditTripDetails({tripItem, editTrip}: EditTripDetailsPro
     const saveNewTrip = (event: FormEvent<HTMLFormElement>) =>
         event.preventDefault()
 
-
     const updatedTripItem = {
         title: title,
         year: tripItem.year,
@@ -102,7 +101,8 @@ export default function EditTripDetails({tripItem, editTrip}: EditTripDetailsPro
                 return (
                     <form>
                         <AddGeneralTripInfo title={title}
-                                            setTitle={setTitle} distance={distance}
+                                            setTitle={setTitle}
+                                            distance={distance}
                                             setDistance={setDistance}
                                             destiniationCountry={destiniationCountry}
                                             setDestiniationCountry={setDestiniationCountry}

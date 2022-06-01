@@ -35,7 +35,7 @@ export default function useTrips() {
                 setTrips(trips.map(trip => trip.id === editedTrip.id? editedTrip: trip))
                 toast.success("Trip: " + editedTrip.title + "edited")
                 return editedTrip })
-            .catch(() => {toast.error("Connection failed! Please retry later.")
+            .catch(() => {toast.error("Connection failed! Please try again later.")
             })
     }
     return {trips, addNewTrip, deleteTrip, editTrip}
