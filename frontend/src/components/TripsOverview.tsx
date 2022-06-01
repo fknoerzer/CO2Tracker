@@ -1,4 +1,4 @@
-import TripDetails from "./TripDetails";
+import TripOverviewCard from "./TripOverviewCard";
 import {Trip} from "../model/Trip";
 
 type TripsOverviewProps = {
@@ -9,7 +9,7 @@ export default function TripsOverview({trips}: TripsOverviewProps) {
 
     return (
         <div className={"trip-overview"}>
-            {trips.map(list => <TripDetails key={list.title} trip={list}/>).reverse()}
+            {trips.map(list => <TripOverviewCard key={list.title} trip={list}/>).reverse()}
         </div>
     )
 }

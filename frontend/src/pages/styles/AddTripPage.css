@@ -1,3 +1,7 @@
 .add-trip-page{
+    width : 375px;
+    height : 100vh;
+    display : flex;
+    flex-direction: column;
     background: #7EA0AA;
 }

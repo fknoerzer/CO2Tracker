@@ -1,4 +1,3 @@
-import "./styles/AddCard.css"
 
 type ShoppingInfoProps = {
     amountOfClothingItems: number

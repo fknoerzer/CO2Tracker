@@ -51,7 +51,7 @@ export type Activity = {
 }
 
 export type CalculatedEmissions = {
-    activitiesEmissions: number;
+    activityEmissions: number;
     shoppingEmissions: number;
     foodEmissions: number;
     accommodationEmissions: number;

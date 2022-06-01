@@ -59,13 +59,13 @@ export default function AddGeneralTripInfo({
                                                                                 onChange={event => setTravellerAmount(Number(event.target.value))}/>
             </label>
             <label className="label-input-newTrip">Date of Departure: <input className="text-field"
-                                                                             type="dateOfDeparture"
+                                                                             type="date"
                                                                              placeholder="Add your Date of Departure"
                                                                              value={dateOfDeparture}
                                                                              onChange={event => setDateOfDeparture(event.target.value)}/>
             </label>
             <label className="label-input-newTrip"> Date of Returning: <input className="text-field"
-                                                                              type="dateOfReturning"
+                                                                              type="date"
                                                                               placeholder="Add your Date of Returning"
                                                                               value={dateOfReturning}
                                                                               onChange={event => setDateOfReturning(event.target.value)}/>

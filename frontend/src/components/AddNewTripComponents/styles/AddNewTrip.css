@@ -1,12 +1,16 @@
+body{
+    background: #7EA0AA;
+    color: white;
+}
 
 form{
-    display: flex;
-    flex-direction: column;
-    align-content: space-between;
-    align-items: center;
-    background: #2B4162;
     color: white;
-    justify-content: center;
+    background: #2B4162;
+    border-radius : 20px;
+    flex-grow: 1;
+    margin: 10px;
+    padding: 10px;
+    height: auto;
 }
 input {
     display: flex;

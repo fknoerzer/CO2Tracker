@@ -2,7 +2,6 @@ package de.neuefische.backend.calculations;
 
 import de.neuefische.backend.dto.TripDto;
 import de.neuefische.backend.model.*;
-
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -129,4 +128,3 @@ public class EmissionCalculationService {
         return trip;
     }
 }
-
