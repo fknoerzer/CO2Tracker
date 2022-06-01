@@ -21,6 +21,7 @@ export default function DetailsPage({deleteTripById, editTrip}: DetailsPageProps
         if (id) {
             getTripById(id)
         }
+        // eslint-disable-next-line
     }, [id])
 
     const toggleEditing = () => {

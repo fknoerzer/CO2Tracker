@@ -7,12 +7,14 @@ import AddAccommodationInfo from "./AddAccommodationInfo";
 import AddFoodInfo from "./AddFoodInfo";
 import AddShoppingInfo from "./AddShoppingInfo";
 import AddActivityInfo from "./AddActivityInfo";
+import {useNavigate} from "react-router-dom";
 
 type NewTripProps = {
     addNewTrip: (newTrip: TripDto) => void
 }
 
 export default function AddNewTrip({addNewTrip}: NewTripProps) {
+    const navigate = useNavigate()
     const [title, setTitle] = useState<string>(``)
     const [distance, setDistance] = useState<number>(0)
     const [destiniationCountry, setDestiniationCountry] = useState<string>(``)
@@ -99,6 +101,7 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
         setCustomActivityItem(``)
         setCustomActivityItemEmission(0)
         setAmountOfCustomActivityItem(0)
+        navigate(`/`)
 
     }
 
