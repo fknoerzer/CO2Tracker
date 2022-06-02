@@ -3,7 +3,7 @@ import './App.css';
 import AddTripPage from "./pages/AddTripPage";
 import DetailsPage from "./pages/DetailsPage";
 import useTrips from "./hooks/UseTrips";
-import {Routes, Route, BrowserRouter} from "react-router-dom";
+import {Routes, Route, HashRouter} from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import {Navbar} from "./components/Navbar";
 import {
@@ -19,11 +19,13 @@ import UpdateFoodPage from "./pages/UpdateFoodPage";
 import UpdateShoppingPage from "./pages/UpdateShoppingPage";
 import UpdateActivityPage from "./pages/UpdateActivityPage";
 
+
 export default function App() {
     const {addNewTrip} = useTrips()
     return (
 
-        <BrowserRouter>
+        <HashRouter>
+            <div className={"app"}>
             <Navbar/>
             <Routes>
                 <Route path="/" element={<LandingPage/>}/>
@@ -41,7 +43,8 @@ export default function App() {
                 <Route path="/update/activity/:id"
                        element={<UpdateActivityPage updateActivityEmissions={updateActivityEmissions}/>}/>
             </Routes>
-        </BrowserRouter>
+            </div>
+        </HashRouter>
     )
 }
 
