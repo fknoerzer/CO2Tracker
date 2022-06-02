@@ -24,7 +24,6 @@ export const getTripBy: (id: string) => Promise<Trip> = (id) => {
 
 export function deleteTripById (id:string) {
     return axios.delete(`/api/trips/${id}`)
-
 }
 
 export const putTrip: (editedTrip: Trip) => Promise<Trip> = (editedTrip)=> {

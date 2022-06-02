@@ -7,7 +7,7 @@ type AddTripPageProps = {
 }
 export default function AddTripPage({addNewTrip}: AddTripPageProps){
     return (
-        <div className={"add-trip-page"}>
+        <div className={"add-trip"}>
             <AddNewTrip addNewTrip={addNewTrip}/>
         </div>
     )
