@@ -4,7 +4,6 @@ import AddActivityUpdate from "../components/AddUpdate/AddActivityUpdate";
 
 type UpdateActivityPageProps = {
     updateActivityEmissions: (id:string, tripUpdateActivityEmissionsDto: TripUpdateActivityEmissionsDto) => void
-
 }
 
 export default function UpdateActivityPage({updateActivityEmissions}:UpdateActivityPageProps) {

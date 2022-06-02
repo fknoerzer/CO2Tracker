@@ -4,7 +4,6 @@ import AddAccommodationUpdate from "../components/AddUpdate/AddAccommodationUpda
 
 type UpdateAccommodationPageProps = {
     updateAccommodationEmissions: (id:string, tripUpdateAccommodationEmissionsDto: TripUpdateAccommodationEmissionsDto) => void
-
 }
 
 export default function UpdateAccommodationPage({updateAccommodationEmissions}:UpdateAccommodationPageProps) {

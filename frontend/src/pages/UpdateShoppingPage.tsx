@@ -4,7 +4,6 @@ import AddShoppingUpdate from "../components/AddUpdate/AddShoppingUpdate";
 
 type UpdateShoppingPageProps = {
     updateShoppingEmissions: (id:string, tripUpdateShoppingEmissionsDto: TripUpdateShoppingEmissionsDto) => void
-
 }
 
 export default function UpdateShoppingPage({updateShoppingEmissions}:UpdateShoppingPageProps) {

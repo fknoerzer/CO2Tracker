@@ -4,7 +4,6 @@ import AddFoodUpdate from "../components/AddUpdate/AddFoodUpdate";
 
 type UpdateFoodPageProps = {
     updateFoodEmissions: (id:string, tripUpdateFoodEmissionsDto: TripUpdateFoodEmissionsDto) => void
-
 }
 
 export default function UpdateFoodPage({updateFoodEmissions}:UpdateFoodPageProps) {

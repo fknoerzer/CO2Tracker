@@ -4,7 +4,6 @@ import {useParams} from "react-router-dom";
 
 type UpdateTransportationPageProps = {
     updateTransportEmissions: (id:string, tripUpdateTransportEmissionsDto: TripUpdateTransportEmissionsDto) => void
-
 }
 
 export default function UpdateTransportationPage({updateTransportEmissions}:UpdateTransportationPageProps) {
