@@ -98,29 +98,6 @@ class TripControllerTest {
                 .expectStatus().is2xxSuccessful();
     }
 
-    @Test
-    void editTrip() {
-        //Given
-        tripRepo.insert(trip1);
-
-        //When
-        List<Trip> trips = tripRepo.findAll();
-
-
-        Trip actual = webTestClient.put()
-                .uri("http://localhost:" + port + "/api/trips/1")
-                .bodyValue(trip1b)
-                .exchange()
-                .expectStatus().isOk()
-                .expectBody(de.neuefische.backend.model.Trip.class)
-                .returnResult()
-                .getResponseBody();
-
-        //Then
-        assertEquals(trip1b, actual);
-    }
-
-
     Trip trip1 = Trip.builder()
             .id("1")
             .title("Rom 2022")
@@ -128,7 +105,7 @@ class TripControllerTest {
             .destinationCountry("Italy")
             .travellerAmount(1.0)
             .personalBudget(2500.0)
-            .numberOfNights(8)
+            .numberOfNights(7)
             .dateOfDeparture(LocalDate.of(2022, 1, 13))
             .dateOfReturning(LocalDate.of(2022, 1, 20))
             .transportations(List.of(Transportation.builder()
@@ -152,23 +129,23 @@ class TripControllerTest {
                     .amountOfGolfRounds(1.0)
                     .build()))
             .calculatedEmissions(CalculatedEmissions.builder()
-                    .transportationEmissions(0.14)
+                    .transportationEmissions(1.2)
                     .accommodationEmissions(798.0)
                     .foodEmissions(63.0)
-                    .activityEmissions(0.0)
-                    .shoppingEmissions(0.0)
-                    .totalEmissions(861.14)
+                    .activityEmissions(46.0)
+                    .shoppingEmissions(58.0)
+                    .totalEmissions(966.2)
                     .build())
             .build();
 
     Trip trip1b = Trip.builder()
             .id("1")
-            .title("Rom 2023")
+            .title("Rom 2022")
             .year(2022)
             .destinationCountry("Italy")
-            .travellerAmount(2.0)
+            .travellerAmount(1.0)
             .personalBudget(2500.0)
-            .numberOfNights(8)
+            .numberOfNights(7)
             .dateOfDeparture(LocalDate.of(2022, 1, 13))
             .dateOfReturning(LocalDate.of(2022, 1, 20))
             .transportations(List.of(Transportation.builder()
@@ -192,12 +169,12 @@ class TripControllerTest {
                     .amountOfGolfRounds(1.0)
                     .build()))
             .calculatedEmissions(CalculatedEmissions.builder()
-                    .transportationEmissions(0.14)
+                    .transportationEmissions(1.2)
                     .accommodationEmissions(798.0)
                     .foodEmissions(63.0)
-                    .activityEmissions(0.0)
-                    .shoppingEmissions(0.0)
-                    .totalEmissions(861.14)
+                    .activityEmissions(46.0)
+                    .shoppingEmissions(58.0)
+                    .totalEmissions(966.2)
                     .build())
             .build();
 
