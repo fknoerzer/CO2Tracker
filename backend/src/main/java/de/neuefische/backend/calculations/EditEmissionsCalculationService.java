@@ -27,14 +27,14 @@ public class EditEmissionsCalculationService {
 
         return editedTrip.getTransportations().stream()
                 .mapToDouble(transportation -> switch (transportation.getTypeOfTransport()) {
-                    case "Airplane" -> (transportation.getDistance() * EmissionsData.airplane);
-                    case "Car" -> (transportation.getDistance() * EmissionsData.car);
-                    case "Camper" -> (transportation.getDistance() * EmissionsData.camper);
-                    case "Train" -> (transportation.getDistance() * EmissionsData.train);
-                    case "Bus" -> (transportation.getDistance() * EmissionsData.bus);
-                    case "Motorbike" -> (transportation.getDistance() * EmissionsData.motorbike);
-                    case "Ferry" -> (transportation.getDistance() * EmissionsData.ferry);
-                    default -> EmissionsData.walking;
+                    case "Airplane" -> (transportation.getDistance() * EmissionsData.AIRPLANE);
+                    case "Car" -> (transportation.getDistance() * EmissionsData.CAR);
+                    case "Camper" -> (transportation.getDistance() * EmissionsData.CAMPER);
+                    case "Train" -> (transportation.getDistance() * EmissionsData.TRAIN);
+                    case "Bus" -> (transportation.getDistance() * EmissionsData.BUS);
+                    case "Motorbike" -> (transportation.getDistance() * EmissionsData.MOTORBIKE);
+                    case "Ferry" -> (transportation.getDistance() * EmissionsData.FERRY);
+                    default -> EmissionsData.WALKING;
                 }).sum();
     }
 
@@ -42,12 +42,12 @@ public class EditEmissionsCalculationService {
 
         return editedTrip.getAccommodations().stream()
                 .mapToDouble(Accommodation -> switch (Accommodation.getTypeOfAccommodation()) {
-                    case "Hotel" -> (getNumberOfNights(editedTrip) * EmissionsData.hotel);
-                    case "House" -> (getNumberOfNights(editedTrip) * EmissionsData.house);
-                    case "Apartment" -> (getNumberOfNights(editedTrip) * EmissionsData.apartment);
-                    case "Youth Hostel" -> (getNumberOfNights(editedTrip) * EmissionsData.youthHostel);
-                    case "Camping Site" -> (getNumberOfNights(editedTrip) * EmissionsData.campSite);
-                    default -> (getNumberOfNights(editedTrip) * EmissionsData.cruiseShip);
+                    case "Hotel" -> (getNumberOfNights(editedTrip) * EmissionsData.HOTEL);
+                    case "House" -> (getNumberOfNights(editedTrip) * EmissionsData.HOUSE);
+                    case "Apartment" -> (getNumberOfNights(editedTrip) * EmissionsData.APARTMENT);
+                    case "Youth Hostel" -> (getNumberOfNights(editedTrip) * EmissionsData.YOUTH_HOSTEL);
+                    case "Camping Site" -> (getNumberOfNights(editedTrip) * EmissionsData.CAMP_SITE);
+                    default -> (getNumberOfNights(editedTrip) * EmissionsData.CRUISE_SHIP);
                 }).sum();
     }
 
@@ -55,28 +55,28 @@ public class EditEmissionsCalculationService {
 
         return editedTrip.getFoods().stream()
                 .mapToDouble(Food -> switch (Food.getTypeOfDiet()) {
-                    case "Much Meat" -> (getNumberOfNights(editedTrip) * EmissionsData.muchMeat);
-                    case "Some Meat" -> (getNumberOfNights(editedTrip) * EmissionsData.someMeat);
-                    case "Rarely Meat" -> (getNumberOfNights(editedTrip) * EmissionsData.rarelyMeat);
-                    case "Vegetarian" -> (getNumberOfNights(editedTrip) * EmissionsData.vegetarian);
-                    default -> (getNumberOfNights(editedTrip) * EmissionsData.vegan);
+                    case "Much Meat" -> (getNumberOfNights(editedTrip) * EmissionsData.MUCH_MEAT);
+                    case "Some Meat" -> (getNumberOfNights(editedTrip) * EmissionsData.SOME_MEAT);
+                    case "Rarely Meat" -> (getNumberOfNights(editedTrip) * EmissionsData.RARELY_MEAT);
+                    case "Vegetarian" -> (getNumberOfNights(editedTrip) * EmissionsData.VEGETARIAN);
+                    default -> (getNumberOfNights(editedTrip) * EmissionsData.VEGAN);
                 }).sum();
     }
 
     public static double getShoppingEmissions(Trip editedTrip) {
 
         return editedTrip.getShoppings().stream().mapToDouble(shopping -> (
-                shopping.getAmountOfClothingItems() * EmissionsData.clothing +
-                        shopping.getAmountOfElectronicItems() * EmissionsData.electric +
-                        shopping.getAmountOfSouvenirItems() * EmissionsData.souvenir +
+                shopping.getAmountOfClothingItems() * EmissionsData.CLOTHING +
+                        shopping.getAmountOfElectronicItems() * EmissionsData.ELECTRIC +
+                        shopping.getAmountOfSouvenirItems() * EmissionsData.SOUVENIR +
                         shopping.getCustomShoppingItemEmission() * shopping.getAmountOfCustomShoppingItem())).sum();
     }
 
     public static double getActivitiesEmissions(Trip editedTrip) {
         return editedTrip.getActivities().stream().mapToDouble(activities -> (
-                activities.getAmountOfBeautyDays() * EmissionsData.beautyDay +
-                        activities.getAmountOfSkiingDays() * EmissionsData.skiingDay +
-                        activities.getAmountOfGolfRounds() * EmissionsData.golfRounds +
+                activities.getAmountOfBeautyDays() * EmissionsData.BEAUTY_DAY +
+                        activities.getAmountOfSkiingDays() * EmissionsData.SKIING_DAY +
+                        activities.getAmountOfGolfRounds() * EmissionsData.GOLF_ROUNDS +
                         activities.getCustomActivityItemEmission() * activities.getAmountOfCustomActivityItem())).sum();
     }
 
