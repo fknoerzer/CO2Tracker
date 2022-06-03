@@ -38,7 +38,7 @@ class EmissionCalculationServiceTest {
         double actual = EditEmissionsCalculationService.getTransportationEmissions(trip1);
 
         //Then
-        double expected = 0.14;
+        double expected = 1.2;
         assertEquals(expected, actual);
     }
 
@@ -58,7 +58,7 @@ class EmissionCalculationServiceTest {
         double actual = EditEmissionsCalculationService.getFoodEmissions(trip1);
 
         //Then
-        double expected = 21;
+        double expected = 63.0;
         assertEquals(expected, actual);
     }
 
@@ -68,7 +68,7 @@ class EmissionCalculationServiceTest {
         double actual = EditEmissionsCalculationService.getShoppingEmissions(trip1);
 
         //Then
-        double expected = 0;
+        double expected = 58.0;
         assertEquals(expected, actual);
     }
 
@@ -78,7 +78,7 @@ class EmissionCalculationServiceTest {
         double actual = EditEmissionsCalculationService.getActivitiesEmissions(trip1);
 
         //Then
-        double expected = 0;
+        double expected = 46.0;
         assertEquals(expected, actual);
     }
 
@@ -88,7 +88,7 @@ class EmissionCalculationServiceTest {
         double actual = EditEmissionsCalculationService.getAllEmissions(trip1);
 
         //Then
-        double expected = 819.14;
+        double expected = 966.2;
         assertEquals(expected,actual);
     }
 
