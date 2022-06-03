@@ -1,9 +1,20 @@
-import {useNavigate, useParams} from "react-router-dom";
+import {Routes,Route, useNavigate, useParams} from "react-router-dom";
 import useDetailedTrip from "../hooks/useDetailedTrip";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Trip} from "../model/Trip";
 import EditTripDetails from "../components/DetailsComponents/EditTripDetails";
 import ShowTripDetails from "../components/DetailsComponents/ShowTripDetails";
+import UpdateTransportationPage from "./UpdateTransportationPage";
+import {
+    updateAccommodationEmissions, updateActivityEmissions,
+    updateFoodEmissions,
+    updateShoppingEmissions,
+    updateTransportEmissions
+} from "../service/api-service";
+import UpdateAccommodationPage from "./UpdateAccommodationPage";
+import UpdateFoodPage from "./UpdateFoodPage";
+import UpdateShoppingPage from "./UpdateShoppingPage";
+import UpdateActivityPage from "./UpdateActivityPage";
 
 type DetailsPageProps = {
     deleteTripById: (id: string) => void
@@ -37,23 +48,36 @@ export default function DetailsPage({deleteTripById, editTrip}: DetailsPageProps
 
     }
     return (
-        <div className={"trip-details-page"}>
+        <Routes>
+            <Route path="/update/transportation/"
+                   element={<UpdateTransportationPage trip={detailedTrip} updateTransportEmissions={updateTransportEmissions}/>}/>
+            <Route path="/update/accommodation/"
+                   element={<UpdateAccommodationPage updateAccommodationEmissions={updateAccommodationEmissions}/>}/>
+            <Route path="/update/food/"
+                   element={<UpdateFoodPage updateFoodEmissions={updateFoodEmissions}/>}/>
+            <Route path="/update/shopping/"
+                   element={<UpdateShoppingPage updateShoppingEmissions={updateShoppingEmissions}/>}/>
+            <Route path="/update/activity/"
+                   element={<UpdateActivityPage updateActivityEmissions={updateActivityEmissions}/>}/>
+            <Route index element={<div className={"trip-details-page"}>
             {detailedTrip &&
                 <div>
-                    {editingEnabled
-                        ? <EditTripDetails tripItem={detailedTrip} editTrip={editDetailedTrip}/>
-                        : <ShowTripDetails
-                            item={detailedTrip}
-                            toggleEditing={toggleEditing}/>
-                    }
+            {editingEnabled
+                ? <EditTripDetails tripItem={detailedTrip} editTrip={editDetailedTrip}/>
+                : <ShowTripDetails
+                item={detailedTrip}
+                toggleEditing={toggleEditing}/>
+            }
                 </div>}
-            <button onClick={() => navigate(`/`)}>Back</button>
+                <button onClick={() => navigate(`/`)}>Back</button>
             {detailedTrip &&
                 <button onClick={() => {
-                    deleteTripById(detailedTrip.id)
-                    navigate('/')
-                }}>Delete</button>
+                deleteTripById(detailedTrip.id)
+                navigate('/')
+            }}>Delete</button>
             }
-        </div>
+                </div>}/>
+        </Routes>
+
     )
 }

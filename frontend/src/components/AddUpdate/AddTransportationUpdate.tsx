@@ -1,13 +1,15 @@
 import {FormEvent, useState} from "react";
 import {TripUpdateTransportEmissionsDto} from "../../model/updateDtos/TripUpdateTransportEmissionsDto";
 import {useNavigate} from "react-router-dom";
+import {Transportation, Trip} from "../../model/Trip";
+import {putTrip} from "../../service/api-service";
 
 type AddTransportationUpdateProps = {
-    tripId: string
+    trip: Trip
     updateTransportEmissions: (id: string, tripUpdateTransportEmissionsDto: TripUpdateTransportEmissionsDto) => void
 }
 
-export default function AddTransportationUpdate({updateTransportEmissions, tripId}: AddTransportationUpdateProps) {
+export default function AddTransportationUpdate({updateTransportEmissions, trip}: AddTransportationUpdateProps) {
     const navigate = useNavigate()
     const [distance, setDistance] = useState<number>(0)
     const [typeOfTransport, setTypeOfTransport] = useState<string>(``)
@@ -15,24 +17,30 @@ export default function AddTransportationUpdate({updateTransportEmissions, tripI
     const onUpdate = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
+        const updatedTrip = Object.assign({}, trip)
 
-        const tripUpdateTransportEmissionsDto: TripUpdateTransportEmissionsDto = {
+        const newTransportation: Transportation = {
             distance: distance,
             typeOfTransport: typeOfTransport
         }
-        updateTransportEmissions(tripId, tripUpdateTransportEmissionsDto);
-        setDistance(0)
-        setTypeOfTransport(``)
-        navigate(`/`)
+        updatedTrip.transportations.push(newTransportation)
+
+        putTrip(updatedTrip)
+            .then(() => {
+                setDistance(0)
+                setTypeOfTransport(``)
+                navigate(`/`)
+            })
+            .catch(console.error)
 
     }
     return (
         <form className={"update-trip-Transport"} onSubmit={onUpdate}>
             <label className="label-input-update">Travel Distance: <input className="number-field" type="number"
-                                                                           placeholder="Add your additional Travel Distance."
-                                                                           min="0"
-                                                                           step="10" value={distance}
-                                                                           onChange={event => setDistance(Number(event.target.value))}/>
+                                                                          placeholder="Add your additional Travel Distance."
+                                                                          min="0"
+                                                                          step="10" value={distance}
+                                                                          onChange={event => setDistance(Number(event.target.value))}/>
             </label>
             <label className="label-input-update">Type of Transport: <input list="transports" className="text-field"
                                                                             type="typeOfTransport"
@@ -50,7 +58,7 @@ export default function AddTransportationUpdate({updateTransportEmissions, tripI
                 <option value="Ferry"/>
                 <option value="Walking"/>
             </datalist>
-            <button className={"update-transport"}>Update Transportation Emissions</button>
+            <button className={"update-transport"}>Update</button>
         </form>
     )
 }

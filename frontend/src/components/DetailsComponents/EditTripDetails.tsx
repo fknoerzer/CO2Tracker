@@ -14,33 +14,33 @@ type EditTripDetailsProps = {
 
 export default function EditTripDetails({tripItem, editTrip}: EditTripDetailsProps) {
     const [title, setTitle] = useState<string>(tripItem.title)
-    const [distance, setDistance] = useState<number>(tripItem.transportation.distance)
+    const [distance, setDistance] = useState<number>(tripItem.transportations[0].distance)
     const [destiniationCountry, setDestiniationCountry] = useState<string>(tripItem.destiniationCountry)
     const [travellerAmount, setTravellerAmount] = useState<number>(tripItem.travellerAmount)
     const [dateOfDeparture, setDateOfDeparture] = useState<string>(tripItem.dateOfDeparture)
     const [dateOfReturning, setDateOfReturning] = useState<string>(tripItem.dateOfReturning)
     const [personalBudget, setPersonalBudget] = useState<number>(tripItem.personalBudget)
-    const [typeOfTransport, setTypeOfTransport] = useState<string>(tripItem.transportation.typeOfTransport)
-    const [typeOfAccommodation, setTypeOfAccommodation] = useState<string>(tripItem.accommodation.typeOfAccommodation)
-    const [typeOfDiet, setTypeOfDiet] = useState<string>(tripItem.food.typeOfDiet)
-    const [amountOfClothingItems, setAmountOfClothingItems] = useState<number>(tripItem.shopping.amountOfClothingItems)
-    const [amountOfElectronicItems, setAmountOfElectronicItems] = useState<number>(tripItem.shopping.amountOfElectronicItems)
-    const [amountOfSouvenirItems, setAmountOfSouvenirItems] = useState<number>(tripItem.shopping.amountOfSouvenirItems)
-    const [customShoppingItem, setCustomShoppingItem] = useState<string>(tripItem.shopping.customShoppingItem)
-    const [customShoppingItemEmission, setCustomShoppingItemEmission] = useState<number>(tripItem.shopping.customShoppingItemEmission)
-    const [amountOfCustomShoppingItem, setAmountOfCustomShoppingItem] = useState<number>(tripItem.shopping.amountOfCustomShoppingItem)
-    const [amountOfGolfRounds, setAmountOfGolfRounds] = useState<number>(tripItem.activity.amountOfGolfRounds)
-    const [amountOfSkiingDays, setAmountOfSkiingDays] = useState<number>(tripItem.activity.amountOfSkiingDays)
-    const [amountOfBeautyDays, setAmountOfBeautyDays] = useState<number>(tripItem.activity.amountOfBeautyDays)
-    const [customActivityItem, setCustomActivityItem] = useState<string>(tripItem.activity.customActivityItem)
-    const [customActivityItemEmission, setCustomActivityItemEmission] = useState<number>(tripItem.activity.customActivityItemEmission)
-    const [amountOfCustomActivityItem, setAmountOfCustomActivityItem] = useState<number>(tripItem.activity.amountOfCustomActivityItem)
+    const [typeOfTransport, setTypeOfTransport] = useState<string>(tripItem.transportations[0].typeOfTransport)
+    const [typeOfAccommodation, setTypeOfAccommodation] = useState<string>(tripItem.accommodations[0].typeOfAccommodation)
+    const [typeOfDiet, setTypeOfDiet] = useState<string>(tripItem.foods[0].typeOfDiet)
+    const [amountOfClothingItems, setAmountOfClothingItems] = useState<number>(tripItem.shoppings[0].amountOfClothingItems)
+    const [amountOfElectronicItems, setAmountOfElectronicItems] = useState<number>(tripItem.shoppings[0].amountOfElectronicItems)
+    const [amountOfSouvenirItems, setAmountOfSouvenirItems] = useState<number>(tripItem.shoppings[0].amountOfSouvenirItems)
+    const [customShoppingItem, setCustomShoppingItem] = useState<string>(tripItem.shoppings[0].customShoppingItem)
+    const [customShoppingItemEmission, setCustomShoppingItemEmission] = useState<number>(tripItem.shoppings[0].customShoppingItemEmission)
+    const [amountOfCustomShoppingItem, setAmountOfCustomShoppingItem] = useState<number>(tripItem.shoppings[0].amountOfCustomShoppingItem)
+    const [amountOfGolfRounds, setAmountOfGolfRounds] = useState<number>(tripItem.activities[0].amountOfGolfRounds)
+    const [amountOfSkiingDays, setAmountOfSkiingDays] = useState<number>(tripItem.activities[0].amountOfSkiingDays)
+    const [amountOfBeautyDays, setAmountOfBeautyDays] = useState<number>(tripItem.activities[0].amountOfBeautyDays)
+    const [customActivityItem, setCustomActivityItem] = useState<string>(tripItem.activities[0].customActivityItem)
+    const [customActivityItemEmission, setCustomActivityItemEmission] = useState<number>(tripItem.activities[0].customActivityItemEmission)
+    const [amountOfCustomActivityItem, setAmountOfCustomActivityItem] = useState<number>(tripItem.activities[0].amountOfCustomActivityItem)
     const [count, setCount] = useState<number>(0)
 
     const saveNewTrip = (event: FormEvent<HTMLFormElement>) =>
         event.preventDefault()
 
-    const updatedTripItem = {
+    const updatedTripItem:Trip = {
         title: title,
         year: tripItem.year,
         id: tripItem.id,
@@ -49,32 +49,32 @@ export default function EditTripDetails({tripItem, editTrip}: EditTripDetailsPro
         dateOfDeparture: dateOfDeparture,
         dateOfReturning: dateOfReturning,
         personalBudget: personalBudget,
-        transportation: {
+        transportations: [{
             distance: distance,
             typeOfTransport: typeOfTransport
-        },
-        accommodation: {
+        }],
+        accommodations: [{
             typeOfAccommodation: typeOfAccommodation,
-        },
-        food: {
+        }],
+        foods: [{
             typeOfDiet: typeOfDiet
-        },
-        shopping: {
+        }],
+        shoppings: [{
             amountOfClothingItems: amountOfClothingItems,
             amountOfElectronicItems: amountOfElectronicItems,
             amountOfSouvenirItems: amountOfSouvenirItems,
             customShoppingItem: customShoppingItem,
             customShoppingItemEmission: customShoppingItemEmission,
             amountOfCustomShoppingItem: amountOfCustomShoppingItem
-        },
-        activity: {
+        }],
+        activities: [{
             amountOfGolfRounds: amountOfGolfRounds,
             amountOfSkiingDays: amountOfSkiingDays,
             amountOfBeautyDays: amountOfBeautyDays,
             customActivityItem: customActivityItem,
             customActivityItemEmission: customActivityItemEmission,
             amountOfCustomActivityItem: amountOfCustomActivityItem,
-        },
+        }],
         calculatedEmissions: {
             activityEmissions: tripItem.calculatedEmissions.activityEmissions,
             shoppingEmissions: tripItem.calculatedEmissions.shoppingEmissions,
