@@ -1,4 +1,4 @@
-import {FormEvent, useState} from "react";
+import {useState} from "react";
 import {TripDto} from "../../model/TripDto";
 import "./styles/AddNewTrip.css"
 import AddGeneralTripInfo from "./AddGeneralTripInfo";
@@ -41,8 +41,8 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
     const [count, setCount] = useState<number>(0)
 
 
-    const onAdd = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
+    const onAdd = () => {
+
 
         const newTrip: TripDto = {
             title: title,
@@ -209,7 +209,7 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
             }
             case 5:
                 return (
-                    <form onSubmit={onAdd}>
+                    <form>
                         <AddActivityInfo amountOfGolfRounds={amountOfGolfRounds}
                                          setAmountOfGolfRounds={setAmountOfGolfRounds}
                                          amountOfSkiingDays={amountOfSkiingDays}
@@ -223,7 +223,7 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                                          amountOfCustomActivityItem={amountOfCustomActivityItem}
                                          setCustomActivityItemEmission={setCustomActivityItemEmission}/>
                         <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                        <button className={"add-trip"}>Add Trip</button>
+                        <button type={"button"} className={"add-trip"} onClick={onAdd}>Add Trip</button>
                     </form>
                 )
 
