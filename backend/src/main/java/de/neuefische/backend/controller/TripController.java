@@ -1,11 +1,12 @@
 package de.neuefische.backend.controller;
 
-import de.neuefische.backend.dto.*;
+import de.neuefische.backend.dto.TripDto;
 import de.neuefische.backend.model.Trip;
 import de.neuefische.backend.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,17 +21,17 @@ public class TripController {
     }
 
     @GetMapping
-    public List<Trip> getAllTrips() {
+    public List<de.neuefische.backend.model.Trip> getAllTrips() {
         return tripService.getAllTrips();
     }
 
     @GetMapping("{id}")
-    public Trip getTripListById(@PathVariable String id) {
+    public de.neuefische.backend.model.Trip getTripListById(@PathVariable String id) {
         return tripService.getTripById(id);
     }
 
     @PostMapping
-    public Trip addNewTrip(@RequestBody TripDto newTrip) {
+    public de.neuefische.backend.model.Trip addNewTrip(@Valid @RequestBody TripDto newTrip) {
         return tripService.addNewTrip(newTrip);
     }
 
@@ -40,35 +41,10 @@ public class TripController {
     }
 
     @PutMapping("{id}")
-    public Trip editTrip(@PathVariable String id, @RequestBody Trip editedTrip) {
+    public Trip editTrip(@PathVariable String id, @Valid @RequestBody Trip editedTrip) {
         if (!id.equals(editedTrip.getId())) {
             throw new IllegalArgumentException("Could not edit element! Path id does not match with element id in request body!");
         }
         return tripService.editTrip(editedTrip);
-    }
-
-    @PatchMapping("/update/transport/{id}")
-    public Trip patchTransportEmissions(@PathVariable String id, @RequestBody TripUpdateTransportEmissionsDto tripUpdateTransportEmissionsDto) {
-        return tripService.updateTransportEmissions(id, tripUpdateTransportEmissionsDto);
-    }
-
-    @PatchMapping("/update/accommodation/{id}")
-    public Trip patchAccommodationEmissions(@PathVariable String id, @RequestBody TripUpdateAccommodationEmissionsDto tripUpdateAccommodationEmissionsDto) {
-        return tripService.updateAccommodationEmissions(id, tripUpdateAccommodationEmissionsDto);
-    }
-
-    @PatchMapping("/update/food/{id}")
-    public Trip patchFoodEmissions(@PathVariable String id, @RequestBody TripUpdateFoodEmissionsDto tripUpdateFoodEmissionsDto) {
-        return tripService.updateFoodEmissions(id, tripUpdateFoodEmissionsDto);
-    }
-
-    @PatchMapping("/update/activity{id}")
-    public Trip patchActivityEmissions(@PathVariable String id, @RequestBody TripUpdateActivityEmissionsDto tripUpdateActivityEmissionsDto) {
-        return tripService.updateActivityEmissions(id, tripUpdateActivityEmissionsDto);
-    }
-
-    @PatchMapping("/update/shopping/{id}")
-    public Trip patchShoppingEmissions(@PathVariable String id, @RequestBody TripUpdateShoppingEmissionsDto tripUpdateShoppingEmissionsDto) {
-        return tripService.updateShoppingEmissions(id, tripUpdateShoppingEmissionsDto);
     }
 }

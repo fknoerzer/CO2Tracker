@@ -1,13 +1,15 @@
 import {useNavigate} from "react-router-dom";
 import {FormEvent, useState} from "react";
 import {TripUpdateShoppingEmissionsDto} from "../../model/updateDtos/TripUpdateShoppingEmissionsDto";
+import {Shopping, Trip} from "../../model/Trip";
+import {putTrip} from "../../service/api-service";
 
 type AddShoppingUpdateProps = {
-    tripId: string
+    trip: Trip
     updateShoppingEmissions: (id: string, tripUpdateShoppingEmissionsDto: TripUpdateShoppingEmissionsDto) => void
 }
 
-export default function AddShoppingUpdate({updateShoppingEmissions, tripId}: AddShoppingUpdateProps) {
+export default function AddShoppingUpdate({updateShoppingEmissions, trip}: AddShoppingUpdateProps) {
     const navigate = useNavigate()
     const [amountOfClothingItems, setAmountOfClothingItems] = useState<number>(0)
     const [amountOfElectronicItems, setAmountOfElectronicItems] = useState<number>(0)
@@ -19,7 +21,10 @@ export default function AddShoppingUpdate({updateShoppingEmissions, tripId}: Add
     const onUpdate = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const tripUpdateShoppingEmissionsDto: TripUpdateShoppingEmissionsDto = {
+        const updatedTrip = {...trip}
+
+
+        const newShopping: Shopping = {
             amountOfClothingItems: amountOfClothingItems,
             amountOfElectronicItems: amountOfElectronicItems,
             amountOfSouvenirItems: amountOfSouvenirItems,
@@ -28,7 +33,11 @@ export default function AddShoppingUpdate({updateShoppingEmissions, tripId}: Add
             amountOfCustomShoppingItem: amountOfCustomShoppingItem,
         }
 
-        updateShoppingEmissions(tripId, tripUpdateShoppingEmissionsDto);
+        updatedTrip.shoppings.push(newShopping)
+
+
+        putTrip(updatedTrip)
+            .then(() => {
         setAmountOfClothingItems(0)
         setAmountOfElectronicItems (0)
         setAmountOfSouvenirItems(0)
@@ -36,6 +45,8 @@ export default function AddShoppingUpdate({updateShoppingEmissions, tripId}: Add
         setCustomShoppingItemEmission(0)
         setAmountOfCustomShoppingItem(0)
         navigate('/')
+            })
+            .catch(console.error)
     }
     return (
         <form className={"add-update-shopping"} onSubmit={onUpdate}>

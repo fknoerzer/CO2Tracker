@@ -1,17 +1,17 @@
 import {TripUpdateTransportEmissionsDto} from "../model/updateDtos/TripUpdateTransportEmissionsDto";
 import AddTransportationUpdate from "../components/AddUpdate/AddTransportationUpdate";
-import {useParams} from "react-router-dom";
+import {Trip} from "../model/Trip";
 
 type UpdateTransportationPageProps = {
     updateTransportEmissions: (id:string, tripUpdateTransportEmissionsDto: TripUpdateTransportEmissionsDto) => void
+    trip?:Trip
 }
 
-export default function UpdateTransportationPage({updateTransportEmissions}:UpdateTransportationPageProps) {
-    const {id} = useParams()
+export default function UpdateTransportationPage({updateTransportEmissions, trip}:UpdateTransportationPageProps) {
 
     return(
         <div className={"update-transport"}>
-            {id&& <AddTransportationUpdate updateTransportEmissions={updateTransportEmissions} tripId={id}/>}
+            {trip&& <AddTransportationUpdate updateTransportEmissions={updateTransportEmissions} trip={trip}/>}
         </div>
     )
 }

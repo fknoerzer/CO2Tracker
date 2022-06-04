@@ -20,23 +20,23 @@ export default function TripDetails({trip}: TripDetailsProps) {
             </div>
             <div className={"transportation-emissions"}>
                 <p>Transportation Emissions: {trip.calculatedEmissions.transportationEmissions} kg CO<sub>2</sub>e</p>
-                <button className={"update-button"} onClick={()=>navigate(`/update/transportation/${trip.id}`)}>+</button>
+                <button className={"update-button"} onClick={()=>navigate(`update/transportation`)}>+</button>
             </div>
             <div className={"accommodation-emissions"}>
                 <p>Accommodation Emissions: {trip.calculatedEmissions.accommodationEmissions} kg CO2<sub>2</sub>e</p>
-                <button className={"update-button"} onClick={()=>navigate(`/update/accommodation/${trip.id}`)}>+</button>
+                <button className={"update-button"} onClick={()=>navigate(`update/accommodation`)}>+</button>
             </div>
             <div className={"food-emissions"}>
                 <p>Food Emissions: {trip.calculatedEmissions.foodEmissions} kg CO<sub>2</sub>e</p>
-                <button className={"update-button"} onClick={()=>navigate(`/update/food/${trip.id}`)}>+</button>
+                <button className={"update-button"} onClick={()=>navigate(`update/food`)}>+</button>
             </div>
             <div className={"shopping-emissions"}>
                 <p>Shopping Emissions: {trip.calculatedEmissions.shoppingEmissions} kg CO<sub>2</sub>e</p>
-                <button className={"update-button"} onClick={()=>navigate(`/update/shopping/${trip.id}`)}>+</button>
+                <button className={"update-button"} onClick={()=>navigate(`update/shopping`)}>+</button>
             </div>
             <div className={"activity-emissions"}>
                 <p>Activity Emissions: {trip.calculatedEmissions.activityEmissions} kg CO<sub>2</sub>e</p>
-                <button className={"update-button"} onClick={()=>navigate(`/update/activity/${trip.id}`)}>+</button>
+                <button className={"update-button"} onClick={()=>navigate(`update/activity`)}>+</button>
             </div>
             <br/>
         </div>

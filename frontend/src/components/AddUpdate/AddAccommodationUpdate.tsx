@@ -1,30 +1,37 @@
 import {TripUpdateAccommodationEmissionsDto} from "../../model/updateDtos/TripUpdateAccommodationEmissionsDto";
 import {FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {putTrip} from "../../service/api-service";
+import {Accommodation, Trip} from "../../model/Trip";
 
 type AddAccommodationUpdateProps = {
-    tripId: string
+    trip: Trip
     updateAccommodationEmissions: (id: string, tripUpdateAccommodationEmissionsDto: TripUpdateAccommodationEmissionsDto) => void
 }
 
-export default function AddAccommodationUpdate({updateAccommodationEmissions, tripId}: AddAccommodationUpdateProps) {
+export default function AddAccommodationUpdate({updateAccommodationEmissions, trip}: AddAccommodationUpdateProps) {
     const navigate = useNavigate()
-    const [additionalNights, setAdditionalNight] = useState<number>(0)
+    const [additionalNights, setAdditionalNights] = useState<number>(0)
     const [typeOfAccommodation, setTypeOfAccommodation] = useState<string>(``)
 
     const onUpdate = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const tripUpdateAccommodationEmissionsDto: TripUpdateAccommodationEmissionsDto = {
-            additionalNights: additionalNights,
+        const updatedTrip = {...trip}
+
+        const newAccommodation: Accommodation = {
             typeOfAccommodation: typeOfAccommodation
         }
 
+        updatedTrip.accommodations.push(newAccommodation)
 
-        updateAccommodationEmissions(tripId, tripUpdateAccommodationEmissionsDto);
-        setAdditionalNight(0)
-        setTypeOfAccommodation(``)
-        navigate('/')
+        putTrip(updatedTrip)
+            .then(() => {
+                setAdditionalNights(0)
+                setTypeOfAccommodation(``)
+                navigate(`/`)
+            })
+            .catch(console.error)
     }
     return (
         <form className={"update-Accommodation"} onSubmit={onUpdate}>
@@ -32,7 +39,7 @@ export default function AddAccommodationUpdate({updateAccommodationEmissions, tr
                                                                             placeholder="Add your additional Nights."
                                                                             min="0"
                                                                             step="1" value={additionalNights}
-                                                                            onChange={event => setAdditionalNight(Number(event.target.value))}/>
+                                                                            onChange={event => setAdditionalNights(Number(event.target.value))}/>
             </label>
             <label className="label-input-update">Type of Accommodation: <input list="accommodations"
                                                                                 className="text-field"

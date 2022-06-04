@@ -8,9 +8,9 @@ export type TripDto = {
     dateOfDeparture: string;
     dateOfReturning: string;
     personalBudget: number;
-    transportation: Transportation;
-    accommodation: Accommodation;
-    food: Food;
-    shopping: Shopping;
-    activity: Activity
+    transportations: Transportation[];
+    accommodations: Accommodation[];
+    foods: Food[];
+    shoppings: Shopping[];
+    activities: Activity[]
 }

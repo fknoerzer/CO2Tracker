@@ -1,13 +1,15 @@
 import {useNavigate} from "react-router-dom";
 import {FormEvent, useState} from "react";
 import {TripUpdateActivityEmissionsDto} from "../../model/updateDtos/TripUpdateActivityEmissionsDto";
+import {Activity, Trip} from "../../model/Trip";
+import {putTrip} from "../../service/api-service";
 
 type AddActivityUpdateProps = {
-    tripId: string
+    trip: Trip
     updateActivityEmissions: (id: string, tripUpdateActivityEmissionsDto: TripUpdateActivityEmissionsDto) => void
 }
 
-export default function AddActivityUpdate({updateActivityEmissions, tripId}: AddActivityUpdateProps) {
+export default function AddActivityUpdate({updateActivityEmissions, trip}: AddActivityUpdateProps) {
     const navigate = useNavigate()
     const [amountOfGolfRounds, setAmountOfGolfRounds] = useState<number>(0)
     const [amountOfSkiingDays, setAmountOfSkiingDays] = useState<number>(0)
@@ -19,7 +21,9 @@ export default function AddActivityUpdate({updateActivityEmissions, tripId}: Add
     const onUpdate = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const tripUpdateActivityEmissionsDto: TripUpdateActivityEmissionsDto = {
+        const updatedTrip = {...trip}
+
+        const newActivity: Activity = {
             amountOfGolfRounds: amountOfGolfRounds,
             amountOfSkiingDays: amountOfSkiingDays,
             amountOfBeautyDays: amountOfBeautyDays,
@@ -28,14 +32,19 @@ export default function AddActivityUpdate({updateActivityEmissions, tripId}: Add
             amountOfCustomActivityItem: amountOfCustomActivityItem,
         }
 
-        updateActivityEmissions(tripId, tripUpdateActivityEmissionsDto);
-        setAmountOfGolfRounds(0)
-        setAmountOfSkiingDays (0)
-        setAmountOfBeautyDays(0)
-        setCustomActivityItem (``)
-        setCustomActivityItemEmission(0)
-        setAmountOfCustomActivityItem(0)
-        navigate('/')
+        updatedTrip.activities.push(newActivity)
+
+        putTrip(updatedTrip)
+            .then(() => {
+                setAmountOfGolfRounds(0)
+                setAmountOfSkiingDays(0)
+                setAmountOfBeautyDays(0)
+                setCustomActivityItem(``)
+                setCustomActivityItemEmission(0)
+                setAmountOfCustomActivityItem(0)
+                navigate(`/`)
+            })
+            .catch(console.error)
     }
 
     return (

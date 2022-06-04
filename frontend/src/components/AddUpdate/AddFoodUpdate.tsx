@@ -1,13 +1,15 @@
 import {useNavigate} from "react-router-dom";
 import {FormEvent, useState} from "react";
 import {TripUpdateFoodEmissionsDto} from "../../model/updateDtos/TripUpdateFoodEmissionsDto";
+import {Food, Trip} from "../../model/Trip";
+import {putTrip} from "../../service/api-service";
 
 type AddFoodUpdateProps = {
-    tripId: string
+    trip: Trip
     updateFoodEmissions: (id: string, tripUpdateFoodEmissionsDto: TripUpdateFoodEmissionsDto) => void
 }
 
-export default function AddFoodUpdate({updateFoodEmissions, tripId}: AddFoodUpdateProps) {
+export default function AddFoodUpdate({updateFoodEmissions, trip}: AddFoodUpdateProps) {
     const navigate = useNavigate()
     const [additionalDays, setAdditionalDays] = useState<number>(0)
     const [typeOfDiet, setTypeOfDiet] = useState<string>(``)
@@ -15,16 +17,20 @@ export default function AddFoodUpdate({updateFoodEmissions, tripId}: AddFoodUpda
     const onUpdate = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const tripUpdateFoodEmissionsDto: TripUpdateFoodEmissionsDto = {
-            additionalDays: additionalDays,
+        const updatedTrip = {...trip}
+
+        const newFood: Food = {
             typeOfDiet: typeOfDiet
         }
 
+        updatedTrip.foods.push(newFood)
 
-        updateFoodEmissions(tripId, tripUpdateFoodEmissionsDto);
-        setAdditionalDays(0)
+        putTrip(updatedTrip)
+            .then(() => {
         setTypeOfDiet(``)
         navigate('/')
+            })
+            .catch(console.error)
     }
     return (
         <form className={"update-food"} onSubmit={onUpdate}>
