@@ -3,6 +3,7 @@ package de.neuefische.backend.dto;
 import de.neuefische.backend.model.*;
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class TripDto {
-    @NotNull(message = "Title is mandatory")
+    @NotBlank(message = "Title is mandatory")
     private String title;
 
     private String destinationCountry;
@@ -26,6 +27,7 @@ public class TripDto {
     @NotNull(message = "Date of Returning is mandatory")
     private LocalDate dateOfReturning;
 
+    @NotNull(message = "Personal CO2 Budget is mandatory" )
     private double personalBudget;
 
     private List<Transportation> transportations;

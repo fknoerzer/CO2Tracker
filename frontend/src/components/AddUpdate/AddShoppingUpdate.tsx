@@ -21,7 +21,7 @@ export default function AddShoppingUpdate({updateShoppingEmissions, trip}: AddSh
     const onUpdate = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const updatedTrip = Object.assign({}, trip)
+        const updatedTrip = {...trip}
 
 
         const newShopping: Shopping = {

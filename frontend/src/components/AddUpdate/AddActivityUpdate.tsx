@@ -21,7 +21,7 @@ export default function AddActivityUpdate({updateActivityEmissions, trip}: AddAc
     const onUpdate = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const updatedTrip = Object.assign({}, trip)
+        const updatedTrip = {...trip}
 
         const newActivity: Activity = {
             amountOfGolfRounds: amountOfGolfRounds,

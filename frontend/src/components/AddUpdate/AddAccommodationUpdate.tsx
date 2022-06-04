@@ -17,7 +17,7 @@ export default function AddAccommodationUpdate({updateAccommodationEmissions, tr
     const onUpdate = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const updatedTrip = Object.assign({}, trip)
+        const updatedTrip = {...trip}
 
         const newAccommodation: Accommodation = {
             typeOfAccommodation: typeOfAccommodation

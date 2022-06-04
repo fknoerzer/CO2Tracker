@@ -6,7 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,7 +23,7 @@ public class Trip {
     @Id
     private String id;
 
-    @NotNull(message = "Title is mandatory")
+    @NotBlank(message = "Title is mandatory")
     private String title;
 
     private String destinationCountry;

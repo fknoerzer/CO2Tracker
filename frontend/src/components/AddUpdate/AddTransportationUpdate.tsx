@@ -17,7 +17,7 @@ export default function AddTransportationUpdate({updateTransportEmissions, trip}
     const onUpdate = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const updatedTrip = Object.assign({}, trip)
+        const updatedTrip = {...trip}
 
         const newTransportation: Transportation = {
             distance: distance,

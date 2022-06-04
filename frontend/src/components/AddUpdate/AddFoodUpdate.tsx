@@ -17,7 +17,7 @@ export default function AddFoodUpdate({updateFoodEmissions, trip}: AddFoodUpdate
     const onUpdate = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        const updatedTrip = Object.assign({}, trip)
+        const updatedTrip = {...trip}
 
         const newFood: Food = {
             typeOfDiet: typeOfDiet

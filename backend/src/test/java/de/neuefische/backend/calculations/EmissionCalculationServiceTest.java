@@ -10,12 +10,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EmissionCalculationServiceTest {
- @BeforeEach
 
     @Test
     void getNumberOfNights() {
         //When
-     long acutal = EditEmissionsCalculationService.getNumberOfNights(trip1);
+     long acutal = EmissionsCalculationService.getNumberOfNights(trip1);
 
         //Then
      long expected = 7;
@@ -25,7 +24,7 @@ class EmissionCalculationServiceTest {
     @Test
     void getYearOfTrip() {
         //when
-        long actual = EditEmissionsCalculationService.getYearOfTrip(trip1);
+        long actual = EmissionsCalculationService.getYearOfTrip(trip1);
 
         //Then
         long expected = 2022;
@@ -35,7 +34,7 @@ class EmissionCalculationServiceTest {
     @Test
     void getTransportationEmissions() {
         //when
-        double actual = EditEmissionsCalculationService.getTransportationEmissions(trip1);
+        double actual = EmissionsCalculationService.getTransportationEmissions(trip1);
 
         //Then
         double expected = 1.2;
@@ -45,7 +44,7 @@ class EmissionCalculationServiceTest {
     @Test
     void getAccommodationEmissions() {
         //when
-        double actual = EditEmissionsCalculationService.getAccommodationEmissions(trip1);
+        double actual = EmissionsCalculationService.getAccommodationEmissions(trip1);
 
         //Then
         double expected = 798;
@@ -55,7 +54,7 @@ class EmissionCalculationServiceTest {
     @Test
     void getFoodEmissions() {
         //when
-        double actual = EditEmissionsCalculationService.getFoodEmissions(trip1);
+        double actual = EmissionsCalculationService.getFoodEmissions(trip1);
 
         //Then
         double expected = 63.0;
@@ -65,7 +64,7 @@ class EmissionCalculationServiceTest {
     @Test
     void getShoppingEmissions() {
         //when
-        double actual = EditEmissionsCalculationService.getShoppingEmissions(trip1);
+        double actual = EmissionsCalculationService.getShoppingEmissions(trip1);
 
         //Then
         double expected = 58.0;
@@ -75,7 +74,7 @@ class EmissionCalculationServiceTest {
     @Test
     void getActivitiesEmissions() {
         //when
-        double actual = EditEmissionsCalculationService.getActivitiesEmissions(trip1);
+        double actual = EmissionsCalculationService.getActivitiesEmissions(trip1);
 
         //Then
         double expected = 46.0;
@@ -85,7 +84,7 @@ class EmissionCalculationServiceTest {
     @Test
     void getAllEmissions () {
         //when
-        double actual = EditEmissionsCalculationService.getAllEmissions(trip1);
+        double actual = EmissionsCalculationService.getAllEmissions(trip1);
 
         //Then
         double expected = 966.2;

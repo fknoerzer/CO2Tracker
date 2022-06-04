@@ -14,10 +14,8 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class TripControllerTest {
@@ -76,7 +74,7 @@ class TripControllerTest {
         //Then
         assertNotNull(actual);
         assertNotNull(actual.getId());
-        de.neuefische.backend.model.Trip expected = trip1;
+        Trip expected = trip1;
         expected.setId(actual.getId());
         assertEquals(24, actual.getId().length());
         assertEquals(expected, actual);
@@ -239,11 +237,15 @@ class TripControllerTest {
                     .amountOfClothingItems(1.0)
                     .amountOfElectronicItems(1.0)
                     .amountOfSouvenirItems(1.0)
+                    .amountOfCustomShoppingItem(0.0)
+                    .customShoppingItemEmission(0.0)
                     .build()))
             .activities(List.of(Activity.builder()
                     .amountOfBeautyDays(1.0)
                     .amountOfSkiingDays(1.0)
                     .amountOfGolfRounds(1.0)
+                    .amountOfCustomActivityItem(0.0)
+                    .customActivityItemEmission(0.0)
                     .build()))
             .build();
 }

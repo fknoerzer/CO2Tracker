@@ -4,11 +4,10 @@ import de.neuefische.backend.model.*;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-import java.util.List;
 
-public class EditEmissionsCalculationService {
+public class EmissionsCalculationService {
 
-    private EditEmissionsCalculationService() {
+    private EmissionsCalculationService() {
     }
 
     public static long getNumberOfNights(Trip editedTrip) {
@@ -89,11 +88,7 @@ public class EditEmissionsCalculationService {
     }
 
     public static Trip transferEditTrip(Trip editedTrip) {
-        List<Transportation> tripTransportations = editedTrip.getTransportations();
-        List<Accommodation> tripAccommodations = editedTrip.getAccommodations();
-        List<Food> tripFoods = editedTrip.getFoods();
-        List<Shopping> tripShoppings = editedTrip.getShoppings();
-        List<Activity> tripActivities = editedTrip.getActivities();
+
 
         CalculatedEmissions calculatedEmissions = CalculatedEmissions.builder()
                 .transportationEmissions(getTransportationEmissions(editedTrip))
@@ -113,13 +108,12 @@ public class EditEmissionsCalculationService {
                 .dateOfReturning(editedTrip.getDateOfReturning())
                 .numberOfNights(getNumberOfNights(editedTrip))
                 .personalBudget(editedTrip.getPersonalBudget())
-                .transportations(tripTransportations)
-                .accommodations(tripAccommodations)
-                .foods(tripFoods)
-                .shoppings(tripShoppings)
-                .activities(tripActivities)
+                .transportations(editedTrip.getTransportations())
+                .accommodations(editedTrip.getAccommodations())
+                .foods(editedTrip.getFoods())
+                .shoppings(editedTrip.getShoppings())
+                .activities(editedTrip.getActivities())
                 .calculatedEmissions(calculatedEmissions)
                 .build());
-
     }
 }

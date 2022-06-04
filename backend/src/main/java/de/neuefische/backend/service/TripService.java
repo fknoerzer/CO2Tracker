@@ -1,10 +1,10 @@
 package de.neuefische.backend.service;
 
-import de.neuefische.backend.calculations.EditEmissionsCalculationService;
+import de.neuefische.backend.calculations.EmissionsCalculationService;
 import de.neuefische.backend.dto.TripDto;
 import de.neuefische.backend.model.Trip;
 import de.neuefische.backend.repository.TripRepo;
-import de.neuefische.backend.wrapper.DtoWrapper;
+import de.neuefische.backend.Mapper.TripMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +26,7 @@ public class TripService {
     }
 
     public Trip addNewTrip(TripDto tripDto) {
-        Trip wrappedTrip = DtoWrapper.transferDto(tripDto);
-        Trip newTrip = EditEmissionsCalculationService.transferEditTrip(wrappedTrip);
+       Trip newTrip = EmissionsCalculationService.transferEditTrip(TripMapper.tripDtoToTrip(tripDto));
         return tripRepo.insert(newTrip);
     }
 
@@ -39,12 +38,12 @@ public class TripService {
         tripRepo.deleteById(id);
     }
 
-    public Trip editTrip(Trip editedTrip) {
-        if (tripRepo.existsById(editedTrip.getId())) {
-            Trip newGeneratedTrip = EditEmissionsCalculationService.transferEditTrip(editedTrip);
-            return tripRepo.save(newGeneratedTrip);
+    public Trip editTrip(Trip tripWithEdits) {
+        if (tripRepo.existsById(tripWithEdits.getId())) {
+            Trip editedTrip = EmissionsCalculationService.transferEditTrip(tripWithEdits);
+            return tripRepo.save(editedTrip);
         } else {
-            throw new NoSuchElementException("Could not update trip element! Element with id does not exist: " + editedTrip.getId());
+            throw new NoSuchElementException("Could not update trip element! Element with id does not exist: " + tripWithEdits.getId());
         }
     }
 }

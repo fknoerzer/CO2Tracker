@@ -41,10 +41,10 @@ class TripServiceTest {
         when(tripRepo.insert(trip1)).thenReturn(trip1);
 
         //When
-        de.neuefische.backend.model.Trip actual = tripService.addNewTrip(tripDto);
+        Trip actual = tripService.addNewTrip(tripDto);
 
         //Then
-        de.neuefische.backend.model.Trip expected = trip1;
+        Trip expected = trip1;
         verify(tripRepo).insert(trip1);
         assertEquals(expected, actual);
     }
