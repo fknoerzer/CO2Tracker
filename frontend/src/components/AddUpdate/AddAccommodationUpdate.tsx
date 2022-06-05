@@ -6,7 +6,8 @@ import {Accommodation, Trip} from "../../model/Trip";
 
 type AddAccommodationUpdateProps = {
     trip: Trip
-    updateAccommodationEmissions: (id: string, tripUpdateAccommodationEmissionsDto: TripUpdateAccommodationEmissionsDto) => void
+    updateAccommodationEmissions: (id: string, updateAccommodationEmissions: TripUpdateAccommodationEmissionsDto) => void
+
 }
 
 export default function AddAccommodationUpdate({updateAccommodationEmissions, trip}: AddAccommodationUpdateProps) {
@@ -20,10 +21,10 @@ export default function AddAccommodationUpdate({updateAccommodationEmissions, tr
         const updatedTrip = {...trip}
 
         const newAccommodation: Accommodation = {
-            typeOfAccommodation: typeOfAccommodation
+            typeOfAccommodation: typeOfAccommodation,
         }
 
-        updatedTrip.accommodations.push(newAccommodation)
+        updatedTrip.accommodations.push(newAccommodation);
 
         putTrip(updatedTrip)
             .then(() => {

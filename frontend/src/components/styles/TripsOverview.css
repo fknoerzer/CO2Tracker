@@ -1,0 +1,11 @@
+.trip-overview {
+    margin: 5% 1% 1% 5%;
+    display: flex;
+    flex-direction: column;
+    grid-gap: 10px;
+    grid-template-columns: auto auto;
+    grid-auto-rows: auto;
+    justify-content: stretch;
+    width: auto;
+    height: 90%;
+}

@@ -1,5 +1,6 @@
 import TripOverviewCard from "./TripOverviewCard";
 import {Trip} from "../model/Trip";
+import "../components/styles/TripsOverview.css"
 
 type TripsOverviewProps = {
     trips: Trip[]

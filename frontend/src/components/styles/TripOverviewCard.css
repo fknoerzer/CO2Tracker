@@ -1,20 +1,44 @@
 .trip-overview-card{
     background: #2B4162;
-    width : 80%;
-    height: 20%;
     display : flex;
     flex-direction: column;
     border-radius : 20px;
-    flex-grow: 1;
-    margin: 5px;
-    padding: 5px;
+    margin: 2px;
+    padding: 10px;
     justify-content: center;
     align-items: center;
+    width: auto;
+    height: auto;
 }
 
 .title {
-    font-size: larger;
+    font-size: xx-large;
     font-weight: bold;
     margin: 2px;
+    justify-content: center;
+}
+
+    .date {
+        font-weight: bold;
+        font-size: large;
+    }
+
+.button-wrapper {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 50px;
+}
+
+.details-button {
+    font-weight: bold;
+    font-size: large;
+    display : flex;
+}
+
+.offset-button {
+    background-color: #23CE6B;
+    font-weight: bold;
+    font-size: large;
+    display : flex;
 }
 

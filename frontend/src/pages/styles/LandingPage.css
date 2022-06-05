@@ -1,7 +1,47 @@
-.landing-page{
-    display : flex;
+.landing-page {
+
     flex-direction: column;
     justify-content: stretch;
     align-content: center;
     align-items: center;
+    box-sizing: border-box;
+
 }
+
+button {
+    background-color: #E6AA68;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 4px 16px;
+    text-align: center;
+    display: inline-block;
+    font-size: 14px;
+    transition-duration: 0.4s;
+    opacity: 0.6;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+button:hover {opacity: 1}
+
+.add-button-wrapper {
+    background-color: #7EA0AA;
+    position: absolute;
+    margin-top: 100px;
+    width: 100%;
+}
+
+.add-new-trip-button {
+    font-weight: bold;
+    font-size: xx-large;
+    background-color: #23CE6B;
+    align-content: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+
+
+}
+
+

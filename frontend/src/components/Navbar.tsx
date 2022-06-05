@@ -1,15 +1,13 @@
 import "../components/styles/Navbar.css"
+import {AiFillHome, AiOutlineMenu} from "react-icons/ai";
 import {useNavigate} from "react-router-dom";
+
 export function Navbar() {
     const navigate = useNavigate()
-    return(
+    return (
         <div className={"navbar"}>
-            <button className={"home-button"} onClick={()=>navigate(`/`) }>Home</button>
-            <div className={"app-title"}> Holiday Tracker </div>
-            <div className={"menu-icon"}>
-            <div className={"line"}/>
-            <div className={"line"}/>
-            <div className={"line"}/>
-            </div>
+            <button className={"ai-button-home"} onClick={() => navigate(`/`)}><AiFillHome/></button>
+            <img className={"logo"} src='https://i.postimg.cc/sDVjbkck/Logo-NEW2.jpg' alt='Logo-NEW2'/>
+            <button className={"ai-button-menu"} onClick={() => navigate(`/`)}><AiOutlineMenu/></button>
         </div>)
 }
