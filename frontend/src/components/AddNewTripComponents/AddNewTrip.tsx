@@ -138,94 +138,118 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
     const showComponent = () => {
         switch (count) {
             case 0: {
-                return (
-                    <form>
-                        <h1>Add General Information To Your New Trip</h1>
-                        <AddGeneralTripInfo title={title}
-                                            setTitle={setTitle} distance={distance}
-                                            setDistance={setDistance}
-                                            destiniationCountry={destiniationCountry}
-                                            setDestiniationCountry={setDestiniationCountry}
-                                            travellerAmount={travellerAmount}
-                                            setTravellerAmount={setTravellerAmount}
-                                            dateOfDeparture={dateOfDeparture}
-                                            setDateOfDeparture={setDateOfDeparture}
-                                            dateOfReturning={dateOfReturning}
-                                            setDateOfReturning={setDateOfReturning}
-                                            personalBudget={personalBudget}
-                                            setPersonalBudget={setPersonalBudget}/>
-
-                        <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
-                    </form>
+                return (<div className={"add-new-trip-div"}>
+                        <h1> Add general infos to your new trip</h1>
+                        <form className={"add-new-trip-form"}>
+                            <AddGeneralTripInfo title={title}
+                                                setTitle={setTitle} distance={distance}
+                                                setDistance={setDistance}
+                                                destiniationCountry={destiniationCountry}
+                                                setDestiniationCountry={setDestiniationCountry}
+                                                travellerAmount={travellerAmount}
+                                                setTravellerAmount={setTravellerAmount}
+                                                dateOfDeparture={dateOfDeparture}
+                                                setDateOfDeparture={setDateOfDeparture}
+                                                dateOfReturning={dateOfReturning}
+                                                setDateOfReturning={setDateOfReturning}
+                                                personalBudget={personalBudget}
+                                                setPersonalBudget={setPersonalBudget}/>
+                        </form>
+                        <div className={"button-wrapper"}>
+                            <button type={"button"} className={"return-button"} onClick={() => navigate(`/`)}>Return</button>
+                            <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
+                        </div>
+                    </div>
                 )
             }
             case 1: {
-                return (
-                    <form>
-                        <AddTransportInfo setTypeOfTransport={setTypeOfTransport}
-                                          typeOfTransport={typeOfTransport}/>
-                        <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
-                        <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                    </form>
+                return (<div className={"add-new-trip-div"}>
+                        <h1> Add transport infos to your new trip</h1>
+                        <form className={"add-new-trip-form"}>
+                            <AddTransportInfo setTypeOfTransport={setTypeOfTransport}
+                                              typeOfTransport={typeOfTransport}/>
+                        </form>
+                        <div className={"button-wrapper"}>
+                            <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button>
+                            <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
+                        </div>
+                    </div>
                 )
             }
             case 2: {
-                return (
-                    <form>
-                        <AddAccommodationInfo setTypeOfAccommodation={setTypeOfAccommodation}
-                                              typeOfAccommodation={typeOfAccommodation}/>
-                        <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
-                        <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                    </form>
+                return (<div className={"add-new-trip-div"}>
+                        <h1> Add accommodation Infos to your new trip</h1>
+                        <form className={"add-new-trip-form"}>
+                            <AddAccommodationInfo setTypeOfAccommodation={setTypeOfAccommodation}
+                                                  typeOfAccommodation={typeOfAccommodation}/>
+                        </form>
+                        <div className={"button-wrapper"}>
+                            <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button>
+                            <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
+                        </div>
+                    </div>
                 )
             }
             case 3: {
-                return (
-                    <form>
-                        <AddFoodInfo setTypeOfDiet={setTypeOfDiet} typeOfDiet={typeOfDiet}/>
-                        <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
-                        <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                    </form>
+                return (<div className={"add-new-trip-div"}>
+                        <h1> Add diet infos to your new trip</h1>
+                        <form className={"add-new-trip-form"}>
+                            <AddFoodInfo setTypeOfDiet={setTypeOfDiet} typeOfDiet={typeOfDiet}/>
+                        </form>
+                        <div className={"button-wrapper"}>
+                            <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button>
+                            <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
+                        </div>
+                    </div>
                 )
             }
             case 4: {
-                return (
-                    <form>
-                        <AddShoppingInfo setAmountOfClothingItems={setAmountOfClothingItems}
-                                         amountOfClothingItems={amountOfClothingItems}
-                                         amountOfElectronicItems={amountOfElectronicItems}
-                                         setAmountOfElectronicItems={setAmountOfElectronicItems}
-                                         amountOfCustomShoppingItem={amountOfCustomShoppingItem}
-                                         setAmountOfCustomShoppingItem={setAmountOfCustomShoppingItem}
-                                         customShoppingItem={customShoppingItem}
-                                         setCustomShoppingItem={setCustomShoppingItem}
-                                         customShoppingItemEmission={customShoppingItemEmission}
-                                         setCustomShoppingItemEmission={setCustomShoppingItemEmission}
-                                         amountOfSouvenirItems={amountOfSouvenirItems}
-                                         setAmountOfSouvenirItems={setAmountOfSouvenirItems}/>
-                        <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
-                        <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                    </form>
+                return (<div className={"add-new-trip-div"}>
+                        <h1> Add shopping infos to your new trip</h1>
+                        <form className={"add-new-trip-form"}>
+                            <AddShoppingInfo setAmountOfClothingItems={setAmountOfClothingItems}
+                                             amountOfClothingItems={amountOfClothingItems}
+                                             amountOfElectronicItems={amountOfElectronicItems}
+                                             setAmountOfElectronicItems={setAmountOfElectronicItems}
+                                             amountOfCustomShoppingItem={amountOfCustomShoppingItem}
+                                             setAmountOfCustomShoppingItem={setAmountOfCustomShoppingItem}
+                                             customShoppingItem={customShoppingItem}
+                                             setCustomShoppingItem={setCustomShoppingItem}
+                                             customShoppingItemEmission={customShoppingItemEmission}
+                                             setCustomShoppingItemEmission={setCustomShoppingItemEmission}
+                                             amountOfSouvenirItems={amountOfSouvenirItems}
+                                             setAmountOfSouvenirItems={setAmountOfSouvenirItems}/>
+                        </form>
+                        <div className={"button-wrapper"}>
+                            <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button>
+                            <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
+                        </div>
+                    </div>
                 )
             }
             case 5:
                 return (
-                    <form>
-                        <AddActivityInfo amountOfGolfRounds={amountOfGolfRounds}
-                                         setAmountOfGolfRounds={setAmountOfGolfRounds}
-                                         amountOfSkiingDays={amountOfSkiingDays}
-                                         setAmountOfSkiingDays={setAmountOfSkiingDays}
-                                         amountOfBeautyDays={amountOfBeautyDays}
-                                         setAmountOfBeautyDays={setAmountOfBeautyDays}
-                                         customActivityItem={customActivityItem}
-                                         setAmountOfCustomActivityItem={setAmountOfCustomActivityItem}
-                                         customActivityItemEmission={customActivityItemEmission}
-                                         setCustomActivityItem={setCustomActivityItem}
-                                         amountOfCustomActivityItem={amountOfCustomActivityItem}
-                                         setCustomActivityItemEmission={setCustomActivityItemEmission}/>
-                        <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                        <button type={"button"} className={"add-trip"} onClick={onAdd}>Add Trip</button>
-                    </form>
+                    <div className={"add-new-trip-div"}>
+                        <h1> Add activity Infos to your new trip</h1>
+                        <form className={"add-new-trip-form"}>
+                            <AddActivityInfo amountOfGolfRounds={amountOfGolfRounds}
+                                             setAmountOfGolfRounds={setAmountOfGolfRounds}
+                                             amountOfSkiingDays={amountOfSkiingDays}
+                                             setAmountOfSkiingDays={setAmountOfSkiingDays}
+                                             amountOfBeautyDays={amountOfBeautyDays}
+                                             setAmountOfBeautyDays={setAmountOfBeautyDays}
+                                             customActivityItem={customActivityItem}
+                                             setAmountOfCustomActivityItem={setAmountOfCustomActivityItem}
+                                             customActivityItemEmission={customActivityItemEmission}
+                                             setCustomActivityItem={setCustomActivityItem}
+                                             amountOfCustomActivityItem={amountOfCustomActivityItem}
+                                             setCustomActivityItemEmission={setCustomActivityItemEmission}/>
+                        </form>
+                        <div className={"button-wrapper"}>
+                            <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button>
+                            <button type={"button"} className={"add-button"} onClick={onAdd}>Add Trip</button>
+                        </div>
+                    </div>
                 )
 
             default: {

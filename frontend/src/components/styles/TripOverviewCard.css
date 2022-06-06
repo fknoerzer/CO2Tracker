@@ -1,13 +1,20 @@
 .trip-overview-card {
+    height: fit-content;
     background: #2B4162;
     border-radius: 20px;
-    margin: 2px;
     padding: 10px;
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 70%;
-    height: 90%;
+    width: 60%;
+    margin-bottom: 10px;
+}
+
+.trip-infos {
+    background-color: rgba(192, 192, 192, 0.3);
+    padding: 2px;
+    margin: 8px;
+    border-radius: 20px;
 }
 
 .title {
@@ -22,21 +29,20 @@
     font-size: large;
 }
 
-.button-wrapper {
-    display: grid;
-    grid-template-columns: auto auto;
-    column-gap: 50px;
-}
-
 .details-button {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: fit-content;
     font-weight: bold;
     font-size: large;
 }
 
 .offset-button {
+    margin-right: 5%;
+    margin-left: 5%;
+    width: fit-content;
     background-color: #23CE6B;
     font-weight: bold;
     font-size: large;
-
 }
 
