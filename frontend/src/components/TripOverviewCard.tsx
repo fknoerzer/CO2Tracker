@@ -17,7 +17,7 @@ export default function TripOverviewCard({trip}: TripOverviewCardProps) {
         <div className="trip-overview-card">
             <p className={"title"}>{trip.title} {trip.year}</p>
             <p className={"date"}>From {formatDepartureDate(trip.dateOfDeparture)} to {formatReturningDate(trip.dateOfReturning)}</p>
-            <p className={"total emissions"}>Total Emissions: {trip.calculatedEmissions.totalEmissions} kg CO2e</p>
+            <p className={"total emissions"}>Total Emissions: {Math.round(trip.calculatedEmissions.totalEmissions)} kg CO<sub>2</sub>-eq.</p>
             <div className="button-wrapper">
                 <button className={"offset-button"} onClick={() => navigate(`trips/offset/${trip.id}`)}>Offset</button>
                 <button className={"details-button"} onClick={() => navigate(`/trips/${trip.id}`)}>Details</button>

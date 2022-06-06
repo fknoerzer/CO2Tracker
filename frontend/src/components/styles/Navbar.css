@@ -1,40 +1,35 @@
 .navbar {
+    z-index: 2;
     display: grid;
-    grid-template-columns: repeat(3, 33%);
-    overflow: hidden;
     background-color: #023C40;
     justify-items: center;
-    height: 65px;
+    align-items: center;
+    height: 7%;
     width: 100%;
     position: fixed;
-    top:0;
-    margin-bottom: 100px;
 }
 
 .logo {
-    height: 55px;
+    height: 100%;
     position: absolute;
-    right: auto;
-    left:auto;
 }
 
 .ai-button-menu {
     border-color: white;
-    background-color:transparent;
+    background-color: transparent;
     font-size: 40px;
     color: white;
     text-align: left;
-    text-decoration: none;
     position: absolute;
     right: 0;
 }
+
 .ai-button-home {
     border-color: white;
-    background-color:transparent;
+    background-color: transparent;
     font-size: 40px;
     color: white;
     text-align: left;
-    text-decoration: none;
     position: absolute;
     left: 0;
 }

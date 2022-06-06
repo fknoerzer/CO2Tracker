@@ -1,11 +1,35 @@
-.trip-overview {
-    margin: 5% 1% 1% 5%;
+
+.trip-cards {
     display: flex;
     flex-direction: column;
-    grid-gap: 10px;
-    grid-template-columns: auto auto;
-    grid-auto-rows: auto;
-    justify-content: stretch;
-    width: auto;
+    width: 100%;
     height: 90%;
+    align-items: center;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    overflow-x: scroll
+}
+
+.add-button-wrapper {
+    background-color: #7EA0AA;
+    position: fixed;
+    bottom: 0;
+    justify-items: center;
+    align-items: flex-start;
+    height: 60px;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 5%;
+    grid-template-columns: auto;
+}
+
+.add-new-trip-button {
+    position: fixed;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 60%;
+    height: 40px;
+    font-weight: bold;
+    font-size: 25px;
+    background-color: #23CE6B;
 }

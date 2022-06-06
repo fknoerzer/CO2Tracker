@@ -140,6 +140,7 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
             case 0: {
                 return (
                     <form>
+                        <h1>Add General Information To Your New Trip</h1>
                         <AddGeneralTripInfo title={title}
                                             setTitle={setTitle} distance={distance}
                                             setDistance={setDistance}

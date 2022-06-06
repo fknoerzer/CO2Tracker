@@ -1,3 +1,4 @@
+import "../AddNewTripComponents/styles/AddNewTrip.css"
 type TripGeneralInfoProps = {
     title: string
     setTitle: (value: string) => void
@@ -34,15 +35,15 @@ export default function AddGeneralTripInfo({
 
 
     return (
-        <div className={"add-trip-general-info"}>
+        <div className={"add-new-trip"}>
 
-            <label className="label-input-newTrip">Trip Title: <input className="text-field" type="title"
+            <label className="label-input-newTrip">Trip Title: <input className="text-field" type="text"
                                                                       placeholder="Add a title for your Trip"
                                                                       value={title}
                                                                       onChange={event => setTitle(event.target.value)}/>
             </label>
             <label className="label-input-newTrip">Country of Destination: <input className="text-field"
-                                                                                  type="destinationCountry"
+                                                                                  type="text"
                                                                                   placeholder="Add your Country of Destination"
                                                                                   value={destiniationCountry}
                                                                                   onChange={event => setDestiniationCountry(event.target.value)}/>

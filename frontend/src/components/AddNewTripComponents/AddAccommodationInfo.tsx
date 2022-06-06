@@ -8,7 +8,7 @@ export default function AddAccommodationInfo({typeOfAccommodation, setTypeOfAcco
 
 
     return (
-        <div className={"add-trip-Accommodation"}>
+        <div className={"add-new-trip"}>
             <label className="label-input-newTrip">Type of Accommodation: <input list="accommodations" className="text-field" type="typeOfAccommodation"
                                                  placeholder="Choose your Type of Accommodation"
                                                  value={typeOfAccommodation}
