@@ -63,37 +63,39 @@ form {
 
 input[type=text] {
     height: 10%;
-    width: fit-content;
+    width: 80%;
     padding: 12px 20px;
     box-sizing: border-box;
     border: none;
     background-color: white;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     color: black;
 }
 
 input[type=number] {
-    width: 100px;
+    width: 30%;;
     padding: 12px 20px;
     box-sizing: border-box;
     border: none;
     background-color: white;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     color: black;
 }
 
 input[list]{
     background: white;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
-    width: fit-content;
+    width: 80%;
     padding: 12px 20px;
 }
 
 input[type="date" i] {
     padding: 12px 20px;
+    font-size: 16px;
+    width: 70%;
 }
 
 input:focus {

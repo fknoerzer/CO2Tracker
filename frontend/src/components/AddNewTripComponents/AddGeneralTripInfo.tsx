@@ -49,7 +49,7 @@ export default function AddGeneralTripInfo({
                 <h3> Which country are you visiting?</h3>
                 <input className="text-field"
                        type="text"
-                       placeholder="Add Destination Country"
+                       placeholder="Add Country"
                        value={destiniationCountry}
                        onChange={event => setDestiniationCountry(event.target.value)}/>
             </label>
