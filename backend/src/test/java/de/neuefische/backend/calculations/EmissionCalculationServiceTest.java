@@ -2,7 +2,6 @@ package de.neuefische.backend.calculations;
 
 import de.neuefische.backend.dto.TripDto;
 import de.neuefische.backend.model.*;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.util.List;
@@ -14,7 +13,7 @@ class EmissionCalculationServiceTest {
     @Test
     void getNumberOfNights() {
         //When
-     long acutal = EmissionsCalculationService.getNumberOfNights(trip1);
+     long acutal = EmissionsCalculationService.getNumberOfDays(trip1);
 
         //Then
      long expected = 7;

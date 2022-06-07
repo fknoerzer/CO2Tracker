@@ -52,13 +52,13 @@ export default function DetailsPage({deleteTripById, editTrip}: DetailsPageProps
             <Route path="/update/transportation/"
                    element={<UpdateTransportationPage trip={detailedTrip} updateTransportEmissions={updateTransportEmissions}/>}/>
             <Route path="/update/accommodation/"
-                   element={<UpdateAccommodationPage updateAccommodationEmissions={updateAccommodationEmissions}/>}/>
+                   element={<UpdateAccommodationPage trip={detailedTrip} updateAccommodationEmissions={updateAccommodationEmissions}/>}/>
             <Route path="/update/food/"
-                   element={<UpdateFoodPage updateFoodEmissions={updateFoodEmissions}/>}/>
+                   element={<UpdateFoodPage trip={detailedTrip} updateFoodEmissions={updateFoodEmissions}/>}/>
             <Route path="/update/shopping/"
-                   element={<UpdateShoppingPage updateShoppingEmissions={updateShoppingEmissions}/>}/>
+                   element={<UpdateShoppingPage trip={detailedTrip} updateShoppingEmissions={updateShoppingEmissions}/>}/>
             <Route path="/update/activity/"
-                   element={<UpdateActivityPage updateActivityEmissions={updateActivityEmissions}/>}/>
+                   element={<UpdateActivityPage trip={detailedTrip} updateActivityEmissions={updateActivityEmissions}/>}/>
             <Route index element={<div className={"trip-details-page"}>
             {detailedTrip &&
                 <div>

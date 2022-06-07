@@ -1,4 +1,3 @@
-import {useParams} from "react-router-dom";
 import {TripUpdateAccommodationEmissionsDto} from "../model/updateDtos/TripUpdateAccommodationEmissionsDto";
 import AddAccommodationUpdate from "../components/AddUpdate/AddAccommodationUpdate";
 import {Trip} from "../model/Trip";

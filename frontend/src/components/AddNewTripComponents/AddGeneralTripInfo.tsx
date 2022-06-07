@@ -1,3 +1,5 @@
+import "../AddNewTripComponents/styles/AddNewTrip.css"
+
 type TripGeneralInfoProps = {
     title: string
     setTitle: (value: string) => void
@@ -34,47 +36,65 @@ export default function AddGeneralTripInfo({
 
 
     return (
-        <div className={"add-trip-general-info"}>
+        <div className={"add-new-trip-input-overview"}>
 
-            <label className="label-input-newTrip">Trip Title: <input className="text-field" type="title"
-                                                                      placeholder="Add a title for your Trip"
-                                                                      value={title}
-                                                                      onChange={event => setTitle(event.target.value)}/>
+            <label className="label-input-field">
+                <h3> Please choose a title for your new trip </h3>
+                <input className="text-field" type="text"
+                       placeholder="Add title"
+                       value={title}
+                       onChange={event => setTitle(event.target.value)}/>
             </label>
-            <label className="label-input-newTrip">Country of Destination: <input className="text-field"
-                                                                                  type="destinationCountry"
-                                                                                  placeholder="Add your Country of Destination"
-                                                                                  value={destiniationCountry}
-                                                                                  onChange={event => setDestiniationCountry(event.target.value)}/>
+            <label className="label-input-field">
+                <h3> Which country are you visiting?</h3>
+                <input className="text-field"
+                       type="text"
+                       placeholder="Add Country"
+                       value={destiniationCountry}
+                       onChange={event => setDestiniationCountry(event.target.value)}/>
             </label>
-            <label className="label-input-newTrip">Travel Distance: <input className="number-field" type="number"
-                                                                           placeholder="Add your Travel Distance (Round Trip)"  min="0"
-                                                                           step="10" value={distance}
-                                                                           onChange={event => setDistance(Number(event.target.value))}/>
+            <label className="label-input-field">
+                <h3>Please add your travel distance</h3>
+                <input className="number-field"
+                       type="number"
+                       min="0"
+                       step="10"
+                       value={distance}
+                       onChange={event => setDistance(Number(event.target.value))}/> km (Roundtrip)
             </label>
-            <label className="label-input-newTrip"> Number of traveller: <input className="number-field" type="number"
-                                                                                placeholder="Number of Travellers"
-                                                                                min="1" step="1"
-                                                                                value={travellerAmount}
-                                                                                onChange={event => setTravellerAmount(Number(event.target.value))}/>
+            <label className="label-input-field">
+                <h3> How big is your travel group?</h3>
+                <input className="number-field"
+                       type="number"
+                       min="1" step="1"
+                       value={travellerAmount}
+                       onChange={event => setTravellerAmount(Number(event.target.value))}/> person(s)
             </label>
-            <label className="label-input-newTrip">Date of Departure: <input className="text-field"
-                                                                             type="date"
-                                                                             placeholder="Add your Date of Departure"
-                                                                             value={dateOfDeparture}
-                                                                             onChange={event => setDateOfDeparture(event.target.value)}/>
+
+            <label className="label-input-field">
+            <h3> Please enter your travel dates</h3>
+            <div className={"dates-div"}>
+                    <h4>Start Date</h4>
+                    <input className="date-field"
+                           type="date"
+                           value={dateOfDeparture}
+                           onChange={event => setDateOfDeparture(event.target.value)}/>
+                    <h4>End Date</h4>
+                    <input className="date-field"
+                           min={dateOfDeparture}
+                           type="date"
+                           value={dateOfReturning}
+                           onChange={event => setDateOfReturning(event.target.value)}/>
+            </div>
             </label>
-            <label className="label-input-newTrip"> Date of Returning: <input className="text-field"
-                                                                              type="date"
-                                                                              placeholder="Add your Date of Returning"
-                                                                              value={dateOfReturning}
-                                                                              onChange={event => setDateOfReturning(event.target.value)}/>
-            </label>
-            <label className="label-input-newTrip"> Personal CO2 Budget: <input className="number-field" type="number"
-                                                                                placeholder="Add your personal CO2-Budget for this Trip"
-                                                                                min="0"
-                                                                                step="10" value={personalBudget}
-                                                                                onChange={event => setPersonalBudget(Number(event.target.value))}/>
+
+            <label className="label-input-field">
+                <h3> Please set your personal CO<sub>2</sub> budget for your trip</h3>
+                <input className="number-field" type="number"
+                                                                              placeholder="Add your personal CO2-Budget for this Trip"
+                                                                              min="0"
+                                                                              step="10" value={personalBudget}
+                                                                              onChange={event => setPersonalBudget(Number(event.target.value))}/> kg CO<sub>2</sub>-eq.
             </label>
         </div>)
 }

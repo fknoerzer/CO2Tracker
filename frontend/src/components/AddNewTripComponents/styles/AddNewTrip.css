@@ -1,22 +1,85 @@
-body{
-    background: #7EA0AA;
-    color: white;
+
+.add-new-trip-div {
+    width: 100%;
+    height: fit-content;
+    margin-top: 70px;
+    flex-direction: column;
+    align-items: start;
+    justify-items: center;
+    font-size: 16px;
+    display: grid;
+    grid-template-columns: auto;
+    margin-bottom: 5%;
 }
 
-form{
-    color: white;
-    background: #2B4162;
-    border-radius : 20px;
-    flex-grow: 1;
-    margin: 10px;
-    padding: 10px;
-    height: auto;
-}
-input {
+.add-new-trip-input-overview {
+    height:fit-content;
+    width: fit-content;
+    box-sizing: border-box;
+    border-radius: 20px;
+    align-items: center;
     display: flex;
     flex-direction: column;
-   justify-content: center;
-    margin: 3px;
-    padding: 5px;
-    width: auto;
+}
+
+.dates-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.add-new-trip-form {
+    height:fit-content;
+    margin-bottom: 15%;
+}
+
+.label-input-field {
+    margin: 10px;
+    width: 60%;
+    background-color: rgba(192, 192, 192, 0.3);
+    border-radius: 20px;
+}
+
+.button-wrapper {
+    background-color: #7EA0AA;
+    position: fixed;
+    bottom: 0;
+    justify-items: center;
+    align-items: flex-start;
+    height: 80px;
+    width: 100%;
+    display: inline-grid;
+    grid-template-rows: 5%;
+    grid-template-columns: auto auto;
+}
+
+.next-button {
+    grid-column: 2;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 150px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 25px;
+    background-color: #23CE6B;
+}
+.return-button {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 150px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.add-button {
+    grid-column: 2;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 150px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 25px;
+    background-color: #23CE6B;
 }
