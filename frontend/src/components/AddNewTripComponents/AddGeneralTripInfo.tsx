@@ -41,7 +41,7 @@ export default function AddGeneralTripInfo({
             <label className="label-input-field">
                 <h3> Please choose a title for your new trip </h3>
                 <input className="text-field" type="text"
-                       placeholder="Add a title"
+                       placeholder="Add title"
                        value={title}
                        onChange={event => setTitle(event.target.value)}/>
             </label>

@@ -1,7 +1,7 @@
 
 .add-new-trip-div {
     width: 100%;
-    height: 100%;
+    height: fit-content;
     margin-top: 70px;
     flex-direction: column;
     align-items: start;
@@ -9,12 +9,12 @@
     font-size: 16px;
     display: grid;
     grid-template-columns: auto;
-    background-color: #7EA0AA;
+    margin-bottom: 5%;
 }
 
 .add-new-trip-input-overview {
+    height:fit-content;
     width: fit-content;
-    height: fit-content;
     box-sizing: border-box;
     border-radius: 20px;
     align-items: center;
@@ -22,17 +22,16 @@
     flex-direction: column;
 }
 
-.add-new-trip-form {
-    margin-top: 10px;
-    margin-bottom: 70px;
-}
-
 .dates-div {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
 
+.add-new-trip-form {
+    height:fit-content;
+    margin-bottom: 15%;
 }
 
 .label-input-field {
