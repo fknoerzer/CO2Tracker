@@ -92,6 +92,7 @@ public class EmissionsCalculationService {
                 .travellerAmount(editedTrip.getTravellerAmount())
                 .dateOfDeparture(editedTrip.getDateOfDeparture())
                 .dateOfReturning(editedTrip.getDateOfReturning())
+                .numberOfNights(getNumberOfDays(editedTrip))
                 .personalBudget(editedTrip.getPersonalBudget())
                 .transportations(editedTrip.getTransportations())
                 .accommodations(editedTrip.getAccommodations())
