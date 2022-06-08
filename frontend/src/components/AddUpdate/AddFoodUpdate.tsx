@@ -1,15 +1,13 @@
 import {useNavigate} from "react-router-dom";
 import {FormEvent, useState} from "react";
-import {TripUpdateFoodEmissionsDto} from "../../model/updateDtos/TripUpdateFoodEmissionsDto";
 import {Food, Trip} from "../../model/Trip";
 import {putTrip} from "../../service/api-service";
 
 type AddFoodUpdateProps = {
     trip: Trip
-    updateFoodEmissions: (id: string, tripUpdateFoodEmissionsDto: TripUpdateFoodEmissionsDto) => void
 }
 
-export default function AddFoodUpdate({updateFoodEmissions, trip}: AddFoodUpdateProps) {
+export default function AddFoodUpdate({trip}: AddFoodUpdateProps) {
     const navigate = useNavigate()
     const [additionalDays, setAdditionalDays] = useState<number>(0)
     const [typeOfDiet, setTypeOfDiet] = useState<string>(``)

@@ -1,4 +1,3 @@
-import {TripUpdateAccommodationEmissionsDto} from "../../model/updateDtos/TripUpdateAccommodationEmissionsDto";
 import {FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {putTrip} from "../../service/api-service";
@@ -6,11 +5,10 @@ import {Accommodation, Trip} from "../../model/Trip";
 
 type AddAccommodationUpdateProps = {
     trip: Trip
-    updateAccommodationEmissions: (id: string, updateAccommodationEmissions: TripUpdateAccommodationEmissionsDto) => void
 
 }
 
-export default function AddAccommodationUpdate({updateAccommodationEmissions, trip}: AddAccommodationUpdateProps) {
+export default function AddAccommodationUpdate({trip}: AddAccommodationUpdateProps) {
     const navigate = useNavigate()
     const [additionalNights, setAdditionalNights] = useState<number>(0)
     const [typeOfAccommodation, setTypeOfAccommodation] = useState<string>(``)

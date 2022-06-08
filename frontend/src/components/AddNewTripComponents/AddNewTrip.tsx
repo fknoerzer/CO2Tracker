@@ -112,6 +112,11 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
         } else if (!dateOfDeparture) {
             toast.error("Date of Departure for your Trip is required.")
 
+
+        }else if (!destiniationCountry) {
+            toast.error("Country of Destination for your Trip is required.")
+
+
         } else if (!dateOfReturning) {
             toast.error("Date of Return for your Trip is required.")
 

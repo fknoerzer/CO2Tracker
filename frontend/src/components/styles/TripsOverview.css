@@ -1,6 +1,4 @@
-
 div.trip-cards {
-    background: rgba(126, 160, 170);
     display: flex;
     flex-direction: column;
     align-items: center;

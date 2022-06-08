@@ -9,7 +9,7 @@ export default function AddTransportInfo({typeOfTransport,setTypeOfTransport}: T
     return (
         <div className={"add-new-trip-input-overview"}>
             <label className="label-input-field">
-                <h3> Please choose your type of accommodation</h3>
+                <h3> Please choose your type of transportation</h3>
                 <input list="transports" className="text-field" type="typeOfTransport"
                                                                            placeholder=" Type of Transport"
                                                                            value={typeOfTransport}

@@ -1,15 +1,13 @@
 import {useNavigate} from "react-router-dom";
 import {FormEvent, useState} from "react";
-import {TripUpdateShoppingEmissionsDto} from "../../model/updateDtos/TripUpdateShoppingEmissionsDto";
 import {Shopping, Trip} from "../../model/Trip";
 import {putTrip} from "../../service/api-service";
 
 type AddShoppingUpdateProps = {
     trip: Trip
-    updateShoppingEmissions: (id: string, tripUpdateShoppingEmissionsDto: TripUpdateShoppingEmissionsDto) => void
 }
 
-export default function AddShoppingUpdate({updateShoppingEmissions, trip}: AddShoppingUpdateProps) {
+export default function AddShoppingUpdate({trip}: AddShoppingUpdateProps) {
     const navigate = useNavigate()
     const [amountOfClothingItems, setAmountOfClothingItems] = useState<number>(0)
     const [amountOfElectronicItems, setAmountOfElectronicItems] = useState<number>(0)
@@ -23,7 +21,6 @@ export default function AddShoppingUpdate({updateShoppingEmissions, trip}: AddSh
 
         const updatedTrip = {...trip}
 
-
         const newShopping: Shopping = {
             amountOfClothingItems: amountOfClothingItems,
             amountOfElectronicItems: amountOfElectronicItems,
@@ -34,7 +31,6 @@ export default function AddShoppingUpdate({updateShoppingEmissions, trip}: AddSh
         }
 
         updatedTrip.shoppings.push(newShopping)
-
 
         putTrip(updatedTrip)
             .then(() => {

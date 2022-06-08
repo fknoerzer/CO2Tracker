@@ -62,15 +62,27 @@ public class EmissionsCalculationService {
 
     public static double getShoppingEmissions(Trip editedTrip) {
 
-        return editedTrip.getShoppings().stream().mapToDouble(shopping -> (shopping.getAmountOfClothingItems() * EmissionsData.CLOTHING + shopping.getAmountOfElectronicItems() * EmissionsData.ELECTRIC + shopping.getAmountOfSouvenirItems() * EmissionsData.SOUVENIR + shopping.getCustomShoppingItemEmission() * shopping.getAmountOfCustomShoppingItem())).sum();
+        return editedTrip.getShoppings().stream().mapToDouble(shopping ->
+                (shopping.getAmountOfClothingItems() * EmissionsData.CLOTHING +
+                        shopping.getAmountOfElectronicItems() * EmissionsData.ELECTRIC +
+                        shopping.getAmountOfSouvenirItems() * EmissionsData.SOUVENIR +
+                        shopping.getCustomShoppingItemEmission() * shopping.getAmountOfCustomShoppingItem())).sum();
     }
 
     public static double getActivitiesEmissions(Trip editedTrip) {
-        return editedTrip.getActivities().stream().mapToDouble(activities -> (activities.getAmountOfBeautyDays() * EmissionsData.BEAUTY_DAY + activities.getAmountOfSkiingDays() * EmissionsData.SKIING_DAY + activities.getAmountOfGolfRounds() * EmissionsData.GOLF_ROUNDS + activities.getCustomActivityItemEmission() * activities.getAmountOfCustomActivityItem())).sum();
+        return editedTrip.getActivities().stream().mapToDouble(activities ->
+                (activities.getAmountOfBeautyDays() * EmissionsData.BEAUTY_DAY +
+                        activities.getAmountOfSkiingDays() * EmissionsData.SKIING_DAY +
+                        activities.getAmountOfGolfRounds() * EmissionsData.GOLF_ROUNDS +
+                        activities.getCustomActivityItemEmission() * activities.getAmountOfCustomActivityItem())).sum();
     }
 
     public static double getAllEmissions(Trip editedTrip) {
-        return (getTransportationEmissions(editedTrip) + getAccommodationEmissions(editedTrip) + getFoodEmissions(editedTrip) + getShoppingEmissions(editedTrip) + getActivitiesEmissions(editedTrip));
+        return (getTransportationEmissions(editedTrip) +
+                getAccommodationEmissions(editedTrip) +
+                getFoodEmissions(editedTrip) +
+                getShoppingEmissions(editedTrip) +
+                getActivitiesEmissions(editedTrip));
     }
 
     public static Trip transferEditTrip(Trip editedTrip) {

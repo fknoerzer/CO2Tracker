@@ -1,44 +1,50 @@
 import {Trip} from "../model/Trip";
 import {formatDepartureDate, formatReturningDate} from "./Util/FormatedDate";
 import {useNavigate} from "react-router-dom";
+import "../components/styles/TripDetails.css"
+import React from "react";
 
 type TripDetailsProps = {
     trip: Trip;
 }
 
 export default function TripDetails({trip}: TripDetailsProps) {
-
     const navigate = useNavigate()
 
     return (
         <div className="trip-detail-card">
-            <h2>{trip.title} {trip.year}</h2>
-            <div className={"general-info"}>
-                <p>From {formatDepartureDate(trip.dateOfDeparture)} to {formatReturningDate(trip.dateOfReturning)}</p>
-                <p>Total Emissions: {trip.calculatedEmissions.totalEmissions} kg CO2e</p>
-                <p>Your Personal CO<sub>2</sub>: {trip.personalBudget} kg CO2e</p>
+            <h1>{trip.title} {trip.year}</h1>
+            <div className={"total-emissions"}>
+                <p>Total Emissions: {Math.round(trip.calculatedEmissions.totalEmissions)} kg CO<sub>2</sub>-eq.</p>
+                <p>Personal Budget: {trip.personalBudget} kg CO<sub>2</sub>-eq.</p>
             </div>
-            <div className={"transportation-emissions"}>
-                <p>Transportation Emissions: {trip.calculatedEmissions.transportationEmissions} kg CO<sub>2</sub>e</p>
-                <button className={"update-button"} onClick={()=>navigate(`update/transportation`)}>+</button>
+                <div className={"general-info"}>
+                    <p>Destiniation Country: {trip.destiniationCountry}</p>
+                    <p>Dates: From {formatDepartureDate(trip.dateOfDeparture)} to {formatReturningDate(trip.dateOfReturning)}</p>
+                    <p>Number of travellers: {trip.travellerAmount}</p>
             </div>
-            <div className={"accommodation-emissions"}>
-                <p>Accommodation Emissions: {trip.calculatedEmissions.accommodationEmissions} kg CO2<sub>2</sub>e</p>
-                <button className={"update-button"} onClick={()=>navigate(`update/accommodation`)}>+</button>
+            <div className={"emissions-grid"}>
+            <div className={"emissions-info-box"}>
+                <p>Transportation:<br/> {Math.round(trip.calculatedEmissions.transportationEmissions)} kg CO<sub>2</sub>-eq.</p>
+                <button className={"update-button"} onClick={()=>navigate(`update/transportation`)}>Update</button>
             </div>
-            <div className={"food-emissions"}>
-                <p>Food Emissions: {trip.calculatedEmissions.foodEmissions} kg CO<sub>2</sub>e</p>
-                <button className={"update-button"} onClick={()=>navigate(`update/food`)}>+</button>
+            <div className={"emissions-info-box"}>
+                <p>Accommodation:<br/>{Math.round(trip.calculatedEmissions.accommodationEmissions)} kg CO<sub>2</sub>-eq.</p>
+                <button className={"update-button"} onClick={()=>navigate(`update/accommodation`)}>Update</button>
             </div>
-            <div className={"shopping-emissions"}>
-                <p>Shopping Emissions: {trip.calculatedEmissions.shoppingEmissions} kg CO<sub>2</sub>e</p>
-                <button className={"update-button"} onClick={()=>navigate(`update/shopping`)}>+</button>
+            <div className={"emissions-info-box"}>
+                <p>Food:<br/>{Math.round(trip.calculatedEmissions.foodEmissions)} kg CO<sub>2</sub>-eq.</p>
+                <button className={"update-button"} onClick={()=>navigate(`update/food`)}>Update</button>
             </div>
-            <div className={"activity-emissions"}>
-                <p>Activity Emissions: {trip.calculatedEmissions.activityEmissions} kg CO<sub>2</sub>e</p>
-                <button className={"update-button"} onClick={()=>navigate(`update/activity`)}>+</button>
+            <div className={"emissions-info-box"}>
+                <p>Shopping:<br/>{Math.round(trip.calculatedEmissions.shoppingEmissions)} kg CO<sub>2</sub>-eq.</p>
+                <button className={"update-button"} onClick={()=>navigate(`update/shopping`)}>Update</button>
             </div>
-            <br/>
+            <div className={"emissions-info-box"}>
+                <p>Activity:<br/>{Math.round(trip.calculatedEmissions.activityEmissions)} kg CO<sub>2</sub>-eq.</p>
+                <button className={"update-button"} onClick={()=>navigate(`update/activity`)}>Update</button>
+            </div>
+            </div>
         </div>
     )
 }

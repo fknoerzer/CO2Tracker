@@ -1,15 +1,13 @@
 import {FormEvent, useState} from "react";
-import {TripUpdateTransportEmissionsDto} from "../../model/updateDtos/TripUpdateTransportEmissionsDto";
 import {useNavigate} from "react-router-dom";
 import {Transportation, Trip} from "../../model/Trip";
 import {putTrip} from "../../service/api-service";
 
 type AddTransportationUpdateProps = {
     trip: Trip
-    updateTransportEmissions: (id: string, tripUpdateTransportEmissionsDto: TripUpdateTransportEmissionsDto) => void
 }
 
-export default function AddTransportationUpdate({updateTransportEmissions, trip}: AddTransportationUpdateProps) {
+export default function AddTransportationUpdate({trip}: AddTransportationUpdateProps) {
     const navigate = useNavigate()
     const [distance, setDistance] = useState<number>(0)
     const [typeOfTransport, setTypeOfTransport] = useState<string>(``)

@@ -1,15 +1,13 @@
 import {useNavigate} from "react-router-dom";
 import {FormEvent, useState} from "react";
-import {TripUpdateActivityEmissionsDto} from "../../model/updateDtos/TripUpdateActivityEmissionsDto";
 import {Activity, Trip} from "../../model/Trip";
 import {putTrip} from "../../service/api-service";
 
 type AddActivityUpdateProps = {
     trip: Trip
-    updateActivityEmissions: (id: string, tripUpdateActivityEmissionsDto: TripUpdateActivityEmissionsDto) => void
 }
 
-export default function AddActivityUpdate({updateActivityEmissions, trip}: AddActivityUpdateProps) {
+export default function AddActivityUpdate({trip}: AddActivityUpdateProps) {
     const navigate = useNavigate()
     const [amountOfGolfRounds, setAmountOfGolfRounds] = useState<number>(0)
     const [amountOfSkiingDays, setAmountOfSkiingDays] = useState<number>(0)

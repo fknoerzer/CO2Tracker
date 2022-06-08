@@ -56,7 +56,7 @@ export default function AddShoppingInfo({
 
             </label>
             <label className="label-input-field">
-                <h3>Here you can add a custom shopping item</h3>
+                <h3>Here you can add a custom shopping refactor</h3>
                 <input className="text-field"
                        type="text"
                        placeholder="Add Custom Item"
@@ -64,23 +64,23 @@ export default function AddShoppingInfo({
                        onChange={event => setCustomShoppingItem(event.target.value)}/>
             </label>
             <label className="label-input-field">
-                <h3>Here you can add the amount of your custom shopping item</h3>
+                <h3>Here you can add the amount of your custom shopping refactor</h3>
                 <input className="number-field"
                        type="number"
                        placeholder="Add Amount of bought Custom Shopping Items"
                        min="1" step="1"
                        value={amountOfCustomShoppingItem}
-                       onChange={event => setAmountOfCustomShoppingItem(Number(event.target.value))}/> Amount of custom item(s)
+                       onChange={event => setAmountOfCustomShoppingItem(Number(event.target.value))}/> Amount of custom refactor(s)
             </label>
             <label className="label-input-field">
-                <h3>Here you can add the emissions of your custom shopping item</h3>
+                <h3>Here you can add the emissions of your custom shopping refactor</h3>
                 <input className="number-field"
                        type="number"
                        placeholder="Add Emissions of your Custom Shopping Item"
                        min="0" step="0.1"
                        value={customShoppingItemEmission}
                        onChange={event => setCustomShoppingItemEmission(Number(event.target.value))}/> Emissions per
-                item
+                refactor
             </label>
         </div>
     )

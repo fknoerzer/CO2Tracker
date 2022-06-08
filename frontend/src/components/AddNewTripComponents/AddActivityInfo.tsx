@@ -57,28 +57,28 @@ export default function AddActivityInfo({
                                                                      onChange={event => setAmountOfBeautyDays(Number(event.target.value))}/> Spa and wellness day(s)
             </label>
             <label className="label-input-field">
-                <h3> Here you can add a custom activity item </h3>
+                <h3> Here you can add a custom activity trip </h3>
                 <input className="text-field"
                                                                                type="text"
-                                                                               placeholder="Add custom item"
+                                                                               placeholder="Add custom trip"
                                                                                value={customActivityItem}
                                                                                onChange={event => setCustomActivityItem(event.target.value)}/>
             </label>
             <label className="label-input-field">
-                <h3> Here you can add the amount of your custom activity item </h3>
+                <h3> Here you can add the amount of your custom activity trip </h3>
                 <input className="number-field"
                                                                                          type="number"
                                                                                          placeholder="Add Amount of bought Custom Activity Items" min="0" step="1"
                                                                                          value={amountOfCustomActivityItem}
-                                                                                         onChange={event => setAmountOfCustomActivityItem(Number(event.target.value))}/> Amount of custom item(s)
+                                                                                         onChange={event => setAmountOfCustomActivityItem(Number(event.target.value))}/> Amount of custom trip(s)
             </label>
             <label className="label-input-field">
-                <h3> Here you can add the emissions of your custom activity item </h3>
+                <h3> Here you can add the emissions of your custom activity trip </h3>
                 <input className="number-field"
                                                                                             type="number"
                                                                                             placeholder="Add Emissions of your Custom Activity Item" min="0" step="0.1"
                                                                                             value={customActivityItemEmission}
-                                                                                            onChange={event => setCustomActivityItemEmission(Number(event.target.value))}/> Emissions per item
+                                                                                            onChange={event => setCustomActivityItemEmission(Number(event.target.value))}/> Emissions per trip
             </label>
         </div>
     )
