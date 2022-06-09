@@ -30,11 +30,9 @@ export default function TripDetails({trip}: TripDetailsProps) {
             </div>
             <div className={"emissions-info-box"}>
                 <p>Accommodation:<br/>{Math.round(trip.calculatedEmissions.accommodationEmissions)} kg CO<sub>2</sub>-eq.</p>
-                <button className={"update-button"} onClick={()=>navigate(`update/accommodation`)}>Update</button>
             </div>
             <div className={"emissions-info-box"}>
                 <p>Food:<br/>{Math.round(trip.calculatedEmissions.foodEmissions)} kg CO<sub>2</sub>-eq.</p>
-                <button className={"update-button"} onClick={()=>navigate(`update/food`)}>Update</button>
             </div>
             <div className={"emissions-info-box"}>
                 <p>Shopping:<br/>{Math.round(trip.calculatedEmissions.shoppingEmissions)} kg CO<sub>2</sub>-eq.</p>

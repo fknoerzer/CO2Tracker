@@ -18,19 +18,19 @@ type EditGeneralInfoProps = {
 }
 
 export default function EditGeneralTripInfo({
-                                               title,
-                                               setTitle,
-                                               destiniationCountry,
-                                               setDestiniationCountry,
-                                               travellerAmount,
-                                               setTravellerAmount,
-                                               dateOfDeparture,
-                                               setDateOfDeparture,
-                                               dateOfReturning,
-                                               setDateOfReturning,
-                                               personalBudget,
-                                               setPersonalBudget
-                                           }: EditGeneralInfoProps) {
+                                                title,
+                                                setTitle,
+                                                destiniationCountry,
+                                                setDestiniationCountry,
+                                                travellerAmount,
+                                                setTravellerAmount,
+                                                dateOfDeparture,
+                                                setDateOfDeparture,
+                                                dateOfReturning,
+                                                setDateOfReturning,
+                                                personalBudget,
+                                                setPersonalBudget
+                                            }: EditGeneralInfoProps) {
 
 
     return (

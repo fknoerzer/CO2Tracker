@@ -26,20 +26,20 @@ export default function DetailsPage() {
         return (
             <Routes>
 
-                <Route index element={<ShowTripDetails trip={detailedTrip}/>}/>
+                 <Route index element={<ShowTripDetails trip={detailedTrip}/>}/>
 
                 <Route path="/update/transportation/"
                        element={<UpdateTransportationPage trip={detailedTrip}/>}/>
                 <Route path="/update/accommodation/"
                        element={<UpdateAccommodationPage trip={detailedTrip}/>}/>
                 <Route path="/update/food/"
-                       element={<UpdateFoodPage trip={detailedTrip} />}/>
-
+                       element={<UpdateFoodPage trip={detailedTrip}/>}/>
                 <Route path="/update/shopping/"
                        element={<UpdateShoppingPage trip={detailedTrip}/>}/>
                 <Route path="/update/activity/"
                        element={<UpdateActivityPage trip={detailedTrip}/>}/>
-                <Route path="/edit/" element={<EditTripDetails trip={detailedTrip}/>}/>
+                <Route path="/edit/"
+                       element={<EditTripDetails trip={detailedTrip}/>}/>
 
             </Routes>
         )

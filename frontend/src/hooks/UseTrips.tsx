@@ -9,7 +9,7 @@ export default function useTrips() {
 
     useEffect(() => {
         getAllTrips()
-            .then((trips) => setTrips(trips))
+            .then((allTrips) => setTrips(allTrips))
             .catch(() => toast.error("Connection failed. Please try again."));
     }, []);
 

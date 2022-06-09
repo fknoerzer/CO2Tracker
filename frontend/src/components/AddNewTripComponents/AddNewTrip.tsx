@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {FormEvent, useState} from "react";
 import {TripDto} from "../../model/TripDto";
 import "./styles/AddNewTrip.css"
 import AddGeneralTripInfo from "./AddGeneralTripInfo";
@@ -41,8 +41,8 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
     const [count, setCount] = useState<number>(0)
 
 
-    const onAdd = () => {
-
+    const onAdd = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
 
         const newTrip: TripDto = {
             title: title,
@@ -113,7 +113,7 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
             toast.error("Date of Departure for your Trip is required.")
 
 
-        }else if (!destiniationCountry) {
+        } else if (!destiniationCountry) {
             toast.error("Country of Destination for your Trip is required.")
 
 
@@ -145,7 +145,7 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
             case 0: {
                 return (<div className={"add-new-trip-div"}>
                         <h1> Add general infos to your new trip</h1>
-                        <form className={"add-new-trip-form"}>
+                        <div className={"add-new-trip-form"}>
                             <AddGeneralTripInfo title={title}
                                                 setTitle={setTitle} distance={distance}
                                                 setDistance={setDistance}
@@ -159,9 +159,10 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                                                 setDateOfReturning={setDateOfReturning}
                                                 personalBudget={personalBudget}
                                                 setPersonalBudget={setPersonalBudget}/>
-                        </form>
+                        </div>
                         <div className={"button-wrapper"}>
-                            <button type={"button"} className={"return-button"} onClick={() => navigate(`/`)}>Return</button>
+                            <button type={"button"} className={"return-button"} onClick={() => navigate(`/`)}>Return
+                            </button>
                             <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
                         </div>
                     </div>
@@ -170,10 +171,10 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
             case 1: {
                 return (<div className={"add-new-trip-div"}>
                         <h1> Add transport infos to your new trip</h1>
-                        <form className={"add-new-trip-form"}>
+                        <div className={"add-new-trip-form"}>
                             <AddTransportInfo setTypeOfTransport={setTypeOfTransport}
                                               typeOfTransport={typeOfTransport}/>
-                        </form>
+                        </div>
                         <div className={"button-wrapper"}>
                             <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button>
                             <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
@@ -184,10 +185,10 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
             case 2: {
                 return (<div className={"add-new-trip-div"}>
                         <h1> Add accommodation Infos to your new trip</h1>
-                        <form className={"add-new-trip-form"}>
+                        <div className={"add-new-trip-form"}>
                             <AddAccommodationInfo setTypeOfAccommodation={setTypeOfAccommodation}
                                                   typeOfAccommodation={typeOfAccommodation}/>
-                        </form>
+                        </div>
                         <div className={"button-wrapper"}>
                             <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button>
                             <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
@@ -198,9 +199,9 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
             case 3: {
                 return (<div className={"add-new-trip-div"}>
                         <h1> Add diet infos to your new trip</h1>
-                        <form className={"add-new-trip-form"}>
+                        <div className={"add-new-trip-form"}>
                             <AddFoodInfo setTypeOfDiet={setTypeOfDiet} typeOfDiet={typeOfDiet}/>
-                        </form>
+                        </div>
                         <div className={"button-wrapper"}>
                             <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button>
                             <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
@@ -211,7 +212,7 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
             case 4: {
                 return (<div className={"add-new-trip-div"}>
                         <h1> Add shopping infos to your new trip</h1>
-                        <form className={"add-new-trip-form"}>
+                        <div className={"add-new-trip-form"}>
                             <AddShoppingInfo setAmountOfClothingItems={setAmountOfClothingItems}
                                              amountOfClothingItems={amountOfClothingItems}
                                              amountOfElectronicItems={amountOfElectronicItems}
@@ -224,7 +225,7 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                                              setCustomShoppingItemEmission={setCustomShoppingItemEmission}
                                              amountOfSouvenirItems={amountOfSouvenirItems}
                                              setAmountOfSouvenirItems={setAmountOfSouvenirItems}/>
-                        </form>
+                        </div>
                         <div className={"button-wrapper"}>
                             <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button>
                             <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
@@ -236,7 +237,7 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                 return (
                     <div className={"add-new-trip-div"}>
                         <h1> Add activity Infos to your new trip</h1>
-                        <form className={"add-new-trip-form"}>
+                        <div className={"add-new-trip-form"}>
                             <AddActivityInfo amountOfGolfRounds={amountOfGolfRounds}
                                              setAmountOfGolfRounds={setAmountOfGolfRounds}
                                              amountOfSkiingDays={amountOfSkiingDays}
@@ -249,10 +250,10 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                                              setCustomActivityItem={setCustomActivityItem}
                                              amountOfCustomActivityItem={amountOfCustomActivityItem}
                                              setCustomActivityItemEmission={setCustomActivityItemEmission}/>
-                        </form>
+                        </div>
                         <div className={"button-wrapper"}>
                             <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button>
-                            <button type={"button"} className={"add-button"} onClick={onAdd}>Add Trip</button>
+                            <button className={"add-button"}>Add Trip</button>
                         </div>
                     </div>
                 )
@@ -264,6 +265,8 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
     }
 
     return (
-        showComponent()
+        <form onSubmit={onAdd}>
+            {showComponent()}
+        </form>
     )
 }

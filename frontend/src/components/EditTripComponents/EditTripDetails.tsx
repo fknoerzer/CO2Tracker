@@ -1,5 +1,5 @@
 import {Accommodation, Activity, Food, Shopping, Transportation, Trip} from "../../model/Trip";
-import {useState} from "react";
+import {FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {putTrip} from "../../service/api-service";
 import EditGeneralTripInfo from "./EditGeneralTripInfo";
@@ -30,7 +30,8 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
 
     const [count, setCount] = useState<number>(0)
 
-    const onEdit = () => {
+    const onEdit = (event:FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
 
         const editedTrip: Trip = {
             title: title,
@@ -69,7 +70,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
                 setFoods(editedTrip.foods)
                 setActivities(editedTrip.activities)
                 setShoppings(editedTrip.shoppings)
-                navigate(`/`)
+                navigate("/")
             })
             .catch(console.error)
     }
@@ -88,7 +89,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
         switch (count) {
             case 0: {
                 return (
-                    <form>
+                    <div>
                         <EditGeneralTripInfo title={title}
                                              setTitle={setTitle}
                                              distance={distance}
@@ -104,56 +105,56 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
                                              personalBudget={personalBudget}
                                              setPersonalBudget={setPersonalBudget}/>
                         <button type={"button"} className={"next"} onClick={onClickNext}> Next</button>
-                    </form>
+                    </div>
                 )
             }
             case 1: {
                 return (
-                    <form onSubmit={onEdit}>
+                    <div>
                         <EditTransportationInfo transportations={transportations}
                                                 setTransportations={setTransportations}/>
                         <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
                         <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                    </form>
+                    </div>
                 )
             }
 
 
             case 2: {
                 return (
-                    <form onSubmit={onClickNext}>
+                    <div>
                         <EditAccommodationInfo accommodations={accommodations}
                                                setAccommodations={setAccommoadtions}/>
                         <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
                         <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                    </form>
+                    </div>
                 )
             }
             case 3: {
                 return (
-                    <form onSubmit={onClickNext}>
+                    <div>
                         <EditFoodInfo foods={foods} setFoods={setFoods}/>
                         <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
                         <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                    </form>
+                    </div>
                 )
             }
             case 4: {
                 return (
-                    <form onSubmit={onClickNext}>
+                    <div>
                         <EditShoppingInfo setShoppings={setShoppings} shoppings={shoppings}/>
                         <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
                         <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                    </form>
+                    </div>
                 )
             }
             case 5:
                 return (
-                    <form onSubmit={onEdit}>
+                    <div>
                         <EditActivityInfo activities={activities} setActivities={setActivities}/>
                         <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                        <button className={"edit-trip"} onClick={onEdit}>Edit Trip</button>
-                    </form>
+                        <button className={"edit-trip"}>Edit Trip</button>
+                    </div>
                 )
 
             default: {
@@ -162,6 +163,8 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
         }
     }
     return (
-        showComponent()
+        <form onSubmit={onEdit}>
+            {showComponent()}
+        </form>
     )
 }

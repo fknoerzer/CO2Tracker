@@ -25,7 +25,7 @@ export default function ShowTripDetails({trip}: ShowTripDetailsProps) {
                         }}> Delete trip
                         </button>
                         <button onClick={() => {
-                            navigate('/trips/${trip.id}/edit');
+                            navigate('../edit');
                         }}> Edit trip
                         </button>
                     </>}

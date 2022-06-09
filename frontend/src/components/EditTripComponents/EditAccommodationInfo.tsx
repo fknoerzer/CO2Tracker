@@ -8,7 +8,7 @@ type EditAccommodationInfoProps = {
 
 export default function EditAccommodationInfo({accommodations, setAccommodations}: EditAccommodationInfoProps) {
 
-    const handleAccommodationFormChange = (event: ChangeEvent<HTMLInputElement>, index: number) => {
+    const handleAccommodationFormChange = (event: ChangeEvent<HTMLSelectElement>, index: number) => {
         let data: Accommodation[] = [...accommodations];
 
         // @ts-ignore
@@ -21,25 +21,20 @@ export default function EditAccommodationInfo({accommodations, setAccommodations
         <div className={"edit-trip-input-overview"}>
             {accommodations.map((accommodationInput, index) => {
                 return (
-                    <div className={"edit-trip-input-fields"}>
+                    <div key={"typeOfAccommodation" + index} className={"edit-trip-input-fields"}>
                         <label className="label-input-field">
                             <h3> Please choose your type of transportation</h3>
-                            <input
-                                key={"typeOfAccommodation" + index}
-                                list={"accommodations"}
-                                className="text-field"
-                                name={"typeOfAccommodation"}
-                                placeholder=" Type of Accommodation"
-                                value={accommodationInput.typeOfAccommodation}
-                                onChange={event => handleAccommodationFormChange(event, index)}/>
-                            <datalist className="dataList-input-newTrip" id="accommodations">
-                                <option value="Hotel"/>
-                                <option value="House"/>
-                                <option value="Apartment"/>
-                                <option value="Youth Hostel"/>
-                                <option value="Camping Site"/>
-                                <option value="Cruise Ship"/>
-                            </datalist>
+                            <select className="dataList-input-newTrip" value={accommodationInput.typeOfAccommodation}
+                                    name={"typeOfAccommodation"} id="accommodations"
+                                    onChange={event => handleAccommodationFormChange(event, index)}>
+                                <option value="DEFAULT" disabled>Choose here</option>
+                                <option value="Hotel">Hotel</option>
+                                <option value="House">House</option>
+                                <option value="Apartment">Apartment</option>
+                                <option value="Youth Hostel">Youth Hostel</option>
+                                <option value="Camping Site">Camping Site</option>
+                                <option value="Cruise Ship">Cruise Ship</option>
+                            </select>
                         </label>
                     </div>
                 )

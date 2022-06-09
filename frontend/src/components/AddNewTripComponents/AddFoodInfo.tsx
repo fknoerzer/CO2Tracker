@@ -10,18 +10,17 @@ export default function AddFoodInfo({typeOfDiet, setTypeOfDiet}: FoodInfoProps) 
         <div className={"add-new-trip-input-overview"}>
             <label className="label-input-field">
                 <h3> Please choose your type of diet </h3>
-            <input list="diets" className="text-field" type="typeOfTransport"
-                                                                       placeholder="Choose your Type of Transportation"
-                                                                       value={typeOfDiet}
-                                                                       onChange={event => setTypeOfDiet(event.target.value)}/>
             </label>
-            <datalist className="dataList-input-newTrip" id="diets">
-                <option value="Much Meat"/>
-                <option value="Some Meat"/>
-                <option value="Rarely Meat"/>
-                <option value="Vegetarian"/>
-                <option value="Vegan"/>
-            </datalist>
+            <select
+                onChange={event => setTypeOfDiet(event.target.value)} className="dataList-input-newTrip"
+                id="diets" value={typeOfDiet}>
+                <option value="DEFAULT" disabled>Choose here</option>
+                <option value="Much Meat">Much Meat</option>
+                <option value="Some Meat">Some Meat</option>
+                <option value="Rarely Meat">Rarely Meat</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Vegan">Vegan</option>
+            </select>
         </div>
     )
 }

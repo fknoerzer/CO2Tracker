@@ -39,7 +39,7 @@ public class EmissionsCalculationService {
 
     public static double getAccommodationEmissions(Trip editedTrip) {
 
-        return editedTrip.getAccommodations().stream().mapToDouble(Accommodation -> switch (Accommodation.getTypeOfAccommodation()) {
+        return editedTrip.getAccommodations().stream().mapToDouble(accommodation -> switch (accommodation.getTypeOfAccommodation()) {
             case "Hotel" -> (getNumberOfDays(editedTrip) * EmissionsData.HOTEL);
             case "House" -> (getNumberOfDays(editedTrip) * EmissionsData.HOUSE);
             case "Apartment" -> (getNumberOfDays(editedTrip) * EmissionsData.APARTMENT);
@@ -51,7 +51,7 @@ public class EmissionsCalculationService {
 
     public static double getFoodEmissions(Trip editedTrip) {
 
-        return editedTrip.getFoods().stream().mapToDouble(Food -> switch (Food.getTypeOfDiet()) {
+        return editedTrip.getFoods().stream().mapToDouble(food -> switch (food.getTypeOfDiet()) {
             case "Much Meat" -> (getNumberOfDays(editedTrip) * EmissionsData.MUCH_MEAT);
             case "Some Meat" -> (getNumberOfDays(editedTrip) * EmissionsData.SOME_MEAT);
             case "Rarely Meat" -> (getNumberOfDays(editedTrip) * EmissionsData.RARELY_MEAT);

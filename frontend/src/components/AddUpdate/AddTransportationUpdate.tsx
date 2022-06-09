@@ -34,29 +34,27 @@ export default function AddTransportationUpdate({trip}: AddTransportationUpdateP
     }
     return (
         <form className={"update-trip-Transport"} onSubmit={onUpdate}>
-            <label className="label-input-update">Travel Distance: <input className="number-field" type="number"
-                                                                          placeholder="Add your additional Travel Distance."
-                                                                          min="0"
-                                                                          step="10" value={distance}
-                                                                          onChange={event => setDistance(Number(event.target.value))}/>
+            <label className="label-input-update">Travel Distance:
+                <input className="number-field" type="number"
+                       placeholder="Add your additional Travel Distance."
+                       min="0"
+                       step="10" value={distance}
+                       onChange={event => setDistance(Number(event.target.value))}/>
             </label>
-            <label className="label-input-update">Type of Transport: <input list="transports" className="text-field"
-                                                                            type="typeOfTransport"
-                                                                            placeholder="Choose your Type of Transportation."
-                                                                            value={typeOfTransport}
-                                                                            onChange={event => setTypeOfTransport(event.target.value)}/>
-            </label>
-            <datalist className="dataList-input-update" id="transports">
-                <option value="Airplane"/>
-                <option value="Car"/>
-                <option value="Camper"/>
-                <option value="Train"/>
-                <option value="Bus"/>
-                <option value="Motorbike"/>
-                <option value="Ferry"/>
-                <option value="Walking"/>
-            </datalist>
-            <button className={"update-transport"}>Update</button>
+            <label className="label-input-update">Type of Transport:</label>
+            <select className="dataList-input-update" id="transports" value={typeOfTransport}
+                    onChange={event => setTypeOfTransport(event.target.value)}>
+                <option value="DEFAULT" disabled>Choose here</option>
+                <option value="Airplane">Airplane</option>
+                <option value="Car">Car</option>
+                <option value="Camper">Camper</option>
+                <option value="Train">Train</option>
+                <option value="Bus">Bus</option>
+                <option value="Motorbike">Motorbike</option>
+                <option value="Ferry">Ferry</option>
+                <option value="Walking">Walking</option>
+            </select>
+            <button className={"update-button"}>Update</button>
         </form>
     )
 }

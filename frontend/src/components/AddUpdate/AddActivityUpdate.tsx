@@ -83,6 +83,7 @@ export default function AddActivityUpdate({trip}: AddActivityUpdateProps) {
                                                                                               value={customActivityItemEmission}
                                                                                               onChange={event => setCustomActivityItemEmission(Number(event.target.value))}/>
             </label>
+            <button className={"update-button"}>Update</button>
         </form>
     )
 }

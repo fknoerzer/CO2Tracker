@@ -33,8 +33,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<LandingPage/>}/>
                 <Route path="/addtrip" element={<AddTripPage addNewTrip={addNewTrip}/>}/>
-                <Route path={`/trips/:id/*`}
-                       element={<DetailsPage/>}/>
+                <Route path={"/trips/:id/*"} element={<DetailsPage/>}/>
             </Routes>
             </div>
         </HashRouter>

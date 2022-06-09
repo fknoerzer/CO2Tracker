@@ -87,6 +87,7 @@ export default function AddShoppingUpdate({trip}: AddShoppingUpdateProps) {
                                                                                               value={customShoppingItemEmission}
                                                                                               onChange={event => setCustomShoppingItemEmission(Number(event.target.value))}/>
             </label>
+            <button className={"update-button"}>Update</button>
         </form>
     )
 }

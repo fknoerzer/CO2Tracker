@@ -21,7 +21,7 @@ export default function EditActivityInfo({activities, setActivities}: EditActivi
         <div className={"edit-trip-input-overview"}>
             {activities.map((activityInput, index) => {
                 return (
-                    <div className={"edit-trip-input-fields"}>
+                    <div  key={"shopping" + index} className={"edit-trip-input-fields"}>
                         <label className="label-input-field">
                             <h3> Did you play Golf during your Trip? </h3>
                             <input className="number-field"
@@ -50,7 +50,6 @@ export default function EditActivityInfo({activities, setActivities}: EditActivi
                             min="0" step="0.5"
                             value={activityInput.amountOfBeautyDays}
                             onChange={event => handleShoppingFormChange(event, index)}/> Spa and wellness day(s)
-
                         </label>
                         <label className="label-input-field">
                             <h3>Here you can add a custom activity item</h3>

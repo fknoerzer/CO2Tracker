@@ -8,11 +8,11 @@ type EditFoodInfoProps = {
 
 export default function EditFoodInfo({foods, setFoods}: EditFoodInfoProps) {
 
-    const handleTransportFormChange = (event: ChangeEvent<HTMLInputElement>, index: number) => {
+    const handleTransportFormChange = (event: ChangeEvent<HTMLSelectElement>, index: number) => {
         let data: Food[] = [...foods];
 
         // @ts-ignore
-        data[index][event.target.name] =(event.target.value);
+        data[index][event.target.name] = (event.target.value);
         console.log(data);
         setFoods(data);
 
@@ -21,24 +21,18 @@ export default function EditFoodInfo({foods, setFoods}: EditFoodInfoProps) {
         <div className={"edit-trip-input-overview"}>
             {foods.map((foodsInput, index) => {
                 return (
-                    <div className={"edit-trip-input-fields"}>
+                    <div key={"typeOfDiet" + index} className={"edit-trip-input-fields"}>
                         <label className="label-input-field">
                             <h3> Please choose your type of diet</h3>
-                            <input
-                                key={"typeOfDiet" + index}
-                                list={"foods"}
-                                className="text-field"
-                                name={"typeOfDiet"}
-                                placeholder=" Type of Transport"
-                                value={foodsInput.typeOfDiet}
-                                onChange={event => handleTransportFormChange(event, index)}/>
-                            <datalist  className="dataList-input-newTrip" id="foods">
-                                <option value="Much Meat"/>
-                                <option value="Some Meat"/>
-                                <option value="Rarely Meat"/>
-                                <option value="Vegetarian"/>
-                                <option value="Vegan"/>
-                            </datalist>
+                            <select className="dataList-input-newTrip" id="food" value={foodsInput.typeOfDiet}
+                                    name={"typeOfDiet"} onChange={event => handleTransportFormChange(event, index)}>
+                                <option value="DEFAULT" disabled>Choose here</option>
+                                <option value="Much Meat">Much Meat</option>
+                                <option value="Some Meat">Some Meat</option>
+                                <option value="Rarely Meat">Rarely Meat</option>
+                                <option value="Vegetarian">Vegetarian</option>
+                                <option value="Vegan">Vegan</option>
+                            </select>
                         </label>
                     </div>
                 )
