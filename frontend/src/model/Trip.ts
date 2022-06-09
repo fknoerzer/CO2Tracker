@@ -14,18 +14,15 @@ export type Trip = {
     shoppings: Shopping[];
     activities: Activity[];
     calculatedEmissions: CalculatedEmissions
-
 }
 
 export type Transportation = {
     distance: number;
     typeOfTransport: string;
-
 }
 
 export type Accommodation = {
     typeOfAccommodation: string;
-
 }
 
 export type Food = {

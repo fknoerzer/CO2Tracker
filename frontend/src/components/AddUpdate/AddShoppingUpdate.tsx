@@ -49,14 +49,14 @@ export default function AddShoppingUpdate({trip}: AddShoppingUpdateProps) {
             <label className="label-input-update"> Number of Clothing Items: <input className="number-field"
                                                                                      type="number"
                                                                                      placeholder="Add Amount of additional bought Clothes"
-                                                                                     min="1" step="1"
+                                                                                     min="0" step="1"
                                                                                      value={amountOfClothingItems}
                                                                                      onChange={event => setAmountOfClothingItems(Number(event.target.value))}/>
             </label>
             <label className="label-input-update">Number of Electric Items: <input className="number-field"
                                                                                     type="number"
                                                                                     placeholder="Add Amount of additional bought Electronic Devices"
-                                                                                    min="1" step="1"
+                                                                                    min="0" step="1"
                                                                                     value={amountOfElectronicItems}
                                                                                     onChange={event => setAmountOfElectronicItems(Number(event.target.value))}/>
             </label>
@@ -76,7 +76,7 @@ export default function AddShoppingUpdate({trip}: AddShoppingUpdateProps) {
             <label className="label-input-update"> Amount of Custom Shopping Item: <input className="number-field"
                                                                                            type="number"
                                                                                            placeholder="Add Amount of additional bought Custom Shopping Items"
-                                                                                           min="1" step="1"
+                                                                                           min="0" step="1"
                                                                                            value={amountOfCustomShoppingItem}
                                                                                            onChange={event => setAmountOfCustomShoppingItem(Number(event.target.value))}/>
             </label>

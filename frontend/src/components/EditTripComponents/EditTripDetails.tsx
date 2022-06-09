@@ -1,9 +1,13 @@
 import {Accommodation, Activity, Food, Shopping, Transportation, Trip} from "../../model/Trip";
-import { useState} from "react";
+import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {putTrip} from "../../service/api-service";
 import EditGeneralTripInfo from "./EditGeneralTripInfo";
 import EditTransportationInfo from "./EditTransportationInfo";
+import EditAccommodationInfo from "./EditAccommodationInfo";
+import EditFoodInfo from "./EditFoodInfo";
+import EditShoppingInfo from "./EditShoppingInfo";
+import EditActivityInfo from "./EditActivityInfo";
 
 type EditTripDetailsProps = {
     trip: Trip
@@ -70,121 +74,94 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
             .catch(console.error)
     }
 
-        const onClickNext = () => {
-            setCount(count + 1)
-            showComponent()
-        }
+    const onClickNext = () => {
+        setCount(count + 1)
+        showComponent()
+    }
 
-        const onClickReturn = () => {
-            setCount(count - 1)
-            showComponent()
-        }
+    const onClickReturn = () => {
+        setCount(count - 1)
+        showComponent()
+    }
 
-        const showComponent = () => {
-            switch (count) {
-                case 0: {
-                    return (
-                        <form>
-                            <EditGeneralTripInfo title={title}
-                                                 setTitle={setTitle}
-                                                 distance={distance}
-                                                 setDistance={setDistance}
-                                                 destiniationCountry={destiniationCountry}
-                                                 setDestiniationCountry={setDestiniationCountry}
-                                                 travellerAmount={travellerAmount}
-                                                 setTravellerAmount={setTravellerAmount}
-                                                 dateOfDeparture={dateOfDeparture}
-                                                 setDateOfDeparture={setDateOfDeparture}
-                                                 dateOfReturning={dateOfReturning}
-                                                 setDateOfReturning={setDateOfReturning}
-                                                 personalBudget={personalBudget}
-                                                 setPersonalBudget={setPersonalBudget}/>
-                            <button type={"button"} className={"next"} onClick={onClickNext}> Next</button>
-                        </form>
-                    )
-                }
-                 case 1: {
-                    return (
-                        <form onSubmit={onEdit}>
-                            <EditTransportationInfo transportations={transportations} setTransportations={setTransportations}/>
-                            <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
-                            <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                        </form>
-                    )}
-                 default: {
-                         return (<div>"Error"</div>)
-                     }
-                }
-                /*case 2: {
-                    return (
-                        <form onSubmit={onClickNext}>
-                            <AddAccommodationInfo setTypeOfAccommodation={setTypeOfAccommodation}
-                                                  typeOfAccommodation={typeOfAccommodation}/>
-                            <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
-                            <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                        </form>
-                    )
-                }
-                case 3: {
-                    return (
-                        <form onSubmit={onClickNext}>
-                            <AddFoodInfo setTypeOfDiet={setTypeOfDiet} typeOfDiet={typeOfDiet}/>
-                            <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
-                            <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                        </form>
-                    )
-                }
-                case 4: {
-                    return (
-                        <form onSubmit={onClickNext}>
-                            <AddShoppingInfo setAmountOfClothingItems={setAmountOfClothingItems}
-                                             amountOfClothingItems={amountOfClothingItems}
-                                             amountOfElectronicItems={amountOfElectronicItems}
-                                             setAmountOfElectronicItems={setAmountOfElectronicItems}
-                                             amountOfCustomShoppingItem={amountOfCustomShoppingItem}
-                                             setAmountOfCustomShoppingItem={setAmountOfCustomShoppingItem}
-                                             customShoppingItem={customShoppingItem}
-                                             setCustomShoppingItem={setCustomShoppingItem}
-                                             customShoppingItemEmission={customShoppingItemEmission}
-                                             setCustomShoppingItemEmission={setCustomShoppingItemEmission}
-                                             amountOfSouvenirItems={amountOfSouvenirItems}
-                                             setAmountOfSouvenirItems={setAmountOfSouvenirItems}/>
-                            <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
-                            <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                        </form>
-                    )
-                }
-                case 5:
-                    return (
-                        <form onSubmit={onEdit}>
-                            <AddActivityInfo amountOfGolfRounds={amountOfGolfRounds}
-                                             setAmountOfGolfRounds={setAmountOfGolfRounds}
-                                             amountOfSkiingDays={amountOfSkiingDays}
-                                             setAmountOfSkiingDays={setAmountOfSkiingDays}
-                                             amountOfBeautyDays={amountOfBeautyDays}
-                                             setAmountOfBeautyDays={setAmountOfBeautyDays}
-                                             customActivityItem={customActivityItem}
-                                             setAmountOfCustomActivityItem={setAmountOfCustomActivityItem}
-                                             customActivityItemEmission={customActivityItemEmission}
-                                             setCustomActivityItem={setCustomActivityItem}
-                                             amountOfCustomActivityItem={amountOfCustomActivityItem}
-                                             setCustomActivityItemEmission={setCustomActivityItemEmission}/>
-                            <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                            <button className={"add-trip"} onClick={onEdit}>Edit Trip</button>
-                        </form>
-                    )
+    const showComponent = () => {
+        switch (count) {
+            case 0: {
+                return (
+                    <form>
+                        <EditGeneralTripInfo title={title}
+                                             setTitle={setTitle}
+                                             distance={distance}
+                                             setDistance={setDistance}
+                                             destiniationCountry={destiniationCountry}
+                                             setDestiniationCountry={setDestiniationCountry}
+                                             travellerAmount={travellerAmount}
+                                             setTravellerAmount={setTravellerAmount}
+                                             dateOfDeparture={dateOfDeparture}
+                                             setDateOfDeparture={setDateOfDeparture}
+                                             dateOfReturning={dateOfReturning}
+                                             setDateOfReturning={setDateOfReturning}
+                                             personalBudget={personalBudget}
+                                             setPersonalBudget={setPersonalBudget}/>
+                        <button type={"button"} className={"next"} onClick={onClickNext}> Next</button>
+                    </form>
+                )
+            }
+            case 1: {
+                return (
+                    <form onSubmit={onEdit}>
+                        <EditTransportationInfo transportations={transportations}
+                                                setTransportations={setTransportations}/>
+                        <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
+                        <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
+                    </form>
+                )
+            }
 
-                default: {
-                    return (<div>"Error"</div>)
-                }
+
+            case 2: {
+                return (
+                    <form onSubmit={onClickNext}>
+                        <EditAccommodationInfo accommodations={accommodations}
+                                               setAccommodations={setAccommoadtions}/>
+                        <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
+                        <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
+                    </form>
+                )
+            }
+            case 3: {
+                return (
+                    <form onSubmit={onClickNext}>
+                        <EditFoodInfo foods={foods} setFoods={setFoods}/>
+                        <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
+                        <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
+                    </form>
+                )
+            }
+            case 4: {
+                return (
+                    <form onSubmit={onClickNext}>
+                        <EditShoppingInfo setShoppings={setShoppings} shoppings={shoppings}/>
+                        <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
+                        <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
+                    </form>
+                )
+            }
+            case 5:
+                return (
+                    <form onSubmit={onEdit}>
+                        <EditActivityInfo activities={activities} setActivities={setActivities}/>
+                        <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
+                        <button className={"edit-trip"} onClick={onEdit}>Edit Trip</button>
+                    </form>
+                )
+
+            default: {
+                return (<div>"Error"</div>)
             }
         }
-        return (
-            showComponent()
-        )*/
-            }
+    }
     return (
         showComponent()
     )
-        }
-
+}

@@ -20,8 +20,6 @@ type EditGeneralInfoProps = {
 export default function EditGeneralTripInfo({
                                                title,
                                                setTitle,
-                                               distance,
-                                               setDistance,
                                                destiniationCountry,
                                                setDestiniationCountry,
                                                travellerAmount,
@@ -53,15 +51,7 @@ export default function EditGeneralTripInfo({
                        value={destiniationCountry}
                        onChange={event => setDestiniationCountry(event.target.value)}/>
             </label>
-            <label className="label-input-field">
-                <h3>Please add your travel distance</h3>
-                <input className="number-field"
-                       type="number"
-                       min="0"
-                       step="10"
-                       value={distance}
-                       onChange={event => setDistance(Number(event.target.value))}/> km (Roundtrip)
-            </label>
+
             <label className="label-input-field">
                 <h3> How big is your travel group?</h3>
                 <input className="number-field"
