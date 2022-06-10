@@ -40,7 +40,6 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
     const [amountOfCustomActivityItem, setAmountOfCustomActivityItem] = useState<number>(0)
     const [count, setCount] = useState<number>(0)
 
-
     const onAdd = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
@@ -143,7 +142,8 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
     const showComponent = () => {
         switch (count) {
             case 0: {
-                return (<div className={"add-new-trip-div"}>
+                return (
+                    <div className={"add-new-trip-div"}>
                         <h1> Add general infos to your new trip</h1>
                         <div className={"add-new-trip-form"}>
                             <AddGeneralTripInfo title={title}
@@ -169,7 +169,8 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                 )
             }
             case 1: {
-                return (<div className={"add-new-trip-div"}>
+                return (
+                    <div className={"add-new-trip-div"}>
                         <h1> Add transport infos to your new trip</h1>
                         <div className={"add-new-trip-form"}>
                             <AddTransportInfo setTypeOfTransport={setTypeOfTransport}
@@ -183,7 +184,8 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                 )
             }
             case 2: {
-                return (<div className={"add-new-trip-div"}>
+                return (
+                    <div className={"add-new-trip-div"}>
                         <h1> Add accommodation Infos to your new trip</h1>
                         <div className={"add-new-trip-form"}>
                             <AddAccommodationInfo setTypeOfAccommodation={setTypeOfAccommodation}
@@ -197,7 +199,8 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                 )
             }
             case 3: {
-                return (<div className={"add-new-trip-div"}>
+                return (
+                    <div className={"add-new-trip-div"}>
                         <h1> Add diet infos to your new trip</h1>
                         <div className={"add-new-trip-form"}>
                             <AddFoodInfo setTypeOfDiet={setTypeOfDiet} typeOfDiet={typeOfDiet}/>
@@ -210,7 +213,8 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                 )
             }
             case 4: {
-                return (<div className={"add-new-trip-div"}>
+                return (
+                    <div className={"add-new-trip-div"}>
                         <h1> Add shopping infos to your new trip</h1>
                         <div className={"add-new-trip-form"}>
                             <AddShoppingInfo setAmountOfClothingItems={setAmountOfClothingItems}

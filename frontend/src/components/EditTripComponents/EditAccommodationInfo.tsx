@@ -17,7 +17,6 @@ export default function EditAccommodationInfo({accommodations, setAccommodations
         setAccommodations(data);
     }
     return (
-
         <div className={"edit-trip-input-overview"}>
             {accommodations.map((accommodationInput, index) => {
                 return (

@@ -83,7 +83,7 @@ export default function AddShoppingInfo({
                 item(s)
             </label>
             <label className="label-input-field">
-                <h3>Here you can add the emissions of your custom shopping refactor</h3>
+                <h3>Here you can add the emissions of your custom shopping item</h3>
                 <input className="number-field"
                        type="number"
                        placeholder="Add Emissions of your Custom Shopping Item"

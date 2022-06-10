@@ -2,7 +2,6 @@ package de.neuefische.backend.calculations;
 
 public class EmissionsData {
 
-
     public static final double AIRPLANE = 0.4;
     public static final double CAR = 0.12;
     public static final double CAMPER = 0.2;

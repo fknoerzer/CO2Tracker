@@ -32,6 +32,7 @@ export default function EditShoppingInfo({shoppings, setShoppings}: EditShopping
                                    value={shoppingInput.amountOfClothingItems}
                                    onChange={event => handleShoppingFormChange(event, index)}/> Amount of clothes
                         </label>
+
                         <label className="label-input-field">
                             <h3> Did you buy new electronics? </h3>
                             <input className="number-field"
@@ -40,9 +41,9 @@ export default function EditShoppingInfo({shoppings, setShoppings}: EditShopping
                                    placeholder="Add Amount of bought Electronic Devices"
                                    min="0" step="1"
                                    value={shoppingInput.amountOfElectronicItems}
-                                   onChange={event => handleShoppingFormChange(event, index)}/> Amount
-                            of electronics
+                                   onChange={event => handleShoppingFormChange(event, index)}/> Amount of electronics
                         </label>
+
                         <label className="label-input-field"><h3>Did you buy any liquor, beer or wine?</h3> <input
                             className="number-field"
                             type="number"
@@ -51,8 +52,8 @@ export default function EditShoppingInfo({shoppings, setShoppings}: EditShopping
                             min="0" step="0.5"
                             value={shoppingInput.amountOfSouvenirItems}
                             onChange={event => handleShoppingFormChange(event, index)}/> Liters
-
                         </label>
+
                         <label className="label-input-field">
                             <h3>Here you can add a custom shopping item</h3>
                             <input className="text-field"
@@ -62,6 +63,7 @@ export default function EditShoppingInfo({shoppings, setShoppings}: EditShopping
                                    value={shoppingInput.customShoppingItem}
                                    onChange={event => handleShoppingFormChange(event, index)}/>
                         </label>
+
                         <label className="label-input-field">
                             <h3>Here you can add the amount of your custom shopping item</h3>
                             <input className="number-field"
@@ -70,9 +72,9 @@ export default function EditShoppingInfo({shoppings, setShoppings}: EditShopping
                                    placeholder="Add Amount of bought Custom Shopping Items"
                                    min="0" step="1"
                                    value={shoppingInput.amountOfCustomShoppingItem}
-                                   onChange={event => handleShoppingFormChange(event, index)}/> Amount
-                            of custom item(s)
+                                   onChange={event => handleShoppingFormChange(event, index)}/> Amount of custom item(s)
                         </label>
+
                         <label className="label-input-field">
                             <h3>Here you can add the emissions of your custom shopping item</h3>
                             <input className="number-field"
@@ -81,9 +83,7 @@ export default function EditShoppingInfo({shoppings, setShoppings}: EditShopping
                                    placeholder="Add Emissions of your Custom Shopping Item"
                                    min="0" step="0.1"
                                    value={shoppingInput.customShoppingItemEmission}
-                                   onChange={event => handleShoppingFormChange(event, index)}/> Emissions
-                            per
-                            item
+                                   onChange={event => handleShoppingFormChange(event, index)}/> Emissions per item
                         </label>
                     </div>)
             })})
