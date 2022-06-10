@@ -4,6 +4,7 @@ import de.neuefische.backend.dto.TripDto;
 import de.neuefische.backend.model.*;
 import de.neuefische.backend.repository.TripRepo;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class TripServiceTest {
 
     private final TripRepo tripRepo = mock(TripRepo.class);
@@ -57,7 +58,7 @@ class TripServiceTest {
         verify(tripRepo).deleteById("1");
     }
 
-/*    @Test
+  @Test
     void editTrip() {
         //Given
         when(tripRepo.existsById(trip1.getId())).thenReturn(true);
@@ -69,7 +70,7 @@ class TripServiceTest {
 
         assertEquals(trip1, actual);
 
-    }*/
+    }
 
     Trip trip1 = Trip.builder()
             .title("Rom 2022")

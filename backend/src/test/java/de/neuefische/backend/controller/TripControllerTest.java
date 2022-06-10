@@ -1,14 +1,16 @@
 package de.neuefische.backend.controller;
 
-
 import de.neuefische.backend.dto.TripDto;
 import de.neuefische.backend.model.*;
 import de.neuefische.backend.repository.TripRepo;
+import de.neuefische.backend.security.model.AppUser;
+import de.neuefische.backend.security.repository.AppUserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import java.time.LocalDate;
@@ -20,19 +22,28 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class TripControllerTest {
 
+    private String jwtToken;
+
+    @Autowired
+    private AppUserRepository appUserRepository;
+
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     @LocalServerPort
     private int port;
 
     @Autowired
     private WebTestClient webTestClient;
 
-
     @Autowired
     private TripRepo tripRepo;
 
     @BeforeEach
-    public void cleanUp() {
+    public void cleanUp(){
         tripRepo.deleteAll();
+        appUserRepository.deleteAll();
+        jwtToken = generateJWTToken();
     }
 
     @Test
@@ -44,8 +55,9 @@ class TripControllerTest {
         tripRepo.insert(trip2);
 
         //When
-        List<de.neuefische.backend.model.Trip> actual = webTestClient.get()
+        List<Trip> actual = webTestClient.get()
                 .uri("/api/trips")
+                .headers(http -> http.setBearerAuth(jwtToken))
                 .exchange()
                 .expectStatus().is2xxSuccessful()
                 .expectBodyList(de.neuefische.backend.model.Trip.class)
@@ -65,6 +77,7 @@ class TripControllerTest {
         Trip actual = webTestClient.post()
                 .uri("http://localhost:" + port + "/api/trips")
                 .bodyValue(tripDto1)
+                .headers(http -> http.setBearerAuth(jwtToken))
                 .exchange()
                 .expectStatus().is2xxSuccessful()
                 .expectBody(Trip.class)
@@ -90,6 +103,7 @@ class TripControllerTest {
         //When
         webTestClient.delete()
                 .uri("http://localhost:" + port + "/api/trips/" + 1)
+                .headers(http -> http.setBearerAuth(jwtToken))
                 .exchange()
 
                 //Then
@@ -248,6 +262,29 @@ class TripControllerTest {
                     .customActivityItemEmission(0.0)
                     .build()))
             .build();
+    private String generateJWTToken() {
+        String hashedPassword = passwordEncoder.encode("passwort");
+        AppUser testUser = AppUser.builder()
+                .username("testuser")
+                .id("123")
+                .password(hashedPassword)
+                .build();
+        appUserRepository.save(testUser);
+
+        return webTestClient.post()
+                .uri("/auth/login")
+                .bodyValue(AppUser.builder()
+                        .username("testuser")
+                        .id("123")
+                        .password("passwort")
+                        .build())
+                .exchange()
+                .expectBody(String.class)
+                .returnResult()
+                .getResponseBody();
+    }
 }
+
+
 
 
