@@ -30,7 +30,7 @@ class AppUserAuthControllerTest {
     WebTestClient webTestClient;
 
     @BeforeEach
-    void setUp() {
+    void cleanUp() {
         appUserRepository.deleteAll();
     }
 
@@ -71,7 +71,7 @@ class AppUserAuthControllerTest {
                 .uri("/auth/login")
                 .bodyValue(AppUser.builder()
                         .username("test_username")
-                        .password("WRONG_PASSWORD")
+                        .password("wrong_password")
                         .build())
                 .exchange()
                 .expectStatus().isEqualTo(HttpStatus.FORBIDDEN);
