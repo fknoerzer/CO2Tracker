@@ -3,7 +3,6 @@ package de.neuefische.backend.security.service;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
@@ -14,8 +13,8 @@ import java.util.HashMap;
 @Service
 public class JWTUtilService {
 
-    @Value("${holiday.tracker.jwt.secret}")
-    private String JWT_SECRET;
+
+    private String JWT_SECRET="dG9sbGVzLXNlY3JldC1kZXMtY2duLTIyLTEtamF2YS1rdXJzLTkwMDA=";
 
     public String createToken(String username){
 

@@ -1,7 +1,6 @@
 package de.neuefische.backend.security.filter;
 
 import de.neuefische.backend.security.service.JWTUtilService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -16,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@Slf4j
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
 
@@ -35,11 +33,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             if (token != null && !token.isBlank()) {
                 String username = jwtUtilService.extractUsername(token);
                 setContext(username);
+                logger.info("Token is null or blank.");
             }
-
         }
         catch (Exception ex) {
-            log.error("JWT error. " +ex.getMessage());
+            logger.error("JWT invalid." + ex.getMessage());
         }
 
         filterChain.doFilter(request, response);
