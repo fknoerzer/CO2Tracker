@@ -1,15 +1,13 @@
 import {useNavigate} from "react-router-dom";
 import {FormEvent, useState} from "react";
-import {TripUpdateFoodEmissionsDto} from "../../model/updateDtos/TripUpdateFoodEmissionsDto";
 import {Food, Trip} from "../../model/Trip";
 import {putTrip} from "../../service/api-service";
 
 type AddFoodUpdateProps = {
     trip: Trip
-    updateFoodEmissions: (id: string, tripUpdateFoodEmissionsDto: TripUpdateFoodEmissionsDto) => void
 }
 
-export default function AddFoodUpdate({updateFoodEmissions, trip}: AddFoodUpdateProps) {
+export default function AddFoodUpdate({trip}: AddFoodUpdateProps) {
     const navigate = useNavigate()
     const [additionalDays, setAdditionalDays] = useState<number>(0)
     const [typeOfDiet, setTypeOfDiet] = useState<string>(``)
@@ -45,14 +43,15 @@ export default function AddFoodUpdate({updateFoodEmissions, trip}: AddFoodUpdate
                                                                          value={typeOfDiet}
                                                                          onChange={event => setTypeOfDiet(event.target.value)}/>
             </label>
-            <datalist className="dataList-input-update" id="diets">
-                <option value="Much Meat"/>
-                <option value="Some Meat"/>
-                <option value="Rarely Meat"/>
-                <option value="Vegetarian"/>
-                <option value="Vegan"/>
-            </datalist>
-            <button className={"update-food"}>Update</button>
+            <select className="dataList-input-update" id="diets">
+                <option value="DEFAULT" disabled>Choose here</option>
+                <option value="Much Meat">Much Meat</option>
+                <option value="Some Meat">Some Meat</option>
+                <option value="Rarely Meat">Rarely Meat</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Vegan">Vegan</option>
+            </select>
+            <button className={"update-button"}>Update</button>
         </form>
     )
 }

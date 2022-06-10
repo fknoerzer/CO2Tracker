@@ -39,7 +39,7 @@ public class EmissionsCalculationService {
 
     public static double getAccommodationEmissions(Trip editedTrip) {
 
-        return editedTrip.getAccommodations().stream().mapToDouble(Accommodation -> switch (Accommodation.getTypeOfAccommodation()) {
+        return editedTrip.getAccommodations().stream().mapToDouble(accommodation -> switch (accommodation.getTypeOfAccommodation()) {
             case "Hotel" -> (getNumberOfDays(editedTrip) * EmissionsData.HOTEL);
             case "House" -> (getNumberOfDays(editedTrip) * EmissionsData.HOUSE);
             case "Apartment" -> (getNumberOfDays(editedTrip) * EmissionsData.APARTMENT);
@@ -51,7 +51,7 @@ public class EmissionsCalculationService {
 
     public static double getFoodEmissions(Trip editedTrip) {
 
-        return editedTrip.getFoods().stream().mapToDouble(Food -> switch (Food.getTypeOfDiet()) {
+        return editedTrip.getFoods().stream().mapToDouble(food -> switch (food.getTypeOfDiet()) {
             case "Much Meat" -> (getNumberOfDays(editedTrip) * EmissionsData.MUCH_MEAT);
             case "Some Meat" -> (getNumberOfDays(editedTrip) * EmissionsData.SOME_MEAT);
             case "Rarely Meat" -> (getNumberOfDays(editedTrip) * EmissionsData.RARELY_MEAT);
@@ -62,15 +62,27 @@ public class EmissionsCalculationService {
 
     public static double getShoppingEmissions(Trip editedTrip) {
 
-        return editedTrip.getShoppings().stream().mapToDouble(shopping -> (shopping.getAmountOfClothingItems() * EmissionsData.CLOTHING + shopping.getAmountOfElectronicItems() * EmissionsData.ELECTRIC + shopping.getAmountOfSouvenirItems() * EmissionsData.SOUVENIR + shopping.getCustomShoppingItemEmission() * shopping.getAmountOfCustomShoppingItem())).sum();
+        return editedTrip.getShoppings().stream().mapToDouble(shopping ->
+                (shopping.getAmountOfClothingItems() * EmissionsData.CLOTHING +
+                        shopping.getAmountOfElectronicItems() * EmissionsData.ELECTRIC +
+                        shopping.getAmountOfSouvenirItems() * EmissionsData.SOUVENIR +
+                        shopping.getCustomShoppingItemEmission() * shopping.getAmountOfCustomShoppingItem())).sum();
     }
 
     public static double getActivitiesEmissions(Trip editedTrip) {
-        return editedTrip.getActivities().stream().mapToDouble(activities -> (activities.getAmountOfBeautyDays() * EmissionsData.BEAUTY_DAY + activities.getAmountOfSkiingDays() * EmissionsData.SKIING_DAY + activities.getAmountOfGolfRounds() * EmissionsData.GOLF_ROUNDS + activities.getCustomActivityItemEmission() * activities.getAmountOfCustomActivityItem())).sum();
+        return editedTrip.getActivities().stream().mapToDouble(activities ->
+                (activities.getAmountOfBeautyDays() * EmissionsData.BEAUTY_DAY +
+                        activities.getAmountOfSkiingDays() * EmissionsData.SKIING_DAY +
+                        activities.getAmountOfGolfRounds() * EmissionsData.GOLF_ROUNDS +
+                        activities.getCustomActivityItemEmission() * activities.getAmountOfCustomActivityItem())).sum();
     }
 
     public static double getAllEmissions(Trip editedTrip) {
-        return (getTransportationEmissions(editedTrip) + getAccommodationEmissions(editedTrip) + getFoodEmissions(editedTrip) + getShoppingEmissions(editedTrip) + getActivitiesEmissions(editedTrip));
+        return (getTransportationEmissions(editedTrip) +
+                getAccommodationEmissions(editedTrip) +
+                getFoodEmissions(editedTrip) +
+                getShoppingEmissions(editedTrip) +
+                getActivitiesEmissions(editedTrip));
     }
 
     public static Trip transferEditTrip(Trip editedTrip) {

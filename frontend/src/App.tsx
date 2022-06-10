@@ -6,8 +6,7 @@ import useTrips from "./hooks/UseTrips";
 import {Routes, Route, HashRouter} from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import {Navbar} from "./components/Navbar";
-import {deleteTripById, putTrip,
-} from "./service/api-service";
+
 
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -34,8 +33,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<LandingPage/>}/>
                 <Route path="/addtrip" element={<AddTripPage addNewTrip={addNewTrip}/>}/>
-                <Route path={`/trips/:id/*`}
-                       element={<DetailsPage deleteTripById={deleteTripById} editTrip={putTrip}/>}/>
+                <Route path={"/trips/:id/*"} element={<DetailsPage/>}/>
             </Routes>
             </div>
         </HashRouter>

@@ -1,15 +1,13 @@
 import {useNavigate} from "react-router-dom";
 import {FormEvent, useState} from "react";
-import {TripUpdateShoppingEmissionsDto} from "../../model/updateDtos/TripUpdateShoppingEmissionsDto";
 import {Shopping, Trip} from "../../model/Trip";
 import {putTrip} from "../../service/api-service";
 
 type AddShoppingUpdateProps = {
     trip: Trip
-    updateShoppingEmissions: (id: string, tripUpdateShoppingEmissionsDto: TripUpdateShoppingEmissionsDto) => void
 }
 
-export default function AddShoppingUpdate({updateShoppingEmissions, trip}: AddShoppingUpdateProps) {
+export default function AddShoppingUpdate({trip}: AddShoppingUpdateProps) {
     const navigate = useNavigate()
     const [amountOfClothingItems, setAmountOfClothingItems] = useState<number>(0)
     const [amountOfElectronicItems, setAmountOfElectronicItems] = useState<number>(0)
@@ -23,7 +21,6 @@ export default function AddShoppingUpdate({updateShoppingEmissions, trip}: AddSh
 
         const updatedTrip = {...trip}
 
-
         const newShopping: Shopping = {
             amountOfClothingItems: amountOfClothingItems,
             amountOfElectronicItems: amountOfElectronicItems,
@@ -34,7 +31,6 @@ export default function AddShoppingUpdate({updateShoppingEmissions, trip}: AddSh
         }
 
         updatedTrip.shoppings.push(newShopping)
-
 
         putTrip(updatedTrip)
             .then(() => {
@@ -53,14 +49,14 @@ export default function AddShoppingUpdate({updateShoppingEmissions, trip}: AddSh
             <label className="label-input-update"> Number of Clothing Items: <input className="number-field"
                                                                                      type="number"
                                                                                      placeholder="Add Amount of additional bought Clothes"
-                                                                                     min="1" step="1"
+                                                                                     min="0" step="1"
                                                                                      value={amountOfClothingItems}
                                                                                      onChange={event => setAmountOfClothingItems(Number(event.target.value))}/>
             </label>
             <label className="label-input-update">Number of Electric Items: <input className="number-field"
                                                                                     type="number"
                                                                                     placeholder="Add Amount of additional bought Electronic Devices"
-                                                                                    min="1" step="1"
+                                                                                    min="0" step="1"
                                                                                     value={amountOfElectronicItems}
                                                                                     onChange={event => setAmountOfElectronicItems(Number(event.target.value))}/>
             </label>
@@ -80,7 +76,7 @@ export default function AddShoppingUpdate({updateShoppingEmissions, trip}: AddSh
             <label className="label-input-update"> Amount of Custom Shopping Item: <input className="number-field"
                                                                                            type="number"
                                                                                            placeholder="Add Amount of additional bought Custom Shopping Items"
-                                                                                           min="1" step="1"
+                                                                                           min="0" step="1"
                                                                                            value={amountOfCustomShoppingItem}
                                                                                            onChange={event => setAmountOfCustomShoppingItem(Number(event.target.value))}/>
             </label>
@@ -91,6 +87,7 @@ export default function AddShoppingUpdate({updateShoppingEmissions, trip}: AddSh
                                                                                               value={customShoppingItemEmission}
                                                                                               onChange={event => setCustomShoppingItemEmission(Number(event.target.value))}/>
             </label>
+            <button className={"update-button"}>Update</button>
         </form>
     )
 }

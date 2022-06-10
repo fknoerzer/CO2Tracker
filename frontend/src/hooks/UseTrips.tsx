@@ -9,7 +9,7 @@ export default function useTrips() {
 
     useEffect(() => {
         getAllTrips()
-            .then((trips) => setTrips(trips))
+            .then((allTrips) => setTrips(allTrips))
             .catch(() => toast.error("Connection failed. Please try again."));
     }, []);
 
@@ -29,7 +29,7 @@ export default function useTrips() {
             .catch(() => toast.error("Error while deleting Trip."))
     }
 
-    const editTrip = (id: string,tripToEdited: Trip) => {
+    const editTrip = (tripToEdited: Trip) => {
         return putTrip(tripToEdited)
             .then(editedTrip => {
                 setTrips(trips.map(trip => trip.id === editedTrip.id? editedTrip: trip))

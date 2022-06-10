@@ -14,6 +14,4 @@ import javax.validation.constraints.NotBlank;
 public class Accommodation {
     @NotBlank(message = "Type of Accommodation is mandatory")
     private String typeOfAccommodation;
-
-    private long additionalNights;
 }

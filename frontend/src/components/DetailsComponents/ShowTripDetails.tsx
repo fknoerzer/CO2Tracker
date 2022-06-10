@@ -1,15 +1,32 @@
 import {Trip} from "../../model/Trip";
 import TripDetails from "../TripDetails"
+import React from "react";
+import {useNavigate} from "react-router-dom";
+import {deleteTripById} from "../../service/api-service";
 
 type ShowTripDetailsProps = {
-    item: Trip
-    toggleEditing: () => void
+    trip: Trip
 }
 
-export default function ShowTripDetails({item, toggleEditing}: ShowTripDetailsProps) {
-    return(
-    <div className={"show-trip-details"}>
-        <TripDetails trip={item}/>
-        <button onClick={toggleEditing}>Edit item</button>
-    </div>)
+export default function ShowTripDetails({trip}: ShowTripDetailsProps) {
+    const navigate = useNavigate()
+
+    return (
+        <div className={"show-trip-details"}>
+            <TripDetails trip={trip}/>
+            <div className={"edit-delete-buttons"}>
+                {trip &&
+                    <div>
+                        <button onClick={() => {
+                            deleteTripById(trip.id);
+                            navigate('/');
+                        }}> Delete trip
+                        </button>
+                        <button onClick={() => {
+                            navigate('../edit');
+                        }}> Edit trip
+                        </button>
+                    </div>}
+            </div>
+        </div>)
 }

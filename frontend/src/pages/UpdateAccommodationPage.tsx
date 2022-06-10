@@ -1,17 +1,15 @@
-import {TripUpdateAccommodationEmissionsDto} from "../model/updateDtos/TripUpdateAccommodationEmissionsDto";
 import AddAccommodationUpdate from "../components/AddUpdate/AddAccommodationUpdate";
 import {Trip} from "../model/Trip";
 
 type UpdateAccommodationPageProps = {
-    updateAccommodationEmissions: (id:string, tripUpdateAccommodationEmissionsDto: TripUpdateAccommodationEmissionsDto) => void
-    trip?:Trip
+    trip:Trip
 }
 
-export default function UpdateAccommodationPage({updateAccommodationEmissions,trip}:UpdateAccommodationPageProps) {
+export default function UpdateAccommodationPage({trip}:UpdateAccommodationPageProps) {
 
     return(
         <div className={"update-accommodation"}>
-            {trip&& <AddAccommodationUpdate updateAccommodationEmissions={updateAccommodationEmissions} trip={trip}/>}
+            {trip&& <AddAccommodationUpdate trip={trip}/>}
         </div>
     )
 }

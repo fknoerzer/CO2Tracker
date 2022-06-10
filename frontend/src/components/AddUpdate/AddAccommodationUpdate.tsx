@@ -1,4 +1,3 @@
-import {TripUpdateAccommodationEmissionsDto} from "../../model/updateDtos/TripUpdateAccommodationEmissionsDto";
 import {FormEvent, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {putTrip} from "../../service/api-service";
@@ -6,11 +5,10 @@ import {Accommodation, Trip} from "../../model/Trip";
 
 type AddAccommodationUpdateProps = {
     trip: Trip
-    updateAccommodationEmissions: (id: string, updateAccommodationEmissions: TripUpdateAccommodationEmissionsDto) => void
 
 }
 
-export default function AddAccommodationUpdate({updateAccommodationEmissions, trip}: AddAccommodationUpdateProps) {
+export default function AddAccommodationUpdate({trip}: AddAccommodationUpdateProps) {
     const navigate = useNavigate()
     const [additionalNights, setAdditionalNights] = useState<number>(0)
     const [typeOfAccommodation, setTypeOfAccommodation] = useState<string>(``)
@@ -49,15 +47,16 @@ export default function AddAccommodationUpdate({updateAccommodationEmissions, tr
                                                                                 value={typeOfAccommodation}
                                                                                 onChange={event => setTypeOfAccommodation(event.target.value)}/>
             </label>
-            <datalist className="dataList-input-update" id="accommodations">
-                <option value="Hotel"/>
-                <option value="House"/>
-                <option value="Apartment"/>
-                <option value="Youth Hostel"/>
-                <option value="Camping Site"/>
-                <option value="Cruise Ship"/>
-            </datalist>
-            <button className={"update-accommodation"}>Update</button>
+            <select className="dataList-input-update" id="accommodations">
+                <option value="DEFAULT" disabled>Choose here</option>
+                <option value="Hotel">Hotel</option>
+                <option value="House">House</option>
+                <option value="Apartment">Apartment</option>
+                <option value="Youth Hostel">Youth Hostel</option>
+                <option value="Camping Site">Camping Site</option>
+                <option value="Cruise Ship">Cruise Ship</option>
+            </select>
+            <button className={"update-button"}>Update</button>
         </form>
     )
 }

@@ -3,7 +3,6 @@ import "../components/styles/TripOverviewCard.css"
 import {formatDepartureDate, formatReturningDate} from "./Util/FormatedDate";
 import {useNavigate} from "react-router-dom";
 
-
 type TripOverviewCardProps = {
     trip: Trip;
 }
