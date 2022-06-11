@@ -18,7 +18,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class AppUserAuthControllerTest {
 
-    private String JWT_SECRET="dG9sbGVzLXNlY3JldC1kZXMtY2duLTIyLTEtamF2YS1rdXJzLTkwMDA=";
+
+    @Value("${holiday-tracker.app.jwt.secret}")
+    private String JWT_SECRET;
 
     @Autowired
     PasswordEncoder passwordEncoder;
