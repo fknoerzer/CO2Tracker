@@ -13,5 +13,4 @@ export default function useDetailedTrip() {
     }
 
     return {detailedTrip, getTripById, setDetailedTrip}
-
 }
