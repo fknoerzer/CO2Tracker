@@ -5,11 +5,11 @@ import DetailsPage from "./pages/DetailsPage";
 import useTrips from "./hooks/UseTrips";
 import {Route, Routes} from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import {Navbar} from "./components/Navbar";
-
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import LoginPage from "./pages/LoginPage";
+import RequireAuth from "./routing/RequireAuth";
+import {Navbar} from "./components/Navbar";
 
 export default function App() {
     const {addNewTrip} = useTrips()
@@ -29,10 +29,12 @@ export default function App() {
                     pauseOnHover={false}
                 />
                 <Routes>
-                    <Route path="/" element={<LandingPage/>}/>
-                    <Route path="/addtrip" element={<AddTripPage addNewTrip={addNewTrip}/>}/>
-                    <Route path={"/trips/:id/*"} element={<DetailsPage/>}/>
                     <Route path={'/login'} element={<LoginPage/>}/>
+                    <Route element={<RequireAuth/>}>
+                        <Route path="/" element={<LandingPage/>}/>
+                        <Route path="/addtrip" element={<AddTripPage addNewTrip={addNewTrip}/>}/>
+                        <Route path={"/trips/:id/*"} element={<DetailsPage/>}/>
+                    </Route>
                 </Routes>
             </div>
         </>
