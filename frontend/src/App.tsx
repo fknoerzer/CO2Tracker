@@ -3,20 +3,18 @@ import './App.css';
 import AddTripPage from "./pages/AddTripPage";
 import DetailsPage from "./pages/DetailsPage";
 import useTrips from "./hooks/UseTrips";
-import {Routes, Route, HashRouter} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import {Navbar} from "./components/Navbar";
-
-
 import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
+import LoginPage from "./pages/LoginPage";
+import RequireAuth from "./routing/RequireAuth";
+import {Navbar} from "./components/Navbar";
 
 export default function App() {
     const {addNewTrip} = useTrips()
     return (
-
-        <HashRouter>
+        <>
             <Navbar/>
             <div className={"app"}>
                 <ToastContainer
@@ -30,13 +28,16 @@ export default function App() {
                     draggable
                     pauseOnHover={false}
                 />
-            <Routes>
-                <Route path="/" element={<LandingPage/>}/>
-                <Route path="/addtrip" element={<AddTripPage addNewTrip={addNewTrip}/>}/>
-                <Route path={"/trips/:id/*"} element={<DetailsPage/>}/>
-            </Routes>
+                <Routes>
+                    <Route path={'/login'} element={<LoginPage/>}/>
+                    <Route element={<RequireAuth/>}>
+                        <Route path="/" element={<LandingPage/>}/>
+                        <Route path="/addtrip" element={<AddTripPage addNewTrip={addNewTrip}/>}/>
+                        <Route path={"/trips/:id/*"} element={<DetailsPage/>}/>
+                    </Route>
+                </Routes>
             </div>
-        </HashRouter>
+        </>
     )
 }
 
