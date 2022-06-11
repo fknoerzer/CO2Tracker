@@ -52,7 +52,6 @@ class AppUserControllerTest {
         assertEquals(expectedUserDto, actualUserDto);
     }
 
-
     private String generateJwt() {
         String hashedPassword = passwordEncoder.encode("some-password");
         AppUser dummyUser = AppUser.builder()

@@ -79,7 +79,6 @@ class AppUserAuthControllerTest {
                 .expectStatus().isEqualTo(HttpStatus.FORBIDDEN);
     }
 
-
     private void createDummyUserInDatabase() {
         String hashedPassword = passwordEncoder.encode("test_password");
         AppUser dummyUser = AppUser.builder()
@@ -88,7 +87,4 @@ class AppUserAuthControllerTest {
                 .build();
         appUserRepository.save(dummyUser);
     }
-
-
 }
-

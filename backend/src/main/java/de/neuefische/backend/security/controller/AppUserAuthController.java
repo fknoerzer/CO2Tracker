@@ -1,6 +1,5 @@
 package de.neuefische.backend.security.controller;
 
-
 import de.neuefische.backend.security.model.AppUser;
 import de.neuefische.backend.security.service.JWTUtilService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ public class AppUserAuthController {
     private final AuthenticationManager authenticationManager;
     private final JWTUtilService jwtUtilService;
 
-
     @Autowired
     public AppUserAuthController(AuthenticationManager authenticationManager, JWTUtilService jwtUtilService) {
         this.authenticationManager = authenticationManager;
@@ -28,13 +26,8 @@ public class AppUserAuthController {
     @PostMapping("/login")
     public String login(@RequestBody AppUser appUser) {
 
-        // 1) authenticate user
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(appUser.getUsername(), appUser.getPassword()));
 
-        // 2) create JWT
-        String jwt = jwtUtilService.createToken(appUser.getUsername());
-
-        return jwt;
+        return jwtUtilService.createToken(appUser.getUsername());
     }
-
 }

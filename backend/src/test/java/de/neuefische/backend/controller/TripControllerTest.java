@@ -12,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.reactive.server.WebTestClient;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -91,7 +90,6 @@ class TripControllerTest {
         expected.setId(actual.getId());
         assertEquals(24, actual.getId().length());
         assertEquals(expected, actual);
-
     }
 
     @Test
@@ -284,7 +282,3 @@ class TripControllerTest {
                 .getResponseBody();
     }
 }
-
-
-
-
