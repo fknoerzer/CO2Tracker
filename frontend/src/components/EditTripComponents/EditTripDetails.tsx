@@ -23,7 +23,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
     const [dateOfReturning, setDateOfReturning] = useState<string>(trip.dateOfReturning)
     const [personalBudget, setPersonalBudget] = useState<number>(trip.personalBudget)
     const [transportations, setTransportations] = useState<Transportation[]>(trip.transportations)
-    const [accommodations, setAccommoadtions] = useState<Accommodation[]>(trip.accommodations)
+    const [accommodations, setAccommodations] = useState<Accommodation[]>(trip.accommodations)
     const [foods, setFoods] = useState<Food[]>(trip.foods)
     const [shoppings, setShoppings] = useState<Shopping[]>(trip.shoppings)
     const [activities, setActivities] = useState<Activity[]>(trip.activities)
@@ -66,7 +66,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
                 setDateOfReturning(editedTrip.dateOfReturning)
                 setPersonalBudget(editedTrip.personalBudget)
                 setTransportations(editedTrip.transportations)
-                setAccommoadtions(editedTrip.accommodations)
+                setAccommodations(editedTrip.accommodations)
                 setFoods(editedTrip.foods)
                 setActivities(editedTrip.activities)
                 setShoppings(editedTrip.shoppings)
@@ -124,7 +124,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
                 return (
                     <div>
                         <EditAccommodationInfo accommodations={accommodations}
-                                               setAccommodations={setAccommoadtions}/>
+                                               setAccommodations={setAccommodations}/>
                         <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
                         <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
                     </div>
@@ -153,7 +153,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
                     <div>
                         <EditActivityInfo activities={activities} setActivities={setActivities}/>
                         <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                        <button className={"edit-trip"}>Edit Trip</button>
+                        <button type={"submit"} className={"edit-trip"}>Edit Trip</button>
                     </div>
                 )
 
@@ -163,7 +163,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
         }
     }
     return (
-        <form onSubmit={onEdit}>
+        <form onSubmit={onEdit} >
             {showComponent()}
         </form>
     )

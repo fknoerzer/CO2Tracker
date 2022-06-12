@@ -15,11 +15,11 @@ export default function App() {
     const {addNewTrip} = useTrips()
     return (
         <>
-            <Navbar/>
+            {/*<Navbar/>*/}
             <div className={"app"}>
                 <ToastContainer
                     position="top-right"
-                    autoClose={2000}
+                    autoClose={3000}
                     hideProgressBar={false}
                     newestOnTop={false}
                     closeOnClick
@@ -29,7 +29,7 @@ export default function App() {
                     pauseOnHover={false}
                 />
                 <Routes>
-                    <Route path={'/login'} element={<LoginPage/>}/>
+                    <Route path={"/login"} element={<LoginPage/>}/>
                     <Route element={<RequireAuth/>}>
                         <Route path="/" element={<LandingPage/>}/>
                         <Route path="/addtrip" element={<AddTripPage addNewTrip={addNewTrip}/>}/>

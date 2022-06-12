@@ -13,7 +13,7 @@ export default function useTrips() {
         getAllTrips(token)
             .then((allTrips) => setTrips(allTrips))
             .catch(() => toast.error("Connection failed. Please try again."));
-    }, []);
+    }, [token]);
 
     const addNewTrip = (newTrip: TripDto) => {
         postTrip(newTrip, token)

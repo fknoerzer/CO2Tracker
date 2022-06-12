@@ -18,7 +18,6 @@ export const postTrip: (newTrip: TripDto, token?: string) => Promise<Trip> = (ne
             }}
         : {})
         .then(response => response.data)
-        .then(response => response.data);
 }
 
 export const getTripBy: (id: string, token?: string) => Promise<Trip> = (id, token) => {
@@ -39,7 +38,7 @@ export function deleteTripById(id: string, token?: string) {
         : {})
 }
 
-export const putTrip: (editedTrip: Trip, token?: string) => Promise<Trip> = (editedTrip,token?: string) => {
+export const putTrip: (editedTrip: Trip, token?: string) => Promise<Trip> = (editedTrip,token) => {
     return axios.put(`/api/trips/` + editedTrip.id, editedTrip, token
         ? {headers: {
                 "Authorization": token,

@@ -21,19 +21,20 @@ export default function AuthProvider({children}: AuthProviderProps) {
     const navigate = useNavigate();
 
     const login = (credentials: { username: string, password: string }) => {
-        axios.post('/auth/login', credentials)
+        axios.post("/auth/login", credentials)
             .then(response => response.data)
-            .then((token) => {
-                setToken(token)
-                localStorage.setItem(AUTH_KEY, token)
+            .then((newToken) => {
+                setToken(newToken)
+                localStorage.setItem(AUTH_KEY, newToken)
             })
             .then(() => navigate("/"))
-            .catch(() => toast.error("Credentials invalid"))
+            .catch(() => toast.error("Login failed. Credentials invalid"))
     }
 
-    return (
+    return (<div>
         <AuthContext.Provider value={{token, login}}>
             {children}
         </AuthContext.Provider>
+        </div>
     )
 }

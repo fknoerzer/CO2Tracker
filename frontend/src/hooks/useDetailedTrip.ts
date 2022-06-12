@@ -14,5 +14,5 @@ export default function useDetailedTrip() {
             .catch((error) => toast.error(error))
     }
 
-    return {detailedTrip, getTripById}
+    return {detailedTrip, getTripById, setDetailedTrip}
 }
