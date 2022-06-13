@@ -14,7 +14,7 @@ export default function TripsOverview({trips}: TripsOverviewProps) {
     return (
 
         <div className={"trip-overview"}>
-            <h1>Welcome back,<br/> here are your trips. </h1>
+            <h1 className="welcome-text">Welcome back,<br/> here are your trips. </h1>
             <div className={"trip-cards"}>
                 <AllTripsDoughnutChart trips={trips}/>
                 {trips.map(listTripDetail => <TripOverviewCard key={listTripDetail.title}
