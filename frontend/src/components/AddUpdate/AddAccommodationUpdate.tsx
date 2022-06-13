@@ -1,7 +1,8 @@
-import {FormEvent, useState} from "react";
+import {FormEvent, useContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {putTrip} from "../../service/api-service";
 import {Accommodation, Trip} from "../../model/Trip";
+import {AuthContext} from "../../context/AuthProvider";
 
 type AddAccommodationUpdateProps = {
     trip: Trip
@@ -12,6 +13,8 @@ export default function AddAccommodationUpdate({trip}: AddAccommodationUpdatePro
     const navigate = useNavigate()
     const [additionalNights, setAdditionalNights] = useState<number>(0)
     const [typeOfAccommodation, setTypeOfAccommodation] = useState<string>(``)
+    const {token} = useContext(AuthContext)
+
 
     const onUpdate = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -24,7 +27,7 @@ export default function AddAccommodationUpdate({trip}: AddAccommodationUpdatePro
 
         updatedTrip.accommodations.push(newAccommodation);
 
-        putTrip(updatedTrip)
+        putTrip(updatedTrip, token)
             .then(() => {
                 setAdditionalNights(0)
                 setTypeOfAccommodation(``)

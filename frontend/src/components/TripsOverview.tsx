@@ -17,7 +17,7 @@ export default function TripsOverview({trips}: TripsOverviewProps) {
             <h1 className="welcome-text">Welcome back,<br/> here are your trips. </h1>
             <div className={"trip-cards"}>
                 <AllTripsDoughnutChart trips={trips}/>
-                {trips.map(listTripDetail => <TripOverviewCard key={listTripDetail.title}
+                {trips.map(listTripDetail => <TripOverviewCard key={listTripDetail.id}
                                                                trip={listTripDetail}/>).reverse()}
             </div>
             <div className={"add-button-wrapper"}>

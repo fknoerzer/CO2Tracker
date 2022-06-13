@@ -1,5 +1,5 @@
 import {Accommodation, Activity, Food, Shopping, Transportation, Trip} from "../../model/Trip";
-import {FormEvent, useState} from "react";
+import {FormEvent, useContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {putTrip} from "../../service/api-service";
 import EditGeneralTripInfo from "./EditGeneralTripInfo";
@@ -8,6 +8,7 @@ import EditAccommodationInfo from "./EditAccommodationInfo";
 import EditFoodInfo from "./EditFoodInfo";
 import EditShoppingInfo from "./EditShoppingInfo";
 import EditActivityInfo from "./EditActivityInfo";
+import {AuthContext} from "../../context/AuthProvider";
 
 type EditTripDetailsProps = {
     trip: Trip
@@ -27,7 +28,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
     const [foods, setFoods] = useState<Food[]>(trip.foods)
     const [shoppings, setShoppings] = useState<Shopping[]>(trip.shoppings)
     const [activities, setActivities] = useState<Activity[]>(trip.activities)
-
+    const {token} = useContext(AuthContext)
     const [count, setCount] = useState<number>(0)
 
     const onEdit = (event:FormEvent<HTMLFormElement>) => {
@@ -56,7 +57,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
                 totalEmissions: trip.calculatedEmissions.totalEmissions,
             }
         }
-        putTrip(editedTrip)
+        putTrip(editedTrip, token)
             .then(() => {
                 setTitle(editedTrip.title)
                 setDestiniationCountry(editedTrip.destiniationCountry)

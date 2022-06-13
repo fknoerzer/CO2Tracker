@@ -1,7 +1,8 @@
 import {useNavigate} from "react-router-dom";
-import {FormEvent, useState} from "react";
+import {FormEvent, useContext, useState} from "react";
 import {Activity, Trip} from "../../model/Trip";
 import {putTrip} from "../../service/api-service";
+import {AuthContext} from "../../context/AuthProvider";
 
 type AddActivityUpdateProps = {
     trip: Trip
@@ -15,6 +16,7 @@ export default function AddActivityUpdate({trip}: AddActivityUpdateProps) {
     const [customActivityItem, setCustomActivityItem] = useState<string>(``)
     const [customActivityItemEmission, setCustomActivityItemEmission] = useState<number>(0)
     const [amountOfCustomActivityItem, setAmountOfCustomActivityItem] = useState<number>(0)
+    const {token} = useContext(AuthContext)
 
     const onUpdate = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -32,7 +34,7 @@ export default function AddActivityUpdate({trip}: AddActivityUpdateProps) {
 
         updatedTrip.activities.push(newActivity)
 
-        putTrip(updatedTrip)
+        putTrip(updatedTrip, token)
             .then(() => {
                 setAmountOfGolfRounds(0)
                 setAmountOfSkiingDays(0)

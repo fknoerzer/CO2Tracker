@@ -1,5 +1,6 @@
 import {FormEvent, useContext, useState} from "react"
 import {AuthContext} from "../context/AuthProvider";
+import"../components/styles/LoginPage.css"
 
 export default function LoginPage() {
 
@@ -15,7 +16,7 @@ export default function LoginPage() {
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form className="login-page" onSubmit={onSubmit}>
             <input type={"text"}
                    placeholder={"username"}
                    value={username}

@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import AddTripPage from "./pages/AddTripPage";
 import DetailsPage from "./pages/DetailsPage";
-import useTrips from "./hooks/UseTrips";
 import {Route, Routes} from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import {ToastContainer} from "react-toastify";
@@ -12,7 +11,7 @@ import RequireAuth from "./routing/RequireAuth";
 import {Navbar} from "./components/Navbar";
 
 export default function App() {
-    const {addNewTrip} = useTrips()
+
     return (
         <>
             {<Navbar/>}
@@ -32,7 +31,7 @@ export default function App() {
                     <Route path={"/login"} element={<LoginPage/>}/>
                     <Route element={<RequireAuth/>}>
                         <Route path="/" element={<LandingPage/>}/>
-                        <Route path="/addtrip" element={<AddTripPage addNewTrip={addNewTrip}/>}/>
+                        <Route path="/addtrip" element={<AddTripPage/>}/>
                         <Route path={"/trips/:id/*"} element={<DetailsPage/>}/>
                     </Route>
                 </Routes>

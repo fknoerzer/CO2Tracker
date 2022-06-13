@@ -9,7 +9,7 @@ export default function AddAccommodationInfo({typeOfAccommodation, setTypeOfAcco
     return (
         <div className={"add-new-trip-input-overview"}>
             <label className="label-input-field">
-                <h3> Please choose your type of transportation</h3>
+                <h3> Please choose your type of accommodation</h3>
             </label>
             <select className="dataList-input-newTrip" id="accommodations" placeholder="Type of Accommodation"
                     value={typeOfAccommodation}

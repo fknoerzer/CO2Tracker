@@ -1,4 +1,4 @@
-import {FormEvent, useState} from "react";
+import { useContext, useState} from "react";
 import {TripDto} from "../../model/TripDto";
 import "./styles/AddNewTrip.css"
 import AddGeneralTripInfo from "./AddGeneralTripInfo";
@@ -9,12 +9,10 @@ import AddShoppingInfo from "./AddShoppingInfo";
 import AddActivityInfo from "./AddActivityInfo";
 import {useNavigate} from "react-router-dom";
 import {toast} from "react-toastify";
+import {AuthContext} from "../../context/AuthProvider";
+import {postTrip} from "../../service/api-service";
 
-type NewTripProps = {
-    addNewTrip: (newTrip: TripDto) => void
-}
-
-export default function AddNewTrip({addNewTrip}: NewTripProps) {
+export default function AddNewTrip() {
     const navigate = useNavigate()
     const [title, setTitle] = useState<string>(``)
     const [distance, setDistance] = useState<number>(0)
@@ -39,9 +37,9 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
     const [customActivityItemEmission, setCustomActivityItemEmission] = useState<number>(0)
     const [amountOfCustomActivityItem, setAmountOfCustomActivityItem] = useState<number>(0)
     const [count, setCount] = useState<number>(0)
+    const {token} = useContext(AuthContext)
 
-    const onAdd = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
+    const onAdd = () => {
 
         const newTrip: TripDto = {
             title: title,
@@ -77,31 +75,33 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                 amountOfCustomActivityItem: amountOfCustomActivityItem,
             }]
         }
-        addNewTrip(newTrip)
-        setTitle(``)
-        setDestiniationCountry(``)
-        setDistance(0)
-        setTravellerAmount(1)
-        setDateOfDeparture(``)
-        setDateOfReturning(``)
-        setPersonalBudget(500)
-        setTypeOfTransport(``)
-        setTypeOfAccommodation(``)
-        setTypeOfDiet(``)
-        setAmountOfClothingItems(0)
-        setAmountOfElectronicItems(0)
-        setAmountOfSouvenirItems(0)
-        setCustomShoppingItem(``)
-        setCustomShoppingItemEmission(0)
-        setAmountOfCustomShoppingItem(0)
-        setAmountOfGolfRounds(0)
-        setAmountOfSkiingDays(0)
-        setAmountOfBeautyDays(0)
-        setCustomActivityItem(``)
-        setCustomActivityItemEmission(0)
-        setAmountOfCustomActivityItem(0)
-        navigate(`/`)
-
+        postTrip(newTrip, token)
+            .then(() => {
+                setTitle(``)
+                setDestiniationCountry(``)
+                setDistance(0)
+                setTravellerAmount(1)
+                setDateOfDeparture(``)
+                setDateOfReturning(``)
+                setPersonalBudget(500)
+                setTypeOfTransport(``)
+                setTypeOfAccommodation(``)
+                setTypeOfDiet(``)
+                setAmountOfClothingItems(0)
+                setAmountOfElectronicItems(0)
+                setAmountOfSouvenirItems(0)
+                setCustomShoppingItem(``)
+                setCustomShoppingItemEmission(0)
+                setAmountOfCustomShoppingItem(0)
+                setAmountOfGolfRounds(0)
+                setAmountOfSkiingDays(0)
+                setAmountOfBeautyDays(0)
+                setCustomActivityItem(``)
+                setCustomActivityItemEmission(0)
+                setAmountOfCustomActivityItem(0)
+                navigate(`/`)
+            })
+            .catch(console.error)
     }
 
     const onClickNext = () => {
@@ -115,7 +115,6 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
         } else if (!destiniationCountry) {
             toast.error("Country of Destination for your Trip is required.")
 
-
         } else if (!dateOfReturning) {
             toast.error("Date of Return for your Trip is required.")
 
@@ -127,8 +126,12 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
 
         } else if (!typeOfDiet && count >= 3) {
             toast.error("Type of Diet for your Trip is required.")
+        }
 
-        } else {
+        else if(count===5) {
+            onAdd()
+        }
+        else {
             setCount(count + 1)
         }
         showComponent()
@@ -160,11 +163,6 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                                                 personalBudget={personalBudget}
                                                 setPersonalBudget={setPersonalBudget}/>
                         </div>
-                        <div className={"button-wrapper"}>
-                            <button type={"button"} className={"return-button"} onClick={() => navigate(`/`)}>Return
-                            </button>
-                            <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
-                        </div>
                     </div>
                 )
             }
@@ -175,10 +173,6 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                         <div className={"add-new-trip-form"}>
                             <AddTransportInfo setTypeOfTransport={setTypeOfTransport}
                                               typeOfTransport={typeOfTransport}/>
-                        </div>
-                        <div className={"button-wrapper"}>
-                            <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button>
-                            <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
                         </div>
                     </div>
                 )
@@ -191,10 +185,6 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                             <AddAccommodationInfo setTypeOfAccommodation={setTypeOfAccommodation}
                                                   typeOfAccommodation={typeOfAccommodation}/>
                         </div>
-                        <div className={"button-wrapper"}>
-                            <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button>
-                            <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
-                        </div>
                     </div>
                 )
             }
@@ -204,10 +194,6 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                         <h1> Add diet infos to your new trip</h1>
                         <div className={"add-new-trip-form"}>
                             <AddFoodInfo setTypeOfDiet={setTypeOfDiet} typeOfDiet={typeOfDiet}/>
-                        </div>
-                        <div className={"button-wrapper"}>
-                            <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button>
-                            <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
                         </div>
                     </div>
                 )
@@ -230,10 +216,7 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                                              amountOfSouvenirItems={amountOfSouvenirItems}
                                              setAmountOfSouvenirItems={setAmountOfSouvenirItems}/>
                         </div>
-                        <div className={"button-wrapper"}>
-                            <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button>
-                            <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
-                        </div>
+
                     </div>
                 )
             }
@@ -255,13 +238,8 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
                                              amountOfCustomActivityItem={amountOfCustomActivityItem}
                                              setCustomActivityItemEmission={setCustomActivityItemEmission}/>
                         </div>
-                        <div className={"button-wrapper"}>
-                            <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button>
-                            <button className={"add-button"}>Add Trip</button>
-                        </div>
                     </div>
                 )
-
             default: {
                 return (<div>"Error"</div>)
             }
@@ -269,8 +247,10 @@ export default function AddNewTrip({addNewTrip}: NewTripProps) {
     }
 
     return (
-        <form onSubmit={onAdd}>
+        <form>
             {showComponent()}
-        </form>
+            {count===0 ? <div/> : <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button> }
+                <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
+                </form>
     )
 }
