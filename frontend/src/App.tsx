@@ -15,7 +15,7 @@ export default function App() {
     const {addNewTrip} = useTrips()
     return (
         <>
-            {/*<Navbar/>*/}
+            {<Navbar/>}
             <div className={"app"}>
                 <ToastContainer
                     position="top-right"

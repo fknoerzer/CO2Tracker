@@ -3,7 +3,7 @@ import axios from "axios";
 import {TripDto} from "../model/TripDto";
 
 export const getAllTrips: (token?: string) => Promise<Trip[]> = (token) => {
-    return axios.get(`/api/trips`, token
+    return axios.get("/api/trips", token
         ? {headers: {
                 "Authorization": token,
             }}
@@ -12,7 +12,7 @@ export const getAllTrips: (token?: string) => Promise<Trip[]> = (token) => {
 }
 
 export const postTrip: (newTrip: TripDto, token?: string) => Promise<Trip> = (newTrip, token) => {
-    return axios.post(`/api/trips`, newTrip, token
+    return axios.post("/api/trips", newTrip, token
         ? {headers: {
                 "Authorization": token,
             }}

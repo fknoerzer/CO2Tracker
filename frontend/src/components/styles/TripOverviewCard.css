@@ -6,43 +6,59 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 60%;
+    width: 80%;
     margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .trip-infos {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
     background-color: rgba(192, 192, 192, 0.3);
-    padding: 2px;
+    width: 80%;
+    padding: 10px;
     margin: 8px;
     border-radius: 20px;
+    font-size: 18px;
+
 }
 
 .title {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 2px;
+    font-size: 30px;
+    font-weight: bolder;
+    margin: 2px 2px 20px 2px;
     justify-content: center;
 }
 
-.date {
+.trip-overview-buttons {
+    display: flex;
+    justify-content: space-around;
     font-weight: bold;
-    font-size: large;
 }
 
 .details-button {
-    margin-left: 5%;
-    margin-right: 5%;
     width: fit-content;
-    font-weight: bold;
-    font-size: large;
+    margin:0 40% 0 40%;
+
 }
 
 .offset-button {
-    margin-right: 5%;
-    margin-left: 5%;
     width: fit-content;
     background-color: #23CE6B;
-    font-weight: bold;
+   margin:0 40% 0 40%;
+
+}
+
+div.progress-bar{
+    font-size: 16px;
+    width: fit-content;
+    height: fit-content;
+    }
+
+strong {
     font-size: large;
 }
 

@@ -1,5 +1,5 @@
 import {Trip} from "../../model/Trip";
-import TripDetails from "../TripDetails"
+import TripDetails from "./TripDetails"
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import {deleteTripById} from "../../service/api-service";
