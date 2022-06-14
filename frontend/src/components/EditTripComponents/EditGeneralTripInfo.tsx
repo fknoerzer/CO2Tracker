@@ -5,8 +5,8 @@ type EditGeneralInfoProps = {
     setTitle: (value: string) => void
     distance: number
     setDistance: (value: number) => void
-    destiniationCountry: string
-    setDestiniationCountry: (value: string) => void
+    destinationCountry: string
+    setDestinationCountry: (value: string) => void
     travellerAmount: number
     setTravellerAmount: (value: number) => void
     dateOfDeparture: string
@@ -20,8 +20,8 @@ type EditGeneralInfoProps = {
 export default function EditGeneralTripInfo({
                                                 title,
                                                 setTitle,
-                                                destiniationCountry,
-                                                setDestiniationCountry,
+                                                destinationCountry,
+                                                setDestinationCountry,
                                                 travellerAmount,
                                                 setTravellerAmount,
                                                 dateOfDeparture,
@@ -48,8 +48,8 @@ export default function EditGeneralTripInfo({
                 <input className="text-field"
                        type="text"
                        placeholder="Add Country"
-                       value={destiniationCountry}
-                       onChange={event => setDestiniationCountry(event.target.value)}/>
+                       value={destinationCountry}
+                       onChange={event => setDestinationCountry(event.target.value)}/>
             </label>
 
             <label className="label-input-field">

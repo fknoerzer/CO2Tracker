@@ -18,7 +18,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
     const navigate = useNavigate()
     const [title, setTitle] = useState<string>(trip.title)
     const [distance, setDistance] = useState<number>(trip.transportations[0].distance)
-    const [destiniationCountry, setDestiniationCountry] = useState<string>(trip.destiniationCountry)
+    const [destinationCountry, setDestinationCountry] = useState<string>(trip.destinationCountry)
     const [travellerAmount, setTravellerAmount] = useState<number>(trip.travellerAmount)
     const [dateOfDeparture, setDateOfDeparture] = useState<string>(trip.dateOfDeparture)
     const [dateOfReturning, setDateOfReturning] = useState<string>(trip.dateOfReturning)
@@ -38,7 +38,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
             title: title,
             year: trip.year,
             id: trip.id,
-            destiniationCountry: destiniationCountry,
+            destinationCountry: destinationCountry,
             travellerAmount: travellerAmount,
             dateOfDeparture: dateOfDeparture,
             dateOfReturning: dateOfReturning,
@@ -60,7 +60,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
         putTrip(editedTrip, token)
             .then(() => {
                 setTitle(editedTrip.title)
-                setDestiniationCountry(editedTrip.destiniationCountry)
+                setDestinationCountry(editedTrip.destinationCountry)
                 setDistance(editedTrip.transportations[0].distance)
                 setTravellerAmount(editedTrip.travellerAmount)
                 setDateOfDeparture(editedTrip.dateOfDeparture)
@@ -95,8 +95,8 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
                                              setTitle={setTitle}
                                              distance={distance}
                                              setDistance={setDistance}
-                                             destiniationCountry={destiniationCountry}
-                                             setDestiniationCountry={setDestiniationCountry}
+                                             destinationCountry={destinationCountry}
+                                             setDestinationCountry={setDestinationCountry}
                                              travellerAmount={travellerAmount}
                                              setTravellerAmount={setTravellerAmount}
                                              dateOfDeparture={dateOfDeparture}

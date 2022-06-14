@@ -46,3 +46,11 @@ export const putTrip: (editedTrip: Trip, token?: string) => Promise<Trip> = (edi
         : {})
         .then(response => response.data)
 }
+
+export const getUsername: (token?: string) =>
+    Promise<string> = (token) => {
+    return axios.get("/api/user/me", token
+        ? {headers: {"Authorization": token}}
+        : {})
+        .then(response => response.data)
+}

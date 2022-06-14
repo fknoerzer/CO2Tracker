@@ -1,4 +1,4 @@
-export  function formatReturningDate (date: string){
+export function formatReturningDate (date: string){
     let returning = new Date(date),
         month = '' + (returning.getMonth() + 1),
         day = '' + returning.getDate(),

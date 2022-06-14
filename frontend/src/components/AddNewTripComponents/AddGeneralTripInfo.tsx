@@ -1,12 +1,13 @@
 import "../AddNewTripComponents/styles/AddNewTrip.css"
+import CountrySelector from "../Util/CountrySelector";
 
 type TripGeneralInfoProps = {
     title: string
     setTitle: (value: string) => void
     distance: number
     setDistance: (value: number) => void
-    destiniationCountry: string
-    setDestiniationCountry: (value: string) => void
+    destinationCountry: string
+    setDestinationCountry: (value: string) => void
     travellerAmount: number
     setTravellerAmount: (value: number) => void
     dateOfDeparture: string
@@ -22,8 +23,8 @@ export default function AddGeneralTripInfo({
                                                setTitle,
                                                distance,
                                                setDistance,
-                                               destiniationCountry,
-                                               setDestiniationCountry,
+                                               destinationCountry,
+                                               setDestinationCountry,
                                                travellerAmount,
                                                setTravellerAmount,
                                                dateOfDeparture,
@@ -47,11 +48,8 @@ export default function AddGeneralTripInfo({
             </label>
             <label className="label-input-field">
                 <h3> Which country are you visiting?</h3>
-                <input className="text-field"
-                       type="text"
-                       placeholder="Add Country"
-                       value={destiniationCountry}
-                       onChange={event => setDestiniationCountry(event.target.value)}/>
+                <CountrySelector destinationCountry={destinationCountry} setDestinationCountry={setDestinationCountry}/>
+
             </label>
             <label className="label-input-field">
                 <h3>Please add your travel distance</h3>

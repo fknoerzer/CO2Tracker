@@ -16,7 +16,7 @@ export default function AddNewTrip() {
     const navigate = useNavigate()
     const [title, setTitle] = useState<string>(``)
     const [distance, setDistance] = useState<number>(0)
-    const [destiniationCountry, setDestiniationCountry] = useState<string>(``)
+    const [destinationCountry, setDestinationCountry] = useState<string>(``)
     const [travellerAmount, setTravellerAmount] = useState<number>(1)
     const [dateOfDeparture, setDateOfDeparture] = useState<string>(``)
     const [dateOfReturning, setDateOfReturning] = useState<string>(``)
@@ -43,7 +43,7 @@ export default function AddNewTrip() {
 
         const newTrip: TripDto = {
             title: title,
-            destiniationCountry: destiniationCountry,
+            destinationCountry: destinationCountry,
             travellerAmount: travellerAmount,
             dateOfDeparture: dateOfDeparture,
             dateOfReturning: dateOfReturning,
@@ -78,7 +78,7 @@ export default function AddNewTrip() {
         postTrip(newTrip, token)
             .then(() => {
                 setTitle(``)
-                setDestiniationCountry(``)
+                setDestinationCountry(``)
                 setDistance(0)
                 setTravellerAmount(1)
                 setDateOfDeparture(``)
@@ -112,7 +112,7 @@ export default function AddNewTrip() {
             toast.error("Date of Departure for your Trip is required.")
 
 
-        } else if (!destiniationCountry) {
+        } else if (!destinationCountry) {
             toast.error("Country of Destination for your Trip is required.")
 
         } else if (!dateOfReturning) {
@@ -152,8 +152,8 @@ export default function AddNewTrip() {
                             <AddGeneralTripInfo title={title}
                                                 setTitle={setTitle} distance={distance}
                                                 setDistance={setDistance}
-                                                destiniationCountry={destiniationCountry}
-                                                setDestiniationCountry={setDestiniationCountry}
+                                                destinationCountry={destinationCountry}
+                                                setDestinationCountry={setDestinationCountry}
                                                 travellerAmount={travellerAmount}
                                                 setTravellerAmount={setTravellerAmount}
                                                 dateOfDeparture={dateOfDeparture}
