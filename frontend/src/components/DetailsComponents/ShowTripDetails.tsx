@@ -1,8 +1,9 @@
 import {Trip} from "../../model/Trip";
-import TripDetails from "../TripDetails"
-import React from "react";
+import TripDetails from "./TripDetails"
+import React, {useContext} from "react";
 import {useNavigate} from "react-router-dom";
 import {deleteTripById} from "../../service/api-service";
+import {AuthContext} from "../../context/AuthProvider";
 
 type ShowTripDetailsProps = {
     trip: Trip
@@ -10,6 +11,7 @@ type ShowTripDetailsProps = {
 
 export default function ShowTripDetails({trip}: ShowTripDetailsProps) {
     const navigate = useNavigate()
+    const {token} = useContext(AuthContext)
 
     return (
         <div className={"show-trip-details"}>
@@ -18,7 +20,7 @@ export default function ShowTripDetails({trip}: ShowTripDetailsProps) {
                 {trip &&
                     <div>
                         <button onClick={() => {
-                            deleteTripById(trip.id);
+                            deleteTripById(trip.id, token);
                             navigate('/');
                         }}> Delete trip
                         </button>

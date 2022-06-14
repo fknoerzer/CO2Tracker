@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -31,7 +32,7 @@ public class TripController {
     }
 
     @PostMapping
-    public de.neuefische.backend.model.Trip addNewTrip(@Valid @RequestBody TripDto newTrip) {
+    public de.neuefische.backend.model.Trip addNewTrip(@Valid @RequestBody TripDto newTrip, Principal principal) {
         return tripService.addNewTrip(newTrip);
     }
 

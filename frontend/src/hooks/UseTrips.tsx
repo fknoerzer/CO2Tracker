@@ -10,10 +10,12 @@ export default function useTrips() {
     const {token} = useContext(AuthContext);
 
     useEffect(() => {
-        getAllTrips(token)
-            .then((allTrips) => setTrips(allTrips))
-            .catch(() => toast.error("Connection failed. Please try again."));
-    }, []);
+        if (token) {
+            getAllTrips(token)
+                .then((allTrips) => setTrips(allTrips))
+                .catch(() => toast.error("Connection failed. Please try again."));
+        }
+    }, [token]);
 
     const addNewTrip = (newTrip: TripDto) => {
         postTrip(newTrip, token)

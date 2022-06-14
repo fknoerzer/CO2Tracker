@@ -1,7 +1,8 @@
 import {useNavigate} from "react-router-dom";
-import {FormEvent, useState} from "react";
+import {FormEvent, useContext, useState} from "react";
 import {Food, Trip} from "../../model/Trip";
 import {putTrip} from "../../service/api-service";
+import {AuthContext} from "../../context/AuthProvider";
 
 type AddFoodUpdateProps = {
     trip: Trip
@@ -11,6 +12,8 @@ export default function AddFoodUpdate({trip}: AddFoodUpdateProps) {
     const navigate = useNavigate()
     const [additionalDays, setAdditionalDays] = useState<number>(0)
     const [typeOfDiet, setTypeOfDiet] = useState<string>(``)
+    const {token} = useContext(AuthContext)
+
 
     const onUpdate = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -23,7 +26,7 @@ export default function AddFoodUpdate({trip}: AddFoodUpdateProps) {
 
         updatedTrip.foods.push(newFood)
 
-        putTrip(updatedTrip)
+        putTrip(updatedTrip, token)
             .then(() => {
         setTypeOfDiet(``)
         navigate('/')

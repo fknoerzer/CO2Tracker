@@ -1,5 +1,5 @@
 import {Accommodation, Activity, Food, Shopping, Transportation, Trip} from "../../model/Trip";
-import {FormEvent, useState} from "react";
+import {FormEvent, useContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {putTrip} from "../../service/api-service";
 import EditGeneralTripInfo from "./EditGeneralTripInfo";
@@ -8,6 +8,7 @@ import EditAccommodationInfo from "./EditAccommodationInfo";
 import EditFoodInfo from "./EditFoodInfo";
 import EditShoppingInfo from "./EditShoppingInfo";
 import EditActivityInfo from "./EditActivityInfo";
+import {AuthContext} from "../../context/AuthProvider";
 
 type EditTripDetailsProps = {
     trip: Trip
@@ -23,11 +24,11 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
     const [dateOfReturning, setDateOfReturning] = useState<string>(trip.dateOfReturning)
     const [personalBudget, setPersonalBudget] = useState<number>(trip.personalBudget)
     const [transportations, setTransportations] = useState<Transportation[]>(trip.transportations)
-    const [accommodations, setAccommoadtions] = useState<Accommodation[]>(trip.accommodations)
+    const [accommodations, setAccommodations] = useState<Accommodation[]>(trip.accommodations)
     const [foods, setFoods] = useState<Food[]>(trip.foods)
     const [shoppings, setShoppings] = useState<Shopping[]>(trip.shoppings)
     const [activities, setActivities] = useState<Activity[]>(trip.activities)
-
+    const {token} = useContext(AuthContext)
     const [count, setCount] = useState<number>(0)
 
     const onEdit = (event:FormEvent<HTMLFormElement>) => {
@@ -56,7 +57,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
                 totalEmissions: trip.calculatedEmissions.totalEmissions,
             }
         }
-        putTrip(editedTrip)
+        putTrip(editedTrip, token)
             .then(() => {
                 setTitle(editedTrip.title)
                 setDestiniationCountry(editedTrip.destiniationCountry)
@@ -66,7 +67,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
                 setDateOfReturning(editedTrip.dateOfReturning)
                 setPersonalBudget(editedTrip.personalBudget)
                 setTransportations(editedTrip.transportations)
-                setAccommoadtions(editedTrip.accommodations)
+                setAccommodations(editedTrip.accommodations)
                 setFoods(editedTrip.foods)
                 setActivities(editedTrip.activities)
                 setShoppings(editedTrip.shoppings)
@@ -124,7 +125,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
                 return (
                     <div>
                         <EditAccommodationInfo accommodations={accommodations}
-                                               setAccommodations={setAccommoadtions}/>
+                                               setAccommodations={setAccommodations}/>
                         <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
                         <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
                     </div>
@@ -153,7 +154,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
                     <div>
                         <EditActivityInfo activities={activities} setActivities={setActivities}/>
                         <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                        <button className={"edit-trip"}>Edit Trip</button>
+                        <button type={"submit"} className={"edit-trip"}>Edit Trip</button>
                     </div>
                 )
 
@@ -163,7 +164,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
         }
     }
     return (
-        <form onSubmit={onEdit}>
+        <form onSubmit={onEdit} >
             {showComponent()}
         </form>
     )

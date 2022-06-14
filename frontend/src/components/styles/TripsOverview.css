@@ -2,7 +2,6 @@ div.trip-cards {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 80px;
     padding-bottom: 80px;
 }
 
@@ -29,4 +28,28 @@ div.trip-cards {
     font-weight: bold;
     font-size: 25px;
     background-color: #23CE6B;
+}
+
+.all-trips-overview {
+    height: fit-content;
+    background: #60993E;
+    border-radius: 20px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 80%;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+canvas{
+    background-color: whitesmoke;
+    Border-radius: 20px;
+    padding: 10px;
+}
+
+.welcome-text {
+    margin-top: 80px;
 }

@@ -8,6 +8,7 @@ import UpdateAccommodationPage from "./UpdateAccommodationPage";
 import UpdateFoodPage from "./UpdateFoodPage";
 import UpdateShoppingPage from "./UpdateShoppingPage";
 import UpdateActivityPage from "./UpdateActivityPage";
+import RequireAuth from "../routing/RequireAuth";
 
 
 export default function DetailsPage() {
@@ -25,7 +26,7 @@ export default function DetailsPage() {
     if(detailedTrip) {
         return (
             <Routes>
-
+                <Route element={<RequireAuth />}>
                  <Route index element={<ShowTripDetails trip={detailedTrip}/>}/>
 
                 <Route path="/update/transportation/"
@@ -40,7 +41,7 @@ export default function DetailsPage() {
                        element={<UpdateActivityPage trip={detailedTrip}/>}/>
                 <Route path="/edit/"
                        element={<EditTripDetails trip={detailedTrip}/>}/>
-
+                </Route>
             </Routes>
         )
     }

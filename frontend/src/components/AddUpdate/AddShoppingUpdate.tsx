@@ -1,7 +1,8 @@
 import {useNavigate} from "react-router-dom";
-import {FormEvent, useState} from "react";
+import {FormEvent, useContext, useState} from "react";
 import {Shopping, Trip} from "../../model/Trip";
 import {putTrip} from "../../service/api-service";
+import {AuthContext} from "../../context/AuthProvider";
 
 type AddShoppingUpdateProps = {
     trip: Trip
@@ -15,6 +16,7 @@ export default function AddShoppingUpdate({trip}: AddShoppingUpdateProps) {
     const [customShoppingItem, setCustomShoppingItem] = useState<string>(``)
     const [customShoppingItemEmission, setCustomShoppingItemEmission] = useState<number>(0)
     const [amountOfCustomShoppingItem, setAmountOfCustomShoppingItem] = useState<number>(0)
+    const {token} = useContext(AuthContext)
 
     const onUpdate = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -32,7 +34,7 @@ export default function AddShoppingUpdate({trip}: AddShoppingUpdateProps) {
 
         updatedTrip.shoppings.push(newShopping)
 
-        putTrip(updatedTrip)
+        putTrip(updatedTrip, token)
             .then(() => {
         setAmountOfClothingItems(0)
         setAmountOfElectronicItems (0)

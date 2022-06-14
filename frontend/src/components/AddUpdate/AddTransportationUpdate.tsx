@@ -1,7 +1,8 @@
-import {FormEvent, useState} from "react";
+import {FormEvent, useContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {Transportation, Trip} from "../../model/Trip";
 import {putTrip} from "../../service/api-service";
+import {AuthContext} from "../../context/AuthProvider";
 
 type AddTransportationUpdateProps = {
     trip: Trip
@@ -11,6 +12,7 @@ export default function AddTransportationUpdate({trip}: AddTransportationUpdateP
     const navigate = useNavigate()
     const [distance, setDistance] = useState<number>(0)
     const [typeOfTransport, setTypeOfTransport] = useState<string>(``)
+    const {token} = useContext(AuthContext)
 
     const onUpdate = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -23,7 +25,7 @@ export default function AddTransportationUpdate({trip}: AddTransportationUpdateP
         }
         updatedTrip.transportations.push(newTransportation)
 
-        putTrip(updatedTrip)
+        putTrip(updatedTrip, token)
             .then(() => {
                 setDistance(0)
                 setTypeOfTransport(``)
