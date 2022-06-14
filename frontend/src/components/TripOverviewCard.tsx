@@ -11,13 +11,13 @@ type TripOverviewCardProps = {
 
 export default function TripOverviewCard({trip}: TripOverviewCardProps) {
     const navigate = useNavigate();
-
     const value = Math.round((trip.calculatedEmissions.totalEmissions / trip.personalBudget) * 100);
+    const getFlagEmoji = (countryCode: any)=>String.fromCodePoint(...[...countryCode.toUpperCase()].map(x=>0x1f1a5+x.charCodeAt()))
 
     return (
         <div className="trip-overview-card">
             <div className="trip-infos">
-                <p className={"title"}>{trip.title} {trip.year}</p>
+                <p className={"title"}>{trip.title} {trip.year} {getFlagEmoji(trip.destinationCountry)}</p>
                 <p className={"date"}>From <strong> {formatDepartureDate(trip.dateOfDeparture)}</strong> to <strong> {formatReturningDate(trip.dateOfReturning)}</strong></p>
                 <p className={"total emissions"}>Total emissions for this trip: <br/> <strong> {Math.round(trip.calculatedEmissions.totalEmissions)} </strong>kg CO<sub>2</sub>-eq.</p>
                 <div className="progress-bar" style={{width: 150, height: 100, marginBottom: 60}}>
@@ -37,7 +37,7 @@ export default function TripOverviewCard({trip}: TripOverviewCardProps) {
                 </div>
             </div>
             <div className={"trip-overview-buttons"}>
-            <button className={"offset-button"} onClick={() => navigate(`trips/offset/${trip.id}`)}>Offset</button>
+            <button className={"offset-button"} onClick={() => navigate(`trips/offset/${trip.id}`)}>Compensate</button>
             <button className={"details-button"} onClick={() => navigate(`/trips/${trip.id}`)}>Details</button>
                 </div>
             </div>
