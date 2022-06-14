@@ -61,7 +61,7 @@ export default function AllTripsDoughnutChart({trips}: AllTripsDoughnutChartProp
     return (
 
         <div className={"all-trips-overview"}>
-            <h3> Your Emissions for all trips: <div className="total-emmissions">{totalEmissionsAllTrips()} kg
+            <h3> Your total travel impact: <div className="total-emmissions">{totalEmissionsAllTrips()} kg
                 CO<sub>2</sub>-eq</div></h3>
             <Doughnut data={data} options={options}/>
         </div>

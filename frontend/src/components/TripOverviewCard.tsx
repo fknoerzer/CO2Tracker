@@ -37,7 +37,7 @@ export default function TripOverviewCard({trip}: TripOverviewCardProps) {
                 </div>
             </div>
             <div className={"trip-overview-buttons"}>
-            <button className={"offset-button"} onClick={() => navigate(`trips/offset/${trip.id}`)}>Compensate</button>
+            <button className={"offset-button"} onClick={() => navigate(`trips/${trip.id}/offset`)}>Compensate</button>
             <button className={"details-button"} onClick={() => navigate(`/trips/${trip.id}`)}>Details</button>
                 </div>
             </div>
