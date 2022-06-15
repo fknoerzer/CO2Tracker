@@ -2,7 +2,6 @@ import TripOverviewCard from "./TripOverviewCard";
 import {Trip} from "../model/Trip";
 import "../components/styles/TripsOverview.css"
 import {useNavigate} from "react-router-dom";
-import AllTripsDoughnutChart from "./AllTripsDoughnutChart";
 import {ChangeEvent, useState} from "react";
 
 type TripsOverviewProps = {
@@ -16,9 +15,7 @@ export default function TripsOverview({trips}: TripsOverviewProps) {
     return (
         <div className={"trip-overview"}>
             <div className={"trip-cards"}>
-
-                <AllTripsDoughnutChart trips={trips}/>
-                <input type={"text"} value={search} placeholder={"Search your trips"}
+                <input className={"searchbar"} type={"text"} value={search} placeholder={"Search your trips"}
                        onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}/>
                 {trips.filter(trip => trip.title.toLowerCase().includes(search.toLowerCase()))
                     .sort((a, b) => a.dateOfDeparture.localeCompare(b.dateOfDeparture))

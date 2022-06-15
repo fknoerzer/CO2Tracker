@@ -1,4 +1,4 @@
-import {Trip} from "../model/Trip";
+import {Trip} from "../../model/Trip";
 import {Doughnut} from 'react-chartjs-2';
 import {Chart, registerables} from 'chart.js'
 

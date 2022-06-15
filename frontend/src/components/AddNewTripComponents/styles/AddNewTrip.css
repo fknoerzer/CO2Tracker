@@ -1,15 +1,9 @@
-
-.add-new-trip-div {
-    width: 100%;
-    height: fit-content;
-    margin-top: 70px;
+.add-form{
+    align-self: center;
+    display: flex;
     flex-direction: column;
-    align-items: start;
-    justify-items: center;
-    font-size: 16px;
-    display: grid;
-    grid-template-columns: auto;
-    margin-bottom: 5%;
+    margin-top: 80px;
+    margin-bottom: 15%;
 }
 
 .add-new-trip-input-overview {
@@ -27,11 +21,6 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-}
-
-.add-new-trip-form {
-    height:fit-content;
-    margin-bottom: 15%;
 }
 
 .label-input-field {

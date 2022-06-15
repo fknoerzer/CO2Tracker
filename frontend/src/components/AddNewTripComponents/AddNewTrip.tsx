@@ -247,7 +247,7 @@ export default function AddNewTrip() {
     }
 
     return (
-        <form>
+        <form className={"add-form"}>
             {showComponent()}
             {count===0 ? <div/> : <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button> }
                 <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>

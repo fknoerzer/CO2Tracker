@@ -20,13 +20,18 @@ div#root {
 }
 
 button {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 150px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 25px;
     background-color: #E6AA68;
     border: none;
     border-radius: 10px;
     color: white;
     padding: 4px 16px;
     text-align: center;
-    font-size: 14px;
     transition-duration: 0.4s;
     opacity: 0.6;
     cursor: pointer;
@@ -75,10 +80,10 @@ form {
     height: 100%;
 }
 
-input[type=text] {
-    height: 10%;
+input {
+    margin: 10px;
     width: 80%;
-    padding: 12px 20px;
+    padding: 10px;
     box-sizing: border-box;
     border: none;
     background-color: white;
@@ -88,7 +93,7 @@ input[type=text] {
 }
 
 input[type=number] {
-    width: 30%;;
+    width: 40%;;
     padding: 12px 20px;
     box-sizing: border-box;
     border: none;
@@ -106,11 +111,20 @@ input[list]{
     padding: 12px 20px;
 }
 
-input[type="date" i] {
+input[type="date" i] ::-webkit-calendar-picker-indicator {
     padding: 12px 20px;
     font-size: 16px;
-    width: 70%;
+    font-weight: bold;
+    align-items: center;
+    background: white;
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    width: 25px;
+    height: 25px;
+    border-width: thin
 }
+
 
 input:focus {
     background-color: lightgrey;
@@ -120,11 +134,17 @@ label {
     padding: 4%;
 }
 
-.date-field {
-    width: fit-content;
-    font-size: 20px;
-    font-weight: bold;
-    align-items: center;
+p {
+    margin: 5px
 }
+
+select{
+    background: white;
+    font-size: 16px;
+    font-weight: bold;
+    width: 80%;
+    padding: 12px 20px;
+}
+
 
 

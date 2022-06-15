@@ -22,11 +22,11 @@ export default function ShowTripDetails({trip}: ShowTripDetailsProps) {
                         <button onClick={() => {
                             deleteTripById(trip.id, token);
                             navigate('/');
-                        }}> Delete trip
+                        }}> Delete
                         </button>
                         <button onClick={() => {
                             navigate('../edit');
-                        }}> Edit trip
+                        }}> Edit
                         </button>
                     </div>}
             </div>

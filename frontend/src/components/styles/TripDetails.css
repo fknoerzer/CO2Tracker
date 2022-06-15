@@ -18,6 +18,10 @@ div.trip-detail-card {
     align-items: center;
 }
 
+div.all-trips-overview {
+    margin-top: 80px;
+}
+
 div.general-info {
     background-color: #023C40;
     height: fit-content;
@@ -26,7 +30,7 @@ div.general-info {
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
     width: 90%;
     margin: 10px;
 }
@@ -53,5 +57,7 @@ div.emissions-info-box {
     margin: 7px;
 }
 
-.update-button {
+.update-button{
+    font-size: 16px;
+    width: fit-content;
 }

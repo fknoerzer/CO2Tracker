@@ -17,6 +17,7 @@ export default function LoginPage() {
 
     return (
         <form className="login-page" onSubmit={onSubmit}>
+            <h1>Log in to your Account</h1>
             <input type={"text"}
                    placeholder={"username"}
                    value={username}

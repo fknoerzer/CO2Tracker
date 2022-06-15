@@ -39,7 +39,6 @@ div.trip-cards {
     align-items: center;
     text-align: center;
     width: 80%;
-    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
 }
@@ -47,9 +46,12 @@ div.trip-cards {
 canvas{
     background-color: whitesmoke;
     Border-radius: 20px;
-    padding: 10px;
+    padding: 5px;
+    margin: 8px
 }
 
-.welcome-text {
+.searchbar {
+    width: 80%;
     margin-top: 80px;
 }
+

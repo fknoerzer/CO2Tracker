@@ -10,6 +10,7 @@ import LoginPage from "./pages/LoginPage";
 import RequireAuth from "./routing/RequireAuth";
 import {Navbar} from "./components/Navbar";
 import LogoutPage from "./pages/LogoutPage";
+import AllTripsPage from "./pages/AllTripsPage";
 
 export default function App() {
 
@@ -35,6 +36,8 @@ export default function App() {
                         <Route path="/" element={<LandingPage/>}/>
                         <Route path="/addtrip" element={<AddTripPage/>}/>
                         <Route path={"/trips/:id/*"} element={<DetailsPage/>}/>
+                        <Route path={"/alltrips"} element={<AllTripsPage/>}/>
+
                     </Route>
                 </Routes>
             </div>
