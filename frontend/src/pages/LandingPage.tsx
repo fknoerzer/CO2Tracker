@@ -1,4 +1,4 @@
-import TripsOverview from "../components/TripsOverview";
+import TripsOverview from "../components/Overview/TripsOverview";
 import useTrips from "../hooks/UseTrips"
 
 export default function LandingPage() {

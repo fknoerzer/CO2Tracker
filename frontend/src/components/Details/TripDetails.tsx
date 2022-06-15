@@ -1,5 +1,5 @@
 import {Trip} from "../../model/Trip";
-import {formatDepartureDate, formatReturningDate} from "../Util/FormatedDate";
+import {formatDepartureDate, formatReturningDate, getDateDiff} from "../Util/Calculations";
 import {useNavigate} from "react-router-dom";
 import "../styles/TripDetails.css"
 import React from "react";
@@ -11,20 +11,24 @@ type TripDetailsProps = {
 
 export default function TripDetails({trip}: TripDetailsProps) {
     const navigate = useNavigate()
+    const getFlagEmoji = (countryCode: any)=>String.fromCodePoint(...[...countryCode.toUpperCase()].map(x=>0x1f1a5+x.charCodeAt()))
 
     return (
 
         <div className="trip-detail-card">
-            <h1>{trip.title} {trip.year}</h1>
+            <h1>{trip.title} {trip.year} {getFlagEmoji(trip.destinationCountry)}</h1>
             <div className={"total-emissions"}>
                 <TripDoughnutChart trip={trip}/>
 
             </div>
             <div className={"general-info"}>
-                <p>Total Emissions: {Math.round(trip.calculatedEmissions.totalEmissions)} kg CO<sub>2</sub>-eq.</p>
+                <p>Your total travel impact: {Math.round(trip.calculatedEmissions.totalEmissions)} kg CO<sub>2</sub>-eq.</p>
+                <p>Average CO<sub>2</sub>Footprint per trip day: {Math.round(trip.calculatedEmissions.totalEmissions/getDateDiff(trip.dateOfDeparture,trip.dateOfReturning))} kg
+                    CO<sub>2</sub>-eq
+                      </p>
                 <p>Personal Budget: {trip.personalBudget} kg CO<sub>2</sub>-eq.</p>
-                <p>Dates:
-                    From {formatDepartureDate(trip.dateOfDeparture)} to {formatReturningDate(trip.dateOfReturning)}</p>
+                <p>Utilization of personal budget: {Math.round(trip.calculatedEmissions.totalEmissions)/Math.round(trip.personalBudget)*100} %</p>
+                <p>Dates: From {formatDepartureDate(trip.dateOfDeparture)} to {formatReturningDate(trip.dateOfReturning)}</p>
                 <p>Number of travellers: {trip.travellerAmount}</p>
             </div>
             <div className={"emissions-grid"}>

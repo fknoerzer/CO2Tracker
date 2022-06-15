@@ -1,6 +1,6 @@
-import {Trip} from "../model/Trip";
-import "../components/styles/TripOverviewCard.css"
-import {formatDepartureDate, formatReturningDate} from "./Util/FormatedDate";
+import {Trip} from "../../model/Trip";
+import "../styles/TripOverviewCard.css"
+import {formatDepartureDate, formatReturningDate} from "../Util/Calculations";
 import {useNavigate} from "react-router-dom";
 import {buildStyles, CircularProgressbarWithChildren} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';

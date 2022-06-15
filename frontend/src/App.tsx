@@ -8,9 +8,9 @@ import {ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import LoginPage from "./pages/LoginPage";
 import RequireAuth from "./routing/RequireAuth";
-import {Navbar} from "./components/Navbar";
+import {Navbar} from "./components/Util/Navbar";
 import LogoutPage from "./pages/LogoutPage";
-import AllTripsPage from "./pages/AllTripsPage";
+import StatisticsPage from "./pages/StatisticsPage";
 
 export default function App() {
 
@@ -36,7 +36,7 @@ export default function App() {
                         <Route path="/" element={<LandingPage/>}/>
                         <Route path="/addtrip" element={<AddTripPage/>}/>
                         <Route path={"/trips/:id/*"} element={<DetailsPage/>}/>
-                        <Route path={"/alltrips"} element={<AllTripsPage/>}/>
+                        <Route path={"/alltrips"} element={<StatisticsPage/>}/>
 
                     </Route>
                 </Routes>

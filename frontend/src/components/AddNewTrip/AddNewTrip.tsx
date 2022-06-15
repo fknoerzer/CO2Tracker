@@ -1,4 +1,4 @@
-import { useContext, useState} from "react";
+import {useContext, useState} from "react";
 import {TripDto} from "../../model/TripDto";
 import "./styles/AddNewTrip.css"
 import AddGeneralTripInfo from "./AddGeneralTripInfo";

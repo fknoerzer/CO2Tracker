@@ -17,15 +17,6 @@ export default function EditTransportationInfo({transportations, setTransportati
         setTransportations(data);
     }
 
-    const handleTransportFormInputChange = (event: ChangeEvent<HTMLInputElement>, index: number) => {
-        let data: Transportation[] = [...transportations];
-
-        // @ts-ignore
-        data[index][event.target.name] = (event.target.value);
-        console.log(data);
-        setTransportations(data);
-    }
-
     return (
         <div className={"edit-trip-input-overview"}>
             {transportations.map((transportInput, index) => {

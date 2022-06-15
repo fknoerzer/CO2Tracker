@@ -1,4 +1,4 @@
-import AddNewTrip from "../components/AddNewTripComponents/AddNewTrip";
+import AddNewTrip from "../components/AddNewTrip/AddNewTrip";
 
 export default function AddTripPage(){
     return (

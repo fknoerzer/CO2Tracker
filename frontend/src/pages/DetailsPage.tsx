@@ -1,8 +1,8 @@
 import {Route, Routes, useParams} from "react-router-dom";
 import useDetailedTrip from "../hooks/useDetailedTrip";
 import React, {useEffect} from "react";
-import EditTripDetails from "../components/EditTripComponents/EditTripDetails";
-import ShowTripDetails from "../components/DetailsComponents/ShowTripDetails";
+import EditTripDetails from "../components/EditTrip/EditTripDetails";
+import ShowTripDetails from "../components/Details/ShowTripDetails";
 import UpdateTransportationPage from "./UpdateTransportationPage";
 import UpdateAccommodationPage from "./UpdateAccommodationPage";
 import UpdateFoodPage from "./UpdateFoodPage";

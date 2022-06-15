@@ -1,6 +1,6 @@
 import TripOverviewCard from "./TripOverviewCard";
-import {Trip} from "../model/Trip";
-import "../components/styles/TripsOverview.css"
+import {Trip} from "../../model/Trip";
+import "../styles/TripsOverview.css"
 import {useNavigate} from "react-router-dom";
 import {ChangeEvent, useState} from "react";
 

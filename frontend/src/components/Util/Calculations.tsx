@@ -19,3 +19,11 @@ export function formatDepartureDate (date: string)  {
     if (day.length < 2) day = '0' + day;
 
     return [day, month].join('.');}
+
+export function getDateDiff(dateOfDeparture:string, dateOfReturning:string) {
+        return Math.floor((Date.parse(dateOfReturning) - Date.parse(dateOfDeparture)) / 86400000);
+    }
+
+export function getSum(values:number[]) {
+    return values.reduce((pv, cv) => pv + cv, 0)
+}
