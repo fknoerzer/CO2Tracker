@@ -24,7 +24,7 @@ export default function TripsOverview({trips}: TripsOverviewProps) {
             </div>
             <div className={"add-statistics-button-wrapper"}>
                 <button className={"statistics-button"} onClick={()=> navigate("/alltrips")}> Statistics</button>
-                <button className={"add-new-trip-button"} onClick={() => navigate(`/addtrip`)}>Add Trip<BiMessageSquareAdd/></button>
+                <button className={"add-new-trip-button"} onClick={() => navigate(`/addtrip`)}>Add Trip <BiMessageSquareAdd/></button>
             </div>
         </div>
     )
