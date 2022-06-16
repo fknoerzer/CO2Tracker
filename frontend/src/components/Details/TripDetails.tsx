@@ -1,5 +1,5 @@
 import {Trip} from "../../model/Trip";
-import {formatDepartureDate, formatReturningDate, getDateDiff} from "../Util/Calculations";
+import {formatDepartureDate, formatReturningDate, getDateDiff, getSum} from "../Util/Calculations";
 import {useNavigate} from "react-router-dom";
 import "../styles/TripDetails.css"
 import React from "react";
@@ -16,26 +16,33 @@ export default function TripDetails({trip}: TripDetailsProps) {
     return (
 
         <div className="trip-detail-card">
-            <h1>{trip.title} {trip.year} {getFlagEmoji(trip.destinationCountry)}</h1>
+            <h1 className={"trip-title"}>{trip.title} {trip.year}  {getFlagEmoji(trip.destinationCountry)}</h1>
+            <p>From {formatDepartureDate(trip.dateOfDeparture)} to {formatReturningDate(trip.dateOfReturning)}</p>
             <div className={"total-emissions"}>
+                <p className={"all-impact-info"}>Your total travel impact:</p>
+                    <div className={"impact-field"}>{Math.round(trip.calculatedEmissions.totalEmissions)} kg CO<sub>2</sub>-eq.</div>
                 <TripDoughnutChart trip={trip}/>
 
             </div>
             <div className={"general-info"}>
-                <p>Your total travel impact: {Math.round(trip.calculatedEmissions.totalEmissions)} kg CO<sub>2</sub>-eq.</p>
-                <p>Average CO<sub>2</sub>Footprint per trip day: {Math.round(trip.calculatedEmissions.totalEmissions/getDateDiff(trip.dateOfDeparture,trip.dateOfReturning))} kg
-                    CO<sub>2</sub>-eq
+                <p className={"general-info"}>Average CO<sub>2</sub>Footprint per trip day:<div className={"value-field"}>{Math.round(trip.calculatedEmissions.totalEmissions/getDateDiff(trip.dateOfDeparture,trip.dateOfReturning))} kg
+                    CO<sub>2</sub>-eq</div>
                       </p>
-                <p>Personal Budget: {trip.personalBudget} kg CO<sub>2</sub>-eq.</p>
-                <p>Utilization of personal budget: {Math.round(trip.calculatedEmissions.totalEmissions)/Math.round(trip.personalBudget)*100} %</p>
-                <p>Dates: From {formatDepartureDate(trip.dateOfDeparture)} to {formatReturningDate(trip.dateOfReturning)}</p>
-                <p>Number of travellers: {trip.travellerAmount}</p>
+                <p className={"general-info"}>Personal Budget:
+                    <div className={"value-field"}>{trip.personalBudget} kg CO<sub>2</sub>-eq.</div></p>
+                <p className={"general-info"}>Utilization of personal budget:
+                    <div className={"value-field"}> {Math.round(trip.calculatedEmissions.totalEmissions)/Math.round(trip.personalBudget)*100} % </div></p>
+                <p className={"general-info"}>Number of travellers:
+                    <div className={"value-field"}>{trip.travellerAmount} person(s)</div></p>
+                <p className={"general-info"}>Travel distance:
+                    <div className={"value-field"}>{getSum(trip.transportations.map(distances => distances.distance))} km</div></p>
             </div>
+
             <div className={"emissions-grid"}>
                 <div className={"emissions-info-box"}>
                     <p>Transportation:<br/> {Math.round(trip.calculatedEmissions.transportationEmissions)} kg
                         CO<sub>2</sub>-eq.</p>
-                    <button className={"update-button"} onClick={() => navigate(`update/transportation`)}>Update
+                    <button className={"update-button"} onClick={() => navigate(`update/transportation`)}>Add +
                     </button>
                 </div>
                 <div className={"emissions-info-box"}>
@@ -47,11 +54,11 @@ export default function TripDetails({trip}: TripDetailsProps) {
                 </div>
                 <div className={"emissions-info-box"}>
                     <p>Shopping:<br/>{Math.round(trip.calculatedEmissions.shoppingEmissions)} kg CO<sub>2</sub>-eq.</p>
-                    <button className={"update-button"} onClick={() => navigate(`update/shopping`)}>Update</button>
+                    <button className={"update-button"} onClick={() => navigate(`update/shopping`)}>Add +</button>
                 </div>
                 <div className={"emissions-info-box"}>
                     <p>Activity:<br/>{Math.round(trip.calculatedEmissions.activityEmissions)} kg CO<sub>2</sub>-eq.</p>
-                    <button className={"update-button"} onClick={() => navigate(`update/activity`)}>Update</button>
+                    <button className={"update-button"} onClick={() => navigate(`update/activity`)}>Add +</button>
                 </div>
             </div>
         </div>

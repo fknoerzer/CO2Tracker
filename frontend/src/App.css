@@ -19,8 +19,6 @@ div#root {
 }
 
 button {
-    margin-top: 10px;
-    margin-bottom: 20px;
     width: 150px;
     height: 35px;
     font-weight: bold;

@@ -23,12 +23,14 @@ div.all-trips-overview {
 }
 
 div.general-info {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: #023C40;
     height: fit-content;
     border-radius: 20px;
     padding: 10px;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     font-size: 18px;
     width: 90%;
@@ -60,10 +62,48 @@ div.emissions-info-box {
 }
 
 .update-button{
-    font-size: 16px;
+    padding: 6px;
+    font-size: 14px;
     width: fit-content;
+    height: fit-content;
 }
 
-canvas {
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
+div.total-emissions {
+    width:fit-content;
+    border-radius: 20px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #60993E;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    margin: 7px;
+    text-align: center;
 }
+
+.trip-title {
+    align-items: flex-start;
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.value-field {
+    background-color: rgb(255, 255, 255, 0.3);
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    border-radius: 8px;
+    margin: 5px;
+}
+.impact-field {
+    margin-left: 25%;
+    background-color: rgb(255, 255, 255, 0.3);
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+
+
+
