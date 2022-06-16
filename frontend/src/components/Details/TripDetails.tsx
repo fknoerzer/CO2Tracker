@@ -25,17 +25,18 @@ export default function TripDetails({trip}: TripDetailsProps) {
 
             </div>
             <div className={"general-info"}>
-                <p className={"general-info"}>Average CO<sub>2</sub>Footprint per trip day:<div className={"value-field"}>{Math.round(trip.calculatedEmissions.totalEmissions/getDateDiff(trip.dateOfDeparture,trip.dateOfReturning))} kg
+                <p className={"general-info"}>Average CO<sub>2</sub>Footprint per trip day:</p>
+                <div className={"value-field"}>{Math.round(trip.calculatedEmissions.totalEmissions/getDateDiff(trip.dateOfDeparture,trip.dateOfReturning))} kg
                     CO<sub>2</sub>-eq</div>
-                      </p>
-                <p className={"general-info"}>Personal Budget:
-                    <div className={"value-field"}>{trip.personalBudget} kg CO<sub>2</sub>-eq.</div></p>
-                <p className={"general-info"}>Utilization of personal budget:
-                    <div className={"value-field"}> {Math.round(trip.calculatedEmissions.totalEmissions)/Math.round(trip.personalBudget)*100} % </div></p>
-                <p className={"general-info"}>Number of travellers:
-                    <div className={"value-field"}>{trip.travellerAmount} person(s)</div></p>
-                <p className={"general-info"}>Travel distance:
-                    <div className={"value-field"}>{getSum(trip.transportations.map(distances => distances.distance))} km</div></p>
+
+                <p className={"general-info"}>Personal Budget:</p>
+                    <div className={"value-field"}>{trip.personalBudget} kg CO<sub>2</sub>-eq.</div>
+                <p className={"general-info"}>Utilization of personal budget:</p>
+                    <div className={"value-field"}> {Math.round(trip.calculatedEmissions.totalEmissions)/Math.round(trip.personalBudget)*100} % </div>
+                <p className={"general-info"}>Number of travellers:</p>
+                    <div className={"value-field"}>{trip.travellerAmount} person(s)</div>
+                <p className={"general-info"}>Travel distance:</p>
+                    <div className={"value-field"}>{getSum(trip.transportations.map(distances => distances.distance))} km</div>
             </div>
 
             <div className={"emissions-grid"}>

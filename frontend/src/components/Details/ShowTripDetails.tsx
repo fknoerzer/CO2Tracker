@@ -4,6 +4,8 @@ import React, {useContext} from "react";
 import {useNavigate} from "react-router-dom";
 import {deleteTripById} from "../../service/api-service";
 import {AuthContext} from "../../context/AuthProvider";
+import {RiChatDeleteLine} from "react-icons/ri";
+import {BiMessageEdit} from "react-icons/bi";
 
 type ShowTripDetailsProps = {
     trip: Trip
@@ -19,14 +21,15 @@ export default function ShowTripDetails({trip}: ShowTripDetailsProps) {
             <div className={"edit-delete-buttons"}>
                 {trip &&
                     <div>
-                        <button onClick={() => {
+                        <button className={"delete-button"} onClick={() => {
                             deleteTripById(trip.id, token);
                             navigate('/');
-                        }}> Delete
+                        }}> Delete <RiChatDeleteLine/>
                         </button>
-                        <button onClick={() => {
+
+                        <button className={"edit-button"} onClick={() => {
                             navigate('../edit');
-                        }}> Edit
+                        }}> Edit <BiMessageEdit/>
                         </button>
                     </div>}
             </div>
