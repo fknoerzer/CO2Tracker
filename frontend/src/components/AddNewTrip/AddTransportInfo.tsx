@@ -8,11 +8,13 @@ export default function AddTransportInfo({typeOfTransport,setTypeOfTransport}: T
 
     return (
         <div className={"add-new-trip-input-overview"}>
+            <label className="label-input-field">
                 <h3> Please choose your type of transportation</h3>
+            </label>
             <select className="dataList-input-newTrip" id="transports" value={typeOfTransport}
                     onChange={event => setTypeOfTransport(event.target.value)}>
                 <option value="DEFAULT" disabled>Choose here</option>
-                <option value="Airplane">Airplane</option>
+                <option selected value="Airplane">Airplane</option>
                 <option value="Car">Car</option>
                 <option value="Camper">Camper</option>
                 <option value="Train">Train</option>

@@ -1,27 +1,18 @@
-.offset-page{
+.statistics-page{
     margin-top: 70px;
     margin-bottom: 15%;
     justify-items: center;
     align-items: center;
     display: flex;
     flex-direction: column;
+    font-weight: bold;
 }
 
-img{
-    border-radius: 8px;
-    max-width: 100%;
-    height: auto;
-}
-
-.project-headline {
-    font-size: 24px;
-}
-
-.project-page-header{
+.year-input {
     background-color: #2B4162;
-    width: 80%;
+    width: 85%;
     padding: 10px;
-    margin: 14px;
+    margin: 8px;
     text-align: center;
     line-height: 35px;
     border-radius: 20px;
@@ -30,24 +21,18 @@ img{
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
 
-.project-card{
+.select-box{
+    width: fit-content;
+}
+
+.AllEmissions-doughnut {
     height: fit-content;
-    background: #60993E;
+    background: rgba(96, 153, 62, 0.7);
     border-radius: 20px;
     padding: 10px;
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 20px;
     width: 80%;
-    margin-bottom: 10px;
-    display: flex;
     flex-direction: column;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
-.value-field {
-    background-color: rgb(255, 255, 255, 0.3);
-    border-radius: 8px;
-}
-
-

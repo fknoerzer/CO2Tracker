@@ -21,7 +21,6 @@ export default function EditAccommodationInfo({accommodations, setAccommodations
             {accommodations.map((accommodationInput, index) => {
                 return (
                     <div key={"typeOfAccommodation" + index} className={"edit-trip-input-fields"}>
-                        <label className="label-input-field">
                             <h3> Please choose your type of transportation</h3>
                             <select className="dataList-input-newTrip" value={accommodationInput.typeOfAccommodation}
                                     name={"typeOfAccommodation"} id="accommodations"
@@ -34,7 +33,6 @@ export default function EditAccommodationInfo({accommodations, setAccommodations
                                 <option value="Camping Site">Camping Site</option>
                                 <option value="Cruise Ship">Cruise Ship</option>
                             </select>
-                        </label>
                     </div>
                 )
             })}

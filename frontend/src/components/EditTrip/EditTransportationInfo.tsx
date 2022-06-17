@@ -31,7 +31,6 @@ export default function EditTransportationInfo({transportations, setTransportati
             {transportations.map((transportInput, index) => {
                 return (
                     <div key={"typeOfTransport" + index} className={"edit-trip-input-fields"}>
-                        <label className="label-input-field">
                             <h3> Please choose your type of transportation</h3>
                             <select className="dataList-input-newTrip" id="transport"
                                     value={transportInput.typeOfTransport}
@@ -55,7 +54,6 @@ export default function EditTransportationInfo({transportations, setTransportati
                                    step="10"
                                    value={transportInput.distance}
                                    onChange={event => handleTransportFormInputChange(event, index)}/> km (Roundtrip)
-                        </label>
                     </div>
                 )
             })}

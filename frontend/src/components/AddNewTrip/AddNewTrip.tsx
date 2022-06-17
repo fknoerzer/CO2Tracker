@@ -117,15 +117,6 @@ export default function AddNewTrip() {
 
         } else if (!dateOfReturning) {
             toast.error("Date of Return for your Trip is required.")
-
-        } else if (!typeOfTransport && count >= 1) {
-            toast.error("Type of Transport for your Trip is required.")
-
-        } else if (!typeOfAccommodation && count >= 2) {
-            toast.error("Type of Accommodation for your Trip is required.")
-
-        } else if (!typeOfDiet && count >= 3) {
-            toast.error("Type of Diet for your Trip is required.")
         }
 
         else if(count===5) {
@@ -250,7 +241,7 @@ export default function AddNewTrip() {
         <form className={"add-form"}>
             {showComponent()}
             {count===0 ? <div/> : <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button> }
-                <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>
+            {count===5 ? <button type={"button"} className={"add-button"} onClick={onClickNext}>Add</button> : <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>}
                 </form>
     )
 }

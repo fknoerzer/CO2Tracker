@@ -28,7 +28,6 @@ export default function TripDetails({trip}: TripDetailsProps) {
                 <p className={"general-info"}>Average CO<sub>2</sub>Footprint per trip day:</p>
                 <div className={"value-field"}>{Math.round(trip.calculatedEmissions.totalEmissions/getDateDiff(trip.dateOfDeparture,trip.dateOfReturning))} kg
                     CO<sub>2</sub>-eq</div>
-
                 <p className={"general-info"}>Personal Budget:</p>
                     <div className={"value-field"}>{trip.personalBudget} kg CO<sub>2</sub>-eq.</div>
                 <p className={"general-info"}>Utilization of personal budget:</p>

@@ -30,7 +30,7 @@ div.trip-cards {
 
 .all-trips-overview {
     height: fit-content;
-    background: #60993E;
+    background: rgba(96, 153, 62, 0.7);
     border-radius: 20px;
     padding: 10px;
     justify-content: center;

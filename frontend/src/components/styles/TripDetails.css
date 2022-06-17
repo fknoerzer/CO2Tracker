@@ -18,16 +18,12 @@ div.trip-detail-card {
     align-items: center;
 }
 
-div.all-trips-overview {
-    margin-top: 80px;
-}
-
 div.general-info {
     align-items: flex-start;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: #023C40;
+    background-color: #2B4162;
     height: fit-content;
     border-radius: 20px;
     padding: 10px;

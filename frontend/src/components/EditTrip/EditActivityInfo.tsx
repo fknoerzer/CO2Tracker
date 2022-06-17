@@ -22,7 +22,6 @@ export default function EditActivityInfo({activities, setActivities}: EditActivi
             {activities.map((activityInput, index) => {
                 return (
                     <div  key={"shopping" + index} className={"edit-trip-input-fields"}>
-                        <label className="label-input-field">
                             <h3> Did you play Golf during your Trip? </h3>
                             <input className="number-field"
                                    type="number"
@@ -31,8 +30,6 @@ export default function EditActivityInfo({activities, setActivities}: EditActivi
                                    min="0" step="1"
                                    value={activityInput.amountOfGolfRounds}
                                    onChange={event => handleShoppingFormChange(event, index)}/> Round(s) of Golf
-                        </label>
-                        <label className="label-input-field">
                             <h3> Did you go skiing during you trip?  </h3>
                             <input className="number-field"
                                    type="number"
@@ -41,17 +38,14 @@ export default function EditActivityInfo({activities, setActivities}: EditActivi
                                    min="0" step="1"
                                    value={activityInput.amountOfSkiingDays}
                                    onChange={event => handleShoppingFormChange(event, index)}/> Skiing day(s)
-                        </label>
-                        <label className="label-input-field"><h3>Did you enjoy a spa and wellness day during your trip?</h3> <input
-                            className="number-field"
+                       <h3>Did you enjoy a spa and wellness day during your trip?</h3>
+                        <input className="number-field"
                             type="number"
                             name={"amountOfBeautyDays"}
                             placeholder="Add Amount of bought small Souvenirs"
                             min="0" step="0.5"
                             value={activityInput.amountOfBeautyDays}
                             onChange={event => handleShoppingFormChange(event, index)}/> Spa and wellness day(s)
-                        </label>
-                        <label className="label-input-field">
                             <h3>Here you can add a custom activity item</h3>
                             <input className="text-field"
                                    type="text"
@@ -59,8 +53,6 @@ export default function EditActivityInfo({activities, setActivities}: EditActivi
                                    placeholder="Add Custom Item"
                                    value={activityInput.customActivityItem}
                                    onChange={event => handleShoppingFormChange(event, index)}/>
-                        </label>
-                        <label className="label-input-field">
                             <h3>Here you can add the amount of your custom activity item</h3>
                             <input className="number-field"
                                    type="number"
@@ -70,8 +62,6 @@ export default function EditActivityInfo({activities, setActivities}: EditActivi
                                    value={activityInput.amountOfCustomActivityItem}
                                    onChange={event => handleShoppingFormChange(event, index)}/> Amount
                             of custom item(s)
-                        </label>
-                        <label className="label-input-field">
                             <h3>Here you can add the emissions of your custom activity item</h3>
                             <input className="number-field"
                                    type="number"
@@ -79,11 +69,8 @@ export default function EditActivityInfo({activities, setActivities}: EditActivi
                                    placeholder="Add Emissions of your Custom Shopping Item"
                                    min="0" step="0.1"
                                    value={activityInput.customActivityItemEmission}
-                                   onChange={event => handleShoppingFormChange(event, index)}/> Emissions
-                            per
-                            item
-                        </label>
+                                   onChange={event => handleShoppingFormChange(event, index)}/> Emissions per item
                     </div>)
-            })})
+            })}
         </div>)
 }

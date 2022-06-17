@@ -14,9 +14,9 @@ export default function AddFoodInfo({typeOfDiet, setTypeOfDiet}: FoodInfoProps) 
             <select
                 onChange={event => setTypeOfDiet(event.target.value)} className="dataList-input-newTrip"
                 id="diets" value={typeOfDiet}>
-                <option value="DEFAULT" disabled>Choose here</option>
+                <option disabled>Choose here</option>
                 <option value="Much Meat">Much Meat</option>
-                <option value="Some Meat">Some Meat</option>
+                <option selected value="Some Meat">Some Meat</option>
                 <option value="Rarely Meat">Rarely Meat</option>
                 <option value="Vegetarian">Vegetarian</option>
                 <option value="Vegan">Vegan</option>

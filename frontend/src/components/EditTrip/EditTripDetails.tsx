@@ -1,5 +1,5 @@
 import {Accommodation, Activity, Food, Shopping, Transportation, Trip} from "../../model/Trip";
-import {FormEvent, useContext, useState} from "react";
+import {useContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {putTrip} from "../../service/api-service";
 import EditGeneralTripInfo from "./EditGeneralTripInfo";
@@ -31,8 +31,7 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
     const {token} = useContext(AuthContext)
     const [count, setCount] = useState<number>(0)
 
-    const onEdit = (event:FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
+    const onEdit = () => {
 
         const editedTrip: Trip = {
             title: title,
@@ -77,7 +76,11 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
     }
 
     const onClickNext = () => {
-        setCount(count + 1)
+        if(count===5) {
+            onEdit()
+        }
+        else {
+        setCount(count + 1)}
         showComponent()
     }
 
@@ -90,7 +93,9 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
         switch (count) {
             case 0: {
                 return (
-                    <div>
+                    <div className={"add-new-trip-div"}>
+                        <h1> Edit general infos of your trip</h1>
+                        <div className={"add-new-trip-form"}>
                         <EditGeneralTripInfo title={title}
                                              setTitle={setTitle}
                                              distance={distance}
@@ -105,17 +110,18 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
                                              setDateOfReturning={setDateOfReturning}
                                              personalBudget={personalBudget}
                                              setPersonalBudget={setPersonalBudget}/>
-                        <button type={"button"} className={"next"} onClick={onClickNext}> Next</button>
+                    </div>
                     </div>
                 )
             }
             case 1: {
                 return (
-                    <div>
+                    <div className={"add-new-trip-div"}>
+                        <h1> Edit transport infos of your trip</h1>
+                        <div className={"add-new-trip-form"}>
                         <EditTransportationInfo transportations={transportations}
                                                 setTransportations={setTransportations}/>
-                        <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
-                        <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
+                    </div>
                     </div>
                 )
             }
@@ -123,38 +129,42 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
 
             case 2: {
                 return (
-                    <div>
+                     <div className={"add-new-trip-div"}>
+                    <h1> Edit accommodation Infos of your trip</h1>
+                <div className={"add-new-trip-form"}>
                         <EditAccommodationInfo accommodations={accommodations}
                                                setAccommodations={setAccommodations}/>
-                        <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
-                        <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
                     </div>
+                     </div>
                 )
             }
             case 3: {
                 return (
-                    <div>
+                    <div className={"add-new-trip-div"}>
+                        <h1> Edit diet infos of your trip</h1>
+                        <div className={"add-new-trip-form"}>
                         <EditFoodInfo foods={foods} setFoods={setFoods}/>
-                        <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
-                        <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
+                    </div>
                     </div>
                 )
             }
             case 4: {
                 return (
-                    <div>
+                        <div className={"add-new-trip-div"}>
+                        <h1> Edit shopping infos of your trip</h1>
+                        <div className={"add-new-trip-form"}>
                         <EditShoppingInfo setShoppings={setShoppings} shoppings={shoppings}/>
-                        <button type={"button"} className={"next"} onClick={onClickNext}>Next</button>
-                        <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
+                    </div>
                     </div>
                 )
             }
             case 5:
                 return (
-                    <div>
+                    <div className={"add-new-trip-div"}>
+                        <h1> Edit activity Infos of your trip</h1>
+                        <div className={"add-new-trip-form"}>
                         <EditActivityInfo activities={activities} setActivities={setActivities}/>
-                        <button type={"button"} className={"return"} onClick={onClickReturn}>Return</button>
-                        <button type={"submit"} className={"edit-trip"}>Edit Trip</button>
+                    </div>
                     </div>
                 )
 
@@ -164,8 +174,10 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
         }
     }
     return (
-        <form onSubmit={onEdit} >
+        <form className={"add-form"} >
             {showComponent()}
+            {count===0 ? <div/> : <button type={"button"} className={"return-button"} onClick={onClickReturn}>Return</button> }
+            {count===5 ? <button type={"button"} className={"add-button"} onClick={onClickNext}>Edit</button> : <button type={"button"} className={"next-button"} onClick={onClickNext}>Next</button>}
         </form>
     )
 }

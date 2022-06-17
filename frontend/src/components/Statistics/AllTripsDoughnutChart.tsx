@@ -14,7 +14,6 @@ export default function AllTripsDoughnutChart({trips}: AllTripsDoughnutChartProp
     const getTitles: string[] = trips.map(elem => (elem.title))
     const getCalculatedEmissions: number[] = trips.map(val => (val.calculatedEmissions.totalEmissions))
 
-
     const data = {
         labels: getTitles,
         datasets:
@@ -39,9 +38,7 @@ export default function AllTripsDoughnutChart({trips}: AllTripsDoughnutChartProp
 
     const options = {
         plugins: {
-
             legend: {
-
                 labels: {
                     font: {
                         size: 16,
@@ -53,11 +50,9 @@ export default function AllTripsDoughnutChart({trips}: AllTripsDoughnutChartProp
     }
 
     return (
-
         <div className={"all-trips-overview"}>
             <h3>Overview trips</h3>
             <Doughnut data={data} options={options}/>
         </div>
-
     )
 }
