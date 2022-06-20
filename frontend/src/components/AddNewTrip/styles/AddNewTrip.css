@@ -1,19 +1,13 @@
-
-.add-new-trip-div {
-    width: 100%;
-    height: fit-content;
-    margin-top: 70px;
+.add-form {
+    align-self: center;
+    display: flex;
     flex-direction: column;
-    align-items: start;
-    justify-items: center;
-    font-size: 16px;
-    display: grid;
-    grid-template-columns: auto;
-    margin-bottom: 5%;
+    margin-top: 80px;
+    margin-bottom: 15%;
 }
 
 .add-new-trip-input-overview {
-    height:fit-content;
+    height: fit-content;
     width: fit-content;
     box-sizing: border-box;
     border-radius: 20px;
@@ -29,14 +23,9 @@
     align-items: center;
 }
 
-.add-new-trip-form {
-    height:fit-content;
-    margin-bottom: 15%;
-}
-
 .label-input-field {
     margin: 10px;
-    width: 60%;
+    width: 80%;
     background-color: rgba(192, 192, 192, 0.3);
     border-radius: 20px;
 }
@@ -57,16 +46,17 @@
 .next-button {
     grid-column: 2;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     width: 150px;
     height: 50px;
     font-weight: bold;
     font-size: 25px;
     background-color: #23CE6B;
 }
+
 .return-button {
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
     width: 150px;
     height: 50px;
     font-weight: bold;
@@ -82,4 +72,10 @@
     font-weight: bold;
     font-size: 25px;
     background-color: #23CE6B;
+}
+
+.update-div {
+    display: flex;
+    width: 100%;
+    justify-content: center
 }

@@ -3,7 +3,6 @@
     display: grid;
     background-color: #023C40;
     justify-items: center;
-    align-items: center;
     height: 7%;
     width: 100%;
     position: fixed;
@@ -11,25 +10,26 @@
 
 .logo {
     height: 100%;
-    position: absolute;
 }
 
-.ai-button-menu {
+.ai-button-logout {
+    margin-top: 3px;
+    width: fit-content;
     border-color: white;
     background-color: transparent;
     font-size: 40px;
     color: white;
-    text-align: left;
     position: absolute;
     right: 0;
 }
 
 .ai-button-home {
+    margin-top: 3.5px;
+    width: fit-content;
     border-color: white;
     background-color: transparent;
     font-size: 40px;
     color: white;
-    text-align: left;
     position: absolute;
     left: 0;
 }

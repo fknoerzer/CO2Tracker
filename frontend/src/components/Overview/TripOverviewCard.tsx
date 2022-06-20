@@ -1,6 +1,6 @@
-import {Trip} from "../model/Trip";
-import "../components/styles/TripOverviewCard.css"
-import {formatDepartureDate, formatReturningDate} from "./Util/FormatedDate";
+import {Trip} from "../../model/Trip";
+import "../styles/TripOverviewCard.css"
+import {formatDepartureDate, formatReturningDate} from "../Util/Calculations";
 import {useNavigate} from "react-router-dom";
 import {buildStyles, CircularProgressbarWithChildren} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -37,7 +37,7 @@ export default function TripOverviewCard({trip}: TripOverviewCardProps) {
                 </div>
             </div>
             <div className={"trip-overview-buttons"}>
-            <button className={"offset-button"} onClick={() => navigate(`trips/offset/${trip.id}`)}>Compensate</button>
+            <button className={"offset-button"} onClick={() => navigate(`trips/${trip.id}/offset`)}>Offset</button>
             <button className={"details-button"} onClick={() => navigate(`/trips/${trip.id}`)}>Details</button>
                 </div>
             </div>

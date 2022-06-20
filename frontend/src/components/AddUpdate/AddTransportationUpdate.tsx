@@ -35,16 +35,17 @@ export default function AddTransportationUpdate({trip}: AddTransportationUpdateP
 
     }
     return (
-        <form className={"update-trip-Transport"} onSubmit={onUpdate}>
-            <label className="label-input-update">Travel Distance:
-                <input className="number-field" type="number"
+        <form className={"add-form"} onSubmit={onUpdate}>
+            <h1>Add more transportation emissions to your trip</h1>
+            <h3 className="label-input-update">Travel Distance:</h3>
+                <input className="number-field"
+                       type="number"
                        placeholder="Add your additional Travel Distance."
                        min="0"
                        step="10" value={distance}
                        onChange={event => setDistance(Number(event.target.value))}/>
-            </label>
-            <label className="label-input-update">Type of Transport:</label>
-            <select className="dataList-input-update" id="transports" value={typeOfTransport}
+            <h3 className="label-input-update">Type of Transport:</h3>
+            <select className="dataList-input-newTrip" id="transports" value={typeOfTransport}
                     onChange={event => setTypeOfTransport(event.target.value)}>
                 <option value="DEFAULT" disabled>Choose here</option>
                 <option value="Airplane">Airplane</option>
@@ -56,7 +57,7 @@ export default function AddTransportationUpdate({trip}: AddTransportationUpdateP
                 <option value="Ferry">Ferry</option>
                 <option value="Walking">Walking</option>
             </select>
-            <button className={"update-button"}>Update</button>
+            <button className={"add-button"}>Update</button>
         </form>
     )
 }

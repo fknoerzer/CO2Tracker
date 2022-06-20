@@ -3,43 +3,40 @@ div.trip-cards {
     flex-direction: column;
     align-items: center;
     padding-bottom: 80px;
+    margin-top: 70px;
 }
 
-.add-button-wrapper {
+.add-statistics-button-wrapper {
     background-color: #7EA0AA;
     position: fixed;
     bottom: 0;
-    justify-items: center;
-    align-items: flex-start;
+    justify-content: space-around;
+    align-items: center;
     height: 8%;
     width: 100%;
-    display: grid;
-    grid-template-rows: 5%;
-    grid-template-columns: auto;
+    display: flex;
 }
 
-.add-new-trip-button {
-    position: fixed;
-    align-self: center;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    width: -moz-fit-content;
+.statistics-button {
     height: 50px;
-    font-weight: bold;
-    font-size: 25px;
+    font-size: 22px;
+}
+
+.add-new-trip-button{
+    height: 50px;
     background-color: #23CE6B;
+    font-size: 22px;
 }
 
 .all-trips-overview {
     height: fit-content;
-    background: #60993E;
+    background: rgba(96, 153, 62, 0.7);
     border-radius: 20px;
     padding: 10px;
     justify-content: center;
     align-items: center;
     text-align: center;
     width: 80%;
-    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
 }
@@ -47,9 +44,14 @@ div.trip-cards {
 canvas{
     background-color: whitesmoke;
     Border-radius: 20px;
-    padding: 10px;
+    padding: 5px;
+    margin: 8px
 }
 
-.welcome-text {
-    margin-top: 80px;
+.searchbar {
+    width: 80%;
+    font-size: 22px;
+    border-radius: 20px;
+    margin: 10px;
 }
+

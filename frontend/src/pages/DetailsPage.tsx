@@ -1,14 +1,15 @@
 import {Route, Routes, useParams} from "react-router-dom";
 import useDetailedTrip from "../hooks/useDetailedTrip";
 import React, {useEffect} from "react";
-import EditTripDetails from "../components/EditTripComponents/EditTripDetails";
-import ShowTripDetails from "../components/DetailsComponents/ShowTripDetails";
+import EditTripDetails from "../components/EditTrip/EditTripDetails";
+import ShowTripDetails from "../components/Details/ShowTripDetails";
 import UpdateTransportationPage from "./UpdateTransportationPage";
 import UpdateAccommodationPage from "./UpdateAccommodationPage";
 import UpdateFoodPage from "./UpdateFoodPage";
 import UpdateShoppingPage from "./UpdateShoppingPage";
 import UpdateActivityPage from "./UpdateActivityPage";
 import RequireAuth from "../routing/RequireAuth";
+import OffsetPage from "./OffsetPage";
 
 
 export default function DetailsPage() {
@@ -23,24 +24,24 @@ export default function DetailsPage() {
         // eslint-disable-next-line
     }, [id])
 
-    if(detailedTrip) {
+    if (detailedTrip) {
         return (
             <Routes>
-                <Route element={<RequireAuth />}>
-                 <Route index element={<ShowTripDetails trip={detailedTrip}/>}/>
-
-                <Route path="/update/transportation/"
-                       element={<UpdateTransportationPage trip={detailedTrip}/>}/>
-                <Route path="/update/accommodation/"
-                       element={<UpdateAccommodationPage trip={detailedTrip}/>}/>
-                <Route path="/update/food/"
-                       element={<UpdateFoodPage trip={detailedTrip}/>}/>
-                <Route path="/update/shopping/"
-                       element={<UpdateShoppingPage trip={detailedTrip}/>}/>
-                <Route path="/update/activity/"
-                       element={<UpdateActivityPage trip={detailedTrip}/>}/>
-                <Route path="/edit/"
-                       element={<EditTripDetails trip={detailedTrip}/>}/>
+                <Route element={<RequireAuth/>}>
+                    <Route index element={<ShowTripDetails trip={detailedTrip}/>}/>
+                    <Route path="/offset" element={<OffsetPage trip={detailedTrip}/>}/>
+                    <Route path="/update/transportation/"
+                           element={<UpdateTransportationPage trip={detailedTrip}/>}/>
+                    <Route path="/update/accommodation/"
+                           element={<UpdateAccommodationPage trip={detailedTrip}/>}/>
+                    <Route path="/update/food/"
+                           element={<UpdateFoodPage trip={detailedTrip}/>}/>
+                    <Route path="/update/shopping/"
+                           element={<UpdateShoppingPage trip={detailedTrip}/>}/>
+                    <Route path="/update/activity/"
+                           element={<UpdateActivityPage trip={detailedTrip}/>}/>
+                    <Route path="/edit/"
+                           element={<EditTripDetails trip={detailedTrip}/>}/>
                 </Route>
             </Routes>
         )

@@ -18,11 +18,10 @@ export default function EditFoodInfo({foods, setFoods}: EditFoodInfoProps) {
 
     }
     return (
-        <div className={"edit-trip-input-overview"}>
+        <div className={"add-new-trip-input-overview"}>
             {foods.map((foodsInput, index) => {
                 return (
                     <div key={"typeOfDiet" + index} className={"edit-trip-input-fields"}>
-                        <label className="label-input-field">
                             <h3> Please choose your type of diet</h3>
                             <select className="dataList-input-newTrip" id="food" value={foodsInput.typeOfDiet}
                                     name={"typeOfDiet"} onChange={event => handleTransportFormChange(event, index)}>
@@ -33,7 +32,7 @@ export default function EditFoodInfo({foods, setFoods}: EditFoodInfoProps) {
                                 <option value="Vegetarian">Vegetarian</option>
                                 <option value="Vegan">Vegan</option>
                             </select>
-                        </label>
+
                     </div>
                 )
             })}

@@ -9,7 +9,7 @@ type UpdateTransportationPageProps = {
 export default function UpdateTransportationPage({ trip}:UpdateTransportationPageProps) {
 
     return(
-        <div className={"update-transport"}>
+        <div className={"update-div"}>
             {trip&& <AddTransportationUpdate trip={trip}/>}
         </div>
     )

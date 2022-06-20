@@ -1,9 +1,9 @@
 import TripOverviewCard from "./TripOverviewCard";
-import {Trip} from "../model/Trip";
-import "../components/styles/TripsOverview.css"
+import {Trip} from "../../model/Trip";
+import "../styles/TripsOverview.css"
 import {useNavigate} from "react-router-dom";
-import AllTripsDoughnutChart from "./AllTripsDoughnutChart";
 import {ChangeEvent, useState} from "react";
+import {BiMessageSquareAdd} from "react-icons/bi";
 
 type TripsOverviewProps = {
     trips: Trip[]
@@ -16,16 +16,15 @@ export default function TripsOverview({trips}: TripsOverviewProps) {
     return (
         <div className={"trip-overview"}>
             <div className={"trip-cards"}>
-
-                <AllTripsDoughnutChart trips={trips}/>
-                <input type={"text"} value={search} placeholder={"Search your trips"}
+                <input className={"searchbar"} type={"text"} value={search} placeholder={"Search your trips"}
                        onChange={(event: ChangeEvent<HTMLInputElement>) => setSearch(event.target.value)}/>
                 {trips.filter(trip => trip.title.toLowerCase().includes(search.toLowerCase()))
                     .sort((a, b) => a.dateOfDeparture.localeCompare(b.dateOfDeparture))
                     .map(trip => <TripOverviewCard key={trip.id} trip={trip}/>).reverse()}
             </div>
-            <div className={"add-button-wrapper"}>
-                <button className={"add-new-trip-button"} onClick={() => navigate(`/addtrip`)}>Add new Trip +</button>
+            <div className={"add-statistics-button-wrapper"}>
+                <button className={"statistics-button"} onClick={()=> navigate("/alltrips")}> Statistics</button>
+                <button className={"add-new-trip-button"} onClick={() => navigate(`/addtrip`)}>Add Trip <BiMessageSquareAdd/></button>
             </div>
         </div>
     )

@@ -8,7 +8,7 @@ type UpdateAccommodationPageProps = {
 export default function UpdateAccommodationPage({trip}:UpdateAccommodationPageProps) {
 
     return(
-        <div className={"update-accommodation"}>
+        <div className={"update-div"}>
             {trip&& <AddAccommodationUpdate trip={trip}/>}
         </div>
     )

@@ -8,7 +8,7 @@ type UpdateShoppingPageProps = {
 export default function UpdateShoppingPage({trip}:UpdateShoppingPageProps) {
 
     return(
-        <div className={"update-Shopping"}>
+        <div className={"update-div"}>
             {trip&& <AddShoppingUpdate trip={trip}/>}
         </div>
     )

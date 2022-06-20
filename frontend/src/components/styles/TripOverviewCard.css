@@ -2,7 +2,7 @@
     height: fit-content;
     background: #2B4162;
     border-radius: 20px;
-    padding: 10px;
+    padding: 5px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -10,6 +10,7 @@
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
 
 .trip-infos {
@@ -18,7 +19,7 @@
     align-content: center;
     flex-direction: column;
     background-color: rgba(192, 192, 192, 0.3);
-    width: 80%;
+    width: 90%;
     padding: 10px;
     margin: 8px;
     border-radius: 20px;
@@ -27,32 +28,30 @@
 }
 
 .title {
+    margin: 10px;
     font-size: 30px;
     font-weight: bolder;
-    margin: 2px 2px 20px 2px;
     justify-content: center;
 }
 
 .trip-overview-buttons {
+    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     font-weight: bold;
 }
 
 .details-button {
-    width: fit-content;
-    margin:0 40% 0 40%;
-
+    width: 110px;
 }
 
 .offset-button {
-    width: fit-content;
+    width: 110px;
     background-color: #23CE6B;
-   margin:0 40% 0 40%;
-
 }
 
 div.progress-bar{
+    margin: 8px;
     font-size: 16px;
     width: fit-content;
     height: fit-content;
@@ -61,4 +60,3 @@ div.progress-bar{
 strong {
     font-size: large;
 }
-

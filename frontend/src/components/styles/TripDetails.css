@@ -19,16 +19,19 @@ div.trip-detail-card {
 }
 
 div.general-info {
-    background-color: #023C40;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #2B4162;
     height: fit-content;
     border-radius: 20px;
     padding: 10px;
-    justify-content: center;
-    align-items: center;
     text-align: center;
-    font-size: 20px;
+    font-size: 18px;
     width: 90%;
     margin: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
 
 div.emissions-grid{
@@ -51,7 +54,74 @@ div.emissions-info-box {
     font-size: 18px;
     width: 40%;
     margin: 7px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
 
-.update-button {
+.update-button{
+    padding: 6px;
+    font-size: 14px;
+    width: fit-content;
+    height: fit-content;
 }
+
+div.total-emissions {
+    width:fit-content;
+    border-radius: 20px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #60993E;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    margin: 7px;
+    text-align: center;
+}
+
+.trip-title {
+    align-items: flex-start;
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+.value-field {
+    background-color: rgb(255, 255, 255, 0.3);
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    border-radius: 8px;
+    margin: 5px;
+}
+.impact-field {
+    margin-left: 25%;
+    background-color: rgb(255, 255, 255, 0.3);
+    width: fit-content;
+    height: fit-content;
+    padding: 5px;
+    border-radius: 8px;
+}
+.edit-delete-buttons {
+    background-color: #7EA0AA;
+    position: fixed;
+    bottom: 0;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 8%;
+    width: 100%;
+    display: flex;
+}
+
+.delete-button {
+    font-size: 22px;
+    background-color: #EF626C;
+    height: 50px;
+    margin-right: 60px;
+}
+
+.edit-button {
+    justify-content: space-around;
+    font-size: 22px;
+    height: 50px;
+}
+
+
+

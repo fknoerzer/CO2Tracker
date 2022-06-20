@@ -1,6 +1,7 @@
-import {Trip} from "../model/Trip";
+import {Trip} from "../../model/Trip";
 import {Doughnut} from 'react-chartjs-2';
 import {Chart, registerables} from 'chart.js'
+import React from "react";
 
 Chart.register(...registerables);
 
@@ -12,14 +13,6 @@ export default function AllTripsDoughnutChart({trips}: AllTripsDoughnutChartProp
 
     const getTitles: string[] = trips.map(elem => (elem.title))
     const getCalculatedEmissions: number[] = trips.map(val => (val.calculatedEmissions.totalEmissions))
-
-    function totalEmissionsAllTrips() {
-        let sum: number = 0;
-        getCalculatedEmissions.forEach(value => {
-            sum += value
-        });
-        return Math.round(sum)
-    }
 
     const data = {
         labels: getTitles,
@@ -45,9 +38,7 @@ export default function AllTripsDoughnutChart({trips}: AllTripsDoughnutChartProp
 
     const options = {
         plugins: {
-
             legend: {
-
                 labels: {
                     font: {
                         size: 16,
@@ -59,12 +50,9 @@ export default function AllTripsDoughnutChart({trips}: AllTripsDoughnutChartProp
     }
 
     return (
-
         <div className={"all-trips-overview"}>
-            <h3> Your Emissions for all trips: <div className="total-emmissions">{totalEmissionsAllTrips()} kg
-                CO<sub>2</sub>-eq</div></h3>
+            <h3>Overview trips</h3>
             <Doughnut data={data} options={options}/>
         </div>
-
     )
 }

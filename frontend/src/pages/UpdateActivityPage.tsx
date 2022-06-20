@@ -8,7 +8,7 @@ type UpdateActivityPageProps = {
 export default function UpdateActivityPage({trip}:UpdateActivityPageProps) {
 
     return(
-        <div className={"update-Activity"}>
+        <div className={"update-div"}>
             {trip&& <AddActivityUpdate trip={trip}/>}
         </div>
     )
