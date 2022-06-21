@@ -1,4 +1,4 @@
-.offset-page{
+.offset-page {
     margin-top: 70px;
     margin-bottom: 15%;
     justify-items: center;
@@ -7,7 +7,7 @@
     flex-direction: column;
 }
 
-img{
+img {
     border-radius: 8px;
     max-width: 100%;
     height: auto;
@@ -17,7 +17,7 @@ img{
     font-size: 24px;
 }
 
-.project-page-header{
+.project-page-header {
     background-color: #2B4162;
     width: 80%;
     padding: 10px;
@@ -30,7 +30,7 @@ img{
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
 
-.project-card{
+.project-card {
     height: fit-content;
     background: #60993E;
     border-radius: 20px;
@@ -45,6 +45,7 @@ img{
     flex-direction: column;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
+
 .value-field {
     background-color: rgb(255, 255, 255, 0.3);
     border-radius: 8px;

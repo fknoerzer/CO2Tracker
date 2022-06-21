@@ -34,8 +34,8 @@ div.general-info {
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
 
-div.emissions-grid{
- display: flex;
+div.emissions-grid {
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -57,7 +57,7 @@ div.emissions-info-box {
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
 
-.update-button{
+.update-button {
     padding: 6px;
     font-size: 14px;
     width: fit-content;
@@ -65,7 +65,7 @@ div.emissions-info-box {
 }
 
 div.total-emissions {
-    width:fit-content;
+    width: fit-content;
     border-radius: 20px;
     padding: 10px;
     align-items: center;
@@ -91,6 +91,7 @@ div.total-emissions {
     border-radius: 8px;
     margin: 5px;
 }
+
 .impact-field {
     margin-left: 25%;
     background-color: rgb(255, 255, 255, 0.3);
@@ -99,6 +100,7 @@ div.total-emissions {
     padding: 5px;
     border-radius: 8px;
 }
+
 .edit-delete-buttons {
     background-color: #7EA0AA;
     position: fixed;

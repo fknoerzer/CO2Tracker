@@ -24,7 +24,6 @@
     margin: 8px;
     border-radius: 20px;
     font-size: 18px;
-
 }
 
 .title {
@@ -50,12 +49,12 @@
     background-color: #23CE6B;
 }
 
-div.progress-bar{
+div.progress-bar {
     margin: 8px;
     font-size: 16px;
     width: fit-content;
     height: fit-content;
-    }
+}
 
 strong {
     font-size: large;
