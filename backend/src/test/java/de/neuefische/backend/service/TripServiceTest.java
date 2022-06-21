@@ -8,6 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -20,9 +22,33 @@ class TripServiceTest {
 
 
     @Test
+    void getTripById_WhenIdIsValid() {
+        //Given
+        when(tripRepo.findById("1")).thenReturn(
+                Optional.of(trip1));
+
+        //When
+        Trip actual = tripService.getTripById("1");
+
+        //Then
+        Trip expected = trip1;
+        verify(tripRepo).findById("1");
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void getTripById_WhenIdIsValid_shouldThrowException() {
+        //Given
+        when(tripRepo.findById("0815")).thenReturn(Optional.empty());
+
+        //When //Then
+        assertThrows(NoSuchElementException.class, () -> tripService.getTripById("0815"));
+        verify(tripRepo).findById("0815");
+    }
+
+    @Test
     void getAllTrips() {
         //Given
-
         when(tripRepo.findAll())
                 .thenReturn(List.of(trip1));
 
@@ -38,7 +64,6 @@ class TripServiceTest {
     @Test
     void addNewTrip() {
         //Given
-
         when(tripRepo.insert(trip1)).thenReturn(trip1);
 
         //When
@@ -54,22 +79,33 @@ class TripServiceTest {
     void deleteTrip() {
         //When
         tripService.deleteTrip("1");
+
         //Then
         verify(tripRepo).deleteById("1");
     }
 
-  @Test
-    void editTrip() {
+    @Test
+    void editTrip_WhenIdIsValid() {
         //Given
         when(tripRepo.existsById(trip1.getId())).thenReturn(true);
         when(tripRepo.save(trip1)).thenReturn(trip1);
+
         //When
         Trip actual = tripService.editTrip(trip1);
 
         //Then
-
         assertEquals(trip1, actual);
+    }
 
+    @Test
+    void editTrip_WhenIdIsNotValid() {
+        //Given
+        when(tripRepo.findById(trip1.getId())).thenReturn(Optional.empty());
+
+        //When//Then
+       assertNotNull(trip1);
+       assertThrows(NoSuchElementException.class, () -> tripService.editTrip(trip1));
+       verify(tripRepo).existsById(trip1.getId());
     }
 
     Trip trip1 = Trip.builder()

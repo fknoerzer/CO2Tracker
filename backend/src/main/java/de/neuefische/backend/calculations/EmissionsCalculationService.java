@@ -2,10 +2,11 @@ package de.neuefische.backend.calculations;
 
 import de.neuefische.backend.model.CalculatedEmissions;
 import de.neuefische.backend.model.Trip;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
-
+@Service
 public class EmissionsCalculationService {
 
     private EmissionsCalculationService() {
@@ -85,7 +86,7 @@ public class EmissionsCalculationService {
                 getActivitiesEmissions(editedTrip));
     }
 
-    public static Trip transferEditTrip(Trip editedTrip) {
+    public static Trip transferEmissions(Trip editedTrip) {
 
         CalculatedEmissions calculatedEmissions = CalculatedEmissions.builder()
                 .transportationEmissions(getTransportationEmissions(editedTrip))

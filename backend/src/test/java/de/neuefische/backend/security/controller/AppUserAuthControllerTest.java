@@ -13,11 +13,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class AppUserAuthControllerTest {
-
 
     @Value("${holiday-tracker.app.jwt.secret}")
     private String JWT_SECRET;
@@ -38,10 +37,10 @@ class AppUserAuthControllerTest {
 
     @Test
     void login_withValidCredentials_returnValidJwt() {
-        // GIVEN
+        // Given
         createDummyUserInDatabase();
 
-        // WHEN
+        // When
         String jwt = webTestClient.post()
                 .uri("/auth/login")
                 .bodyValue(AppUser.builder()
@@ -54,7 +53,7 @@ class AppUserAuthControllerTest {
                 .returnResult()
                 .getResponseBody();
 
-        // THEN
+        // Then
         Claims claims = Jwts.parser()
                 .setSigningKey(JWT_SECRET)
                 .parseClaimsJws(jwt)
@@ -65,10 +64,10 @@ class AppUserAuthControllerTest {
 
     @Test
     void login_withWrongCredentials_returnForbiddenError() {
-        // GIVEN
+        // Given
         createDummyUserInDatabase();
 
-        // WHEN
+        // When
         webTestClient.post()
                 .uri("/auth/login")
                 .bodyValue(AppUser.builder()
