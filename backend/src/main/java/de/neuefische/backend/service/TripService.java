@@ -1,10 +1,10 @@
 package de.neuefische.backend.service;
 
+import de.neuefische.backend.Mapper.TripMapper;
 import de.neuefische.backend.calculations.EmissionsCalculationService;
 import de.neuefische.backend.dto.TripDto;
 import de.neuefische.backend.model.Trip;
 import de.neuefische.backend.repository.TripRepo;
-import de.neuefische.backend.Mapper.TripMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +26,7 @@ public class TripService {
     }
 
     public Trip addNewTrip(TripDto tripDto) {
-       Trip newTrip = EmissionsCalculationService.transferEditTrip(TripMapper.tripDtoToTrip(tripDto));
+       Trip newTrip = EmissionsCalculationService.transferEmissions(TripMapper.tripDtoToTrip(tripDto));
         return tripRepo.insert(newTrip);
     }
 
@@ -40,10 +40,10 @@ public class TripService {
 
     public Trip editTrip(Trip tripWithEdits) {
         if (tripRepo.existsById(tripWithEdits.getId())) {
-            Trip editedTrip = EmissionsCalculationService.transferEditTrip(tripWithEdits);
+            Trip editedTrip = EmissionsCalculationService.transferEmissions(tripWithEdits);
             return tripRepo.save(editedTrip);
         } else {
-            throw new NoSuchElementException("Could not update trip element! Element with id does not exist: " + tripWithEdits.getId());
+            throw new NoSuchElementException("Could not update trip element! Element with id: " + tripWithEdits.getId() + " does not exist");
         }
     }
 }

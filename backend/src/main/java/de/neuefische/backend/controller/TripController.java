@@ -22,17 +22,17 @@ public class TripController {
     }
 
     @GetMapping
-    public List<de.neuefische.backend.model.Trip> getAllTrips() {
+    public List<Trip> getAllTrips() {
         return tripService.getAllTrips();
     }
 
     @GetMapping("{id}")
-    public de.neuefische.backend.model.Trip getTripListById(@PathVariable String id) {
+    public Trip getTripListById(@PathVariable String id) {
         return tripService.getTripById(id);
     }
 
     @PostMapping
-    public de.neuefische.backend.model.Trip addNewTrip(@Valid @RequestBody TripDto newTrip, Principal principal) {
+    public Trip addNewTrip(@Valid @RequestBody TripDto newTrip, Principal principal) {
         return tripService.addNewTrip(newTrip);
     }
 
