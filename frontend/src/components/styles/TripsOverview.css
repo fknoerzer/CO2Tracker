@@ -22,7 +22,7 @@ div.trip-cards {
     font-size: 22px;
 }
 
-.add-new-trip-button{
+.add-new-trip-button {
     height: 50px;
     background-color: #23CE6B;
     font-size: 22px;
@@ -41,7 +41,7 @@ div.trip-cards {
     flex-direction: column;
 }
 
-canvas{
+canvas {
     background-color: whitesmoke;
     Border-radius: 20px;
     padding: 5px;

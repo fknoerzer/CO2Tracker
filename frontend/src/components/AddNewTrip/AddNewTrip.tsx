@@ -1,6 +1,6 @@
 import {useContext, useState} from "react";
 import {TripDto} from "../../model/TripDto";
-import "./styles/AddNewTrip.css"
+import "../styles/AddNewTrip.css"
 import AddGeneralTripInfo from "./AddGeneralTripInfo";
 import AddTransportInfo from "./AddTransportInfo";
 import AddAccommodationInfo from "./AddAccommodationInfo";
