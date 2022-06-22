@@ -3,13 +3,13 @@
     display: grid;
     background-color: #023C40;
     justify-items: center;
-    height: 7%;
+    height: 8%;
     width: 100%;
     position: fixed;
 }
 
 .logo {
-    height: 100%;
+    height: 85%;
 }
 
 .ai-button-logout {
