@@ -31,7 +31,7 @@ export default function TripDetails({trip}: TripDetailsProps) {
                 <p className={"general-info"}>Personal Budget:</p>
                     <div className={"value-field"}>{trip.personalBudget} kg CO<sub>2</sub>-eq.</div>
                 <p className={"general-info"}>Utilization of personal budget:</p>
-                    <div className={"value-field"}> {Math.round(trip.calculatedEmissions.totalEmissions)/Math.round(trip.personalBudget)*100} % </div>
+                    <div className={"value-field"}> {Math.round((trip.calculatedEmissions.totalEmissions)/(trip.personalBudget)*100)} % </div>
                 <p className={"general-info"}>Number of travellers:</p>
                     <div className={"value-field"}>{trip.travellerAmount} person(s)</div>
                 <p className={"general-info"}>Travel distance:</p>
