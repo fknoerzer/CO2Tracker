@@ -9,9 +9,8 @@ div.show-trip-details {
 
 div.trip-detail-card {
     height: fit-content;
+    max-width: 700px;
     border-radius: 20px;
-    padding: 6px;
-    margin-bottom: 10px;
     display: flex;
     flex-direction: column;
     font-size: 20px;
@@ -29,7 +28,7 @@ div.general-info {
     padding: 10px;
     text-align: center;
     font-size: 18px;
-    width: 90%;
+    width: 60%;
     margin: 10px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
@@ -39,6 +38,7 @@ div.emissions-grid {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: 650px;
 }
 
 div.emissions-info-box {
@@ -53,6 +53,7 @@ div.emissions-info-box {
     text-align: center;
     font-size: 18px;
     width: 40%;
+    max-width: 150px;
     margin: 7px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
@@ -65,7 +66,7 @@ div.emissions-info-box {
 }
 
 div.total-emissions {
-    width: fit-content;
+    width: 60%;
     border-radius: 20px;
     padding: 10px;
     align-items: center;
@@ -101,7 +102,12 @@ div.total-emissions {
     border-radius: 8px;
 }
 
-.edit-delete-buttons {
+.delete-button {
+    background-color: #EF626C;
+    margin-right: 20vw;
+}
+
+.edit-delete-button-wrapper {
     background-color: #7EA0AA;
     position: fixed;
     bottom: 0;
@@ -111,19 +117,5 @@ div.total-emissions {
     width: 100%;
     display: flex;
 }
-
-.delete-button {
-    font-size: 22px;
-    background-color: #EF626C;
-    height: 50px;
-    margin-right: 60px;
-}
-
-.edit-button {
-    justify-content: space-around;
-    font-size: 22px;
-    height: 50px;
-}
-
 
 

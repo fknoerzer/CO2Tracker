@@ -1,5 +1,5 @@
 import {Trip} from "../model/Trip";
-import "../components/styles/OffsetPage.css"
+import "../styles/OffsetPage.css"
 
 type OffsetPageProps = {
     trip: Trip

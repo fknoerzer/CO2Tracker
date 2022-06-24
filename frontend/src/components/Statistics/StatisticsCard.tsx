@@ -9,7 +9,7 @@ type StatisticsCardProps = {
 export default function StatisticsCard({trips}: StatisticsCardProps) {
 
     return (
-        <div className={"general-info"}>
+        <div className={"general-statistics"}>
             <p className={"general-info"}> Your total travel impact:</p>
             <div className={"value-field"}> {getSum(trips.map(trip => trip.calculatedEmissions.totalEmissions))} kg CO<sub>2</sub>-eq</div>
             <p className={"general-info"}> Average CO<sub>2</sub>Footprint per trip day:</p>

@@ -1,7 +1,7 @@
 import {Trip} from "../../model/Trip";
 import {formatDepartureDate, formatReturningDate, getDateDiff, getSum} from "../Util/Calculations";
 import {useNavigate} from "react-router-dom";
-import "../styles/TripDetails.css"
+import "../../styles/TripDetails.css"
 import React from "react";
 import TripDoughnutChart from "./TripDoughnutChart";
 

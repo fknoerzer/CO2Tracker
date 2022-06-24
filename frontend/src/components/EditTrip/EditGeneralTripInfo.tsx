@@ -1,4 +1,4 @@
-import "../styles/AddNewTrip.css"
+import "../../styles/AddNewTrip.css"
 
 type EditGeneralInfoProps = {
     title: string

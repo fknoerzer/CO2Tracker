@@ -1,0 +1,42 @@
+.add-form {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+    margin-bottom: 15%;
+}
+
+.add-new-trip-input-overview {
+    height: fit-content;
+    width:100%;
+    box-sizing: border-box;
+    border-radius: 20px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.label-input-field {
+    margin: 10px;
+    width: 80%;
+    background-color: rgba(192, 192, 192, 0.3);
+    border-radius: 20px;
+}
+
+.next-button {
+    margin-top: 10px;
+    background-color: #23CE6B;
+}
+
+.add-button {
+    grid-column: 2;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background-color: #23CE6B;
+}
+
+.update-div {
+    display: flex;
+    width: 100%;
+    justify-content: center
+}

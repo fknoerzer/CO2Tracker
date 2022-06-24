@@ -50,7 +50,7 @@ export default function AllTripsDoughnutChart({trips}: AllTripsDoughnutChartProp
     }
 
     return (
-        <div className={"all-trips-overview"}>
+        <div className={"AllEmissions-doughnut"}>
             <h3>Overview trips</h3>
             <Doughnut data={data} options={options}/>
         </div>

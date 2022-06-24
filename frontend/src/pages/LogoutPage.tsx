@@ -1,7 +1,7 @@
 import {useContext} from "react";
 import {AuthContext} from "../context/AuthProvider";
 import {useNavigate} from "react-router-dom";
-import "../components/styles/LoginPage.css"
+import "../styles/LoginPage.css"
 
 export default function LogoutPage() {
 
