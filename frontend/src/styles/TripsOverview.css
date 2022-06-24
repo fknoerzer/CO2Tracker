@@ -2,10 +2,9 @@ div.trip-cards {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 80px;
+    padding-bottom: 60px;
     margin-top: 70px;
     width: 100%;
-
 }
 
 .add-statistics-button-wrapper {
