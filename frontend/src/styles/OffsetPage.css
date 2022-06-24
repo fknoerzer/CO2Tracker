@@ -16,14 +16,11 @@ img {
 .project-headline {
     font-size: 24px;
     padding: 10px;
-    margin: 10px;
     width: 80%;
-    background-color: rgba(192, 192, 192, 0.6);
-    border-radius: 20px;
 }
 
 .project-page-header {
-    background-color: #2B4162;
+    background-color: #60993E;
     max-width: 600px;
     width: 80%;
     padding: 10px;
@@ -39,7 +36,7 @@ img {
 .project-card {
     max-width: 450px;
     height: fit-content;
-    background: #60993E;
+    background-color: #2B4162;
     border-radius: 20px;
     padding: 10px;
     justify-content: center;
@@ -58,4 +55,10 @@ img {
     border-radius: 8px;
 }
 
+.project-text {
+    background-color: rgb(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 15px;
+    margin: 10px;
+}
 

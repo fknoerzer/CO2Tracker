@@ -30,7 +30,7 @@ export default function EditActivityInfo({activities, setActivities}: EditActivi
                                    min="0" step="1"
                                    value={activityInput.amountOfGolfRounds}
                                    onChange={event => handleShoppingFormChange(event, index)}/> Round(s) of Golf
-                            <h3> Did you go skiing during you trip?  </h3>
+                            <h3> Did you go skiing during you trip? </h3>
                             <input className="number-field"
                                    type="number"
                                    name={"amountOfSkiingDays"}
@@ -39,7 +39,7 @@ export default function EditActivityInfo({activities, setActivities}: EditActivi
                                    value={activityInput.amountOfSkiingDays}
                                    onChange={event => handleShoppingFormChange(event, index)}/> Skiing day(s)
                        <h3>Did you enjoy a spa and wellness day during your trip?</h3>
-                        <input className="number-field"
+                       <input className="number-field"
                             type="number"
                             name={"amountOfBeautyDays"}
                             placeholder="Add Amount of bought small Souvenirs"
@@ -54,7 +54,7 @@ export default function EditActivityInfo({activities, setActivities}: EditActivi
                                    value={activityInput.customActivityItem}
                                    onChange={event => handleShoppingFormChange(event, index)}/>
                             <h3>Here you can add the amount of your custom activity item</h3>
-                            <input className="number-field"
+                        <input className="number-field"
                                    type="number"
                                    name={"amountOfCustomActivityItem"}
                                    placeholder="Add Amount of bought Custom Shopping Items"
@@ -62,15 +62,17 @@ export default function EditActivityInfo({activities, setActivities}: EditActivi
                                    value={activityInput.amountOfCustomActivityItem}
                                    onChange={event => handleShoppingFormChange(event, index)}/> Amount
                             of custom item(s)
-                            <h3>Here you can add the emissions of your custom activity item</h3>
-                            <input className="number-field"
+                        <h3>Here you can add the emissions of your custom activity item</h3>
+                        <input className="number-field"
                                    type="number"
                                    name={"customActivityItemEmission"}
                                    placeholder="Add Emissions of your Custom Shopping Item"
                                    min="0" step="0.1"
                                    value={activityInput.customActivityItemEmission}
                                    onChange={event => handleShoppingFormChange(event, index)}/> Emissions per item
+
                     </div>)
             })}
-        </div>)
+        </div>
+    )
 }

@@ -18,7 +18,7 @@ export default function ShowTripDetails({trip}: ShowTripDetailsProps) {
     return (
         <div className={"show-trip-details"}>
             <TripDetails trip={trip}/>
-            <div className={"edit-delete-button-wrapper"}>
+            <div className={"button-wrapper"}>
                 {trip &&
                     <div>
                         <button className={"delete-button"} onClick={() => {

@@ -27,10 +27,10 @@ export default function StatisticsPage() {
                     <option value="">All Trips</option>
                 </select>
             </div>
-            {selectedYear ? <AllTripsDoughnutChart trips={trips.filter(trip => trip.year === selectedYear)}/> :
-                <AllTripsDoughnutChart trips={trips}/>}
             {selectedYear ? <StatisticsCard trips={trips.filter(trip => trip.year === selectedYear)}/> :
                 < StatisticsCard trips={trips}/>}
+            {selectedYear ? <AllTripsDoughnutChart trips={trips.filter(trip => trip.year === selectedYear)}/> :
+                <AllTripsDoughnutChart trips={trips}/>}
             {selectedYear ? <AllEmissionsDoughnutChart trips={trips.filter(trip => trip.year === selectedYear)}/> :
                 <AllEmissionsDoughnutChart trips={trips}/>}
         </div>

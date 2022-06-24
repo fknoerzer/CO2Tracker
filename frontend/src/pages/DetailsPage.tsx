@@ -1,7 +1,7 @@
 import {Route, Routes, useParams} from "react-router-dom";
 import useDetailedTrip from "../hooks/useDetailedTrip";
 import React, {useEffect} from "react";
-import EditTripDetails from "../components/EditTrip/EditTripDetails";
+import EditTripPage from "./EditTripPage";
 import ShowTripDetails from "../components/Details/ShowTripDetails";
 import UpdateTransportationPage from "./UpdateTransportationPage";
 import UpdateAccommodationPage from "./UpdateAccommodationPage";
@@ -41,7 +41,7 @@ export default function DetailsPage() {
                     <Route path="/update/activity/"
                            element={<UpdateActivityPage trip={detailedTrip}/>}/>
                     <Route path="/edit/"
-                           element={<EditTripDetails trip={detailedTrip}/>}/>
+                           element={<EditTripPage trip={detailedTrip}/>}/>
                 </Route>
             </Routes>
         )
