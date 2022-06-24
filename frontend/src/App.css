@@ -1,5 +1,7 @@
 html {
-    height: 100%
+    display: flex;
+    flex-direction: column;
+    max-width: 100vw;
 }
 
 body {
@@ -11,18 +13,31 @@ div#root {
     height: fit-content;
 }
 
-.app {
+
+.App {
     color: white;
     display: flex;
     flex-direction: column;
     height: fit-content;
 }
 
+.button-wrapper {
+    background-color: #7EA0AA;
+    position: fixed;
+    bottom: 0;
+    justify-content: space-around;
+    align-items: center;
+    height: 8%;
+    width: 100%;
+    display: flex;
+    align-content: center
+}
+
 button {
     width: 150px;
-    height: 35px;
+    height: 40px;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 1.2rem;
     background-color: #E6AA68;
     border: none;
     border-radius: 10px;
@@ -75,52 +90,23 @@ form {
     align-items: center;
     text-align: center;
     width: 80%;
+    max-width: 450px;
     height: 100%;
 }
 
 input {
-    margin: 10px;
-    width: 80%;
-    padding: 10px;
-    box-sizing: border-box;
-    border: none;
+    margin: 5px;
+    width: fit-content;
+    padding: 12px 20px;
     background-color: white;
     font-size: 16px;
     font-weight: bold;
     color: black;
 }
 
-input[type=number] {
-    width: 40%;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    border: none;
-    background-color: white;
-    font-size: 16px;
-    font-weight: bold;
-    color: black;
-}
-
-input[list] {
-    background: white;
-    font-size: 16px;
-    font-weight: bold;
-    width: 80%;
-    padding: 12px 20px;
-}
-
-input[type="date" i] ::-webkit-calendar-picker-indicator {
-    padding: 12px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    align-items: center;
-    background: white;
-    color: rgba(0, 0, 0, 0);
-    opacity: 1;
-    display: block;
-    width: 25px;
-    height: 25px;
-    border-width: thin
+input.number-field{
+    width: 10%;
+    min-width: 70px;
 }
 
 input:focus {

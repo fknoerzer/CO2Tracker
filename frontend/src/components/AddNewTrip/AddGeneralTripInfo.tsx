@@ -1,4 +1,4 @@
-import "../styles/AddNewTrip.css"
+import "../../styles/AddNewTrip.css"
 import CountrySelector from "../Util/CountrySelector";
 
 type TripGeneralInfoProps = {
@@ -71,7 +71,6 @@ export default function AddGeneralTripInfo({
 
             <label className="label-input-field">
             <h3> Please enter your travel dates</h3>
-            <div className={"dates-div"}>
                     <h4>Start Date</h4>
                     <input className="date-field"
                            type="date"
@@ -83,7 +82,6 @@ export default function AddGeneralTripInfo({
                            type="date"
                            value={dateOfReturning}
                            onChange={event => setDateOfReturning(event.target.value)}/>
-            </div>
             </label>
 
             <label className="label-input-field">

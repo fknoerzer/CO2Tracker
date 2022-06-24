@@ -1,6 +1,6 @@
 .statistics-page{
     margin-top: 70px;
-    margin-bottom: 15%;
+    margin-bottom: 20px;
     justify-items: center;
     align-items: center;
     display: flex;
@@ -8,9 +8,10 @@
     font-weight: bold;
 }
 
-.year-input {
+.year-input{
     background-color: #2B4162;
     width: 85%;
+    max-width: 450px;
     padding: 10px;
     margin: 8px;
     text-align: center;
@@ -21,8 +22,18 @@
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
 
+.general-statistics {
+    background-color: #2B4162;
+    width: fit-content;
+    max-width: 450px;
+    padding: 10px;
+    margin: 8px;
+    border-radius: 20px;
+}
+
 .select-box{
     width: fit-content;
+    max-width: 450px;
 }
 
 .AllEmissions-doughnut {
@@ -34,5 +45,6 @@
     align-items: center;
     text-align: center;
     width: 80%;
+    max-width: 450px;
     flex-direction: column;
 }

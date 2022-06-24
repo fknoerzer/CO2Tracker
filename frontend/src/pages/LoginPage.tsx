@@ -1,6 +1,6 @@
 import {FormEvent, useContext, useState} from "react"
 import {AuthContext} from "../context/AuthProvider";
-import"../components/styles/LoginPage.css"
+import "../styles/LoginPage.css"
 
 export default function LoginPage() {
 

@@ -15,9 +15,8 @@ import StatisticsPage from "./pages/StatisticsPage";
 export default function App() {
 
     return (
-        <>
+        <div className={"App"}>
             {<Navbar/>}
-            <div className={"app"}>
                 <ToastContainer
                     position="top-right"
                     autoClose={3000}
@@ -41,7 +40,6 @@ export default function App() {
                     </Route>
                 </Routes>
             </div>
-        </>
     )
 }
 

@@ -1,6 +1,6 @@
 import {useContext, useState} from "react";
 import {TripDto} from "../../model/TripDto";
-import "../styles/AddNewTrip.css"
+import "../../styles/AddNewTrip.css"
 import AddGeneralTripInfo from "./AddGeneralTripInfo";
 import AddTransportInfo from "./AddTransportInfo";
 import AddAccommodationInfo from "./AddAccommodationInfo";
@@ -139,7 +139,7 @@ export default function AddNewTrip() {
                 return (
                     <div className={"add-new-trip-div"}>
                         <h1> Add general infos to your new trip</h1>
-                        <div className={"add-new-trip-form"}>
+
                             <AddGeneralTripInfo title={title}
                                                 setTitle={setTitle} distance={distance}
                                                 setDistance={setDistance}
@@ -154,18 +154,15 @@ export default function AddNewTrip() {
                                                 personalBudget={personalBudget}
                                                 setPersonalBudget={setPersonalBudget}/>
                         </div>
-                    </div>
                 )
             }
             case 1: {
                 return (
                     <div className={"add-new-trip-div"}>
                         <h1> Add transport infos to your new trip</h1>
-                        <div className={"add-new-trip-form"}>
                             <AddTransportInfo setTypeOfTransport={setTypeOfTransport}
                                               typeOfTransport={typeOfTransport}/>
                         </div>
-                    </div>
                 )
             }
             case 2: {

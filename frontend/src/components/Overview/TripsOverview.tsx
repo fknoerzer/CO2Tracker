@@ -1,6 +1,6 @@
 import TripOverviewCard from "./TripOverviewCard";
 import {Trip} from "../../model/Trip";
-import "../styles/TripsOverview.css"
+import "../../styles/TripsOverview.css"
 import {useNavigate} from "react-router-dom";
 import {ChangeEvent, useState} from "react";
 import {BiMessageSquareAdd} from "react-icons/bi";
@@ -22,7 +22,7 @@ export default function TripsOverview({trips}: TripsOverviewProps) {
                     .sort((a, b) => a.dateOfDeparture.localeCompare(b.dateOfDeparture))
                     .map(trip => <TripOverviewCard key={trip.id} trip={trip}/>).reverse()}
             </div>
-            <div className={"add-statistics-button-wrapper"}>
+            <div className={"button-wrapper"}>
                 <button className={"statistics-button"} onClick={()=> navigate("/alltrips")}> Statistics</button>
                 <button className={"add-new-trip-button"} onClick={() => navigate(`/addtrip`)}>Add Trip <BiMessageSquareAdd/></button>
             </div>

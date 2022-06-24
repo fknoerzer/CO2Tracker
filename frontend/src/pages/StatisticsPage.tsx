@@ -3,7 +3,7 @@ import useTrips from "../hooks/UseTrips";
 import {useState} from "react";
 import StatisticsCard from "../components/Statistics/StatisticsCard";
 import AllEmissionsDoughnutChart from "../components/Statistics/AllEmissionsDoughnutChart";
-import "../components/styles/StatisticsPage.css"
+import "../styles/StatisticsPage.css"
 
 export default function StatisticsPage() {
     const {trips} = useTrips();

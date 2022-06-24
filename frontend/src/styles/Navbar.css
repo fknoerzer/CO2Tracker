@@ -3,33 +3,29 @@
     display: grid;
     background-color: #023C40;
     justify-items: center;
-    height: 8%;
+    height: 70px;
     width: 100%;
     position: fixed;
 }
 
 .logo {
-    height: 85%;
+    height: 90%;
 }
 
 .ai-button-logout {
-    margin-top: 3px;
+    height: 100%;
     width: fit-content;
-    border-color: white;
     background-color: transparent;
-    font-size: 40px;
-    color: white;
+    font-size: 45px;
     position: absolute;
     right: 0;
 }
 
 .ai-button-home {
-    margin-top: 3.5px;
+    height: 100%;
     width: fit-content;
-    border-color: white;
     background-color: transparent;
-    font-size: 40px;
-    color: white;
+    font-size: 45px;
     position: absolute;
     left: 0;
 }
