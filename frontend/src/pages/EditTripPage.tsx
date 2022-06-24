@@ -1,20 +1,20 @@
-import {Accommodation, Activity, Food, Shopping, Transportation, Trip} from "../../model/Trip";
+import {Accommodation, Activity, Food, Shopping, Transportation, Trip} from "../model/Trip";
 import {useContext, useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {putTrip} from "../../service/api-service";
-import EditGeneralTripInfo from "./EditGeneralTripInfo";
-import EditTransportationInfo from "./EditTransportationInfo";
-import EditAccommodationInfo from "./EditAccommodationInfo";
-import EditFoodInfo from "./EditFoodInfo";
-import EditShoppingInfo from "./EditShoppingInfo";
-import EditActivityInfo from "./EditActivityInfo";
-import {AuthContext} from "../../context/AuthProvider";
+import {putTrip} from "../service/api-service";
+import EditGeneralTripInfo from "../components/EditTrip/EditGeneralTripInfo";
+import EditTransportationInfo from "../components/EditTrip/EditTransportationInfo";
+import EditAccommodationInfo from "../components/EditTrip/EditAccommodationInfo";
+import EditFoodInfo from "../components/EditTrip/EditFoodInfo";
+import EditShoppingInfo from "../components/EditTrip/EditShoppingInfo";
+import EditActivityInfo from "../components/EditTrip/EditActivityInfo";
+import {AuthContext} from "../context/AuthProvider";
 
 type EditTripDetailsProps = {
     trip: Trip
 }
 
-export default function EditTripDetails({trip}: EditTripDetailsProps) {
+export default function EditTripPage({trip}: EditTripDetailsProps) {
     const navigate = useNavigate()
     const [title, setTitle] = useState<string>(trip.title)
     const [distance, setDistance] = useState<number>(trip.transportations[0].distance)
@@ -94,7 +94,6 @@ export default function EditTripDetails({trip}: EditTripDetailsProps) {
             case 0: {
                 return (
                     <div className={"add-new-trip-div"}>
-                        <h1> Edit general infos of your trip</h1>
                         <div className={"add-new-trip-form"}>
                         <EditGeneralTripInfo title={title}
                                              setTitle={setTitle}

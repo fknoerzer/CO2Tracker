@@ -17,10 +17,11 @@ export default function EditAccommodationInfo({accommodations, setAccommodations
         setAccommodations(data);
     }
     return (
-        <div className={"edit-trip-input-overview"}>
+        <div className={"add-new-trip-input-overview"}>
             {accommodations.map((accommodationInput, index) => {
                 return (
-                    <div key={"typeOfAccommodation" + index} className={"edit-trip-input-fields"}>
+                        <label className="label-input-field">
+                            <div key={"typeOfAccommodation" + index}>
                             <h3> Please choose your type of transportation</h3>
                             <select className="dataList-input-newTrip" value={accommodationInput.typeOfAccommodation}
                                     name={"typeOfAccommodation"} id="accommodations"
@@ -34,6 +35,7 @@ export default function EditAccommodationInfo({accommodations, setAccommodations
                                 <option value="Cruise Ship">Cruise Ship</option>
                             </select>
                     </div>
+                        </label>
                 )
             })}
         </div>

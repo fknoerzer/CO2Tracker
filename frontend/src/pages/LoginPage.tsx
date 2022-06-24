@@ -26,7 +26,7 @@ export default function LoginPage() {
                    placeholder={"password"}
                    value={password}
                    onChange={(event) => setPassword(event.target.value)}/>
-            <button type={"submit"}>Login</button>
+            <button className={"login-button"} type={"submit"}>Login</button>
         </form>
     )
 }
