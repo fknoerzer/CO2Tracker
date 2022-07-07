@@ -7,7 +7,7 @@ export function Navbar() {
     return (
         <div className={"navbar"}>
             <button className={"ai-button-home"} onClick={() => navigate(`/`)}><AiFillHome/></button>
-            <img className={"logo"} src='https://i.postimg.cc/Kct4ktHz/aa4743e4658b490aa98e3e8c1e07bd5b-removebg-preview.png' alt='Logo-NEW2'/>
+            <img className={"logo"} src='https://i.postimg.cc/nh1npkM8/Logo-NEW2.jpg' alt='Logo-NEW2'/>
             <button className={"ai-button-logout"} onClick={() => navigate(`/logout`)}><AiOutlineLogout/></button>
         </div>)
 }
